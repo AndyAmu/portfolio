@@ -1,0 +1,15 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+.header {
+  height: 90vh;
+  background-image: url(https://rpaacademy.rigeltechnologies.net/pluginfile.php/122/coursecat/description/fondo2.jpg);
+  background-size: cover;
+}
+.footer{
+  height: 5vh;
+  background-color: black;
+}
