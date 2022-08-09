@@ -13,6 +13,7 @@ import MenuIcon from '@mui/icons-material/Menu';
 import Toolbar from '@mui/material/Toolbar';
 import Typography from '@mui/material/Typography';
 import Button from '@mui/material/Button';
+import { Link as LinkRouter } from "react-router-dom"
 
 const drawerWidth = 240;
 const navItems = ['Home', 'About', 'Contact'];
@@ -27,9 +28,11 @@ function DrawerAppBar(props) {
 
     const drawer = (
         <Box onClick={handleDrawerToggle} sx={{ textAlign: 'center' }}>
+            <LinkRouter to='/'>  
             <Typography variant="h6" sx={{ my: 2 }}>
                 Andrés Amuchástegui
             </Typography>
+            </LinkRouter>
             <Divider />
             <List>
                 {navItems.map((item) => (
@@ -65,6 +68,7 @@ function DrawerAppBar(props) {
                     >
                         Andrés Amuchástegui
                     </Typography>
+                    
                     <Box sx={{ display: { xs: 'none', sm: 'block' } }}>
                         {navItems.map((item) => (
                             <Button key={item} sx={{ color: '#fff' }}>

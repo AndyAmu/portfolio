@@ -5,11 +5,11 @@
 }
 
 .header {
-  height: 90vh;
+  min-height: 90.6vh;
   background-image: url(https://rpaacademy.rigeltechnologies.net/pluginfile.php/122/coursecat/description/fondo2.jpg);
   background-size: cover;
 }
 .footer{
-  height: 5vh;
+  min-height: 5vh;
   background-color: black;
 }
