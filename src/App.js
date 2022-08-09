@@ -16,7 +16,7 @@ function App() {
       <ResponsiveAppBar />
       <Footer />
       <ScrollToTop
-        style={{ backgroundColor: 'white', opacity: '70%', width: '50px', height: '50px' }}
+        style={{ backgroundColor: 'white', opacity: '50%', width: '30px', height: '30px' }}
         smooth
         viewBox="0 0 24 24"
         component={<FileUploadIcon />} />
