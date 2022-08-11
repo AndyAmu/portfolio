@@ -5,6 +5,7 @@ import FileUploadIcon from '@mui/icons-material/FileUpload';
 import Footer from './component/Footer'
 import { Routes, Route } from 'react-router-dom'
 import Pagehome from './component/pageHome';
+import Project from './component/Project'
 
 
 function App() {
@@ -12,6 +13,7 @@ function App() {
     <>
       <Routes>
       <Route path="/" element={<Pagehome />} />
+      <Route path="/Project" element={<Project />} />
       </Routes>
       <ResponsiveAppBar />
       <Footer />

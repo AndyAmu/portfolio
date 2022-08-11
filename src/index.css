@@ -5,11 +5,8 @@
 }
 
 .header {
-  min-height: 90.6vh;
-  background-image: url(https://rpaacademy.rigeltechnologies.net/pluginfile.php/122/coursecat/description/fondo2.jpg);
+  min-height: 90vh;
+  background-image: url(https://www.elindependiente.com/wp-content/uploads/2017/07/blockchain-p.gif);
   background-size: cover;
-}
-.footer{
-  min-height: 5vh;
-  background-color: black;
+  z-index: -1;
 }
