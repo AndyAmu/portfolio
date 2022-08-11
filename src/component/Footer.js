@@ -29,9 +29,11 @@ const Footer = () => {
                                     </svg></a>
                                 </div>
                             </div>
+                            
+                            
                             <LinkRouter style={{textDecoration:'none'}} to='/'><p className='botones-footer'>Home</p></LinkRouter>
                             <LinkRouter style={{textDecoration:'none'}} to='/Project'><p className='botones-footer'>Project</p></LinkRouter>
-                            <p className='derechos'>All rights reserved AND® 2022</p>
+                            <p className='derechos'>All rights reserved AND®</p>
                         </div>
                     </div>
 

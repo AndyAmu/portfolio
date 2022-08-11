@@ -4,9 +4,29 @@
   box-sizing: border-box;
 }
 
-.header {
-  min-height: 90vh;
+.body {
+  background-attachment: fixed;
+  min-height: 100vh;
   background-image: url(https://www.elindependiente.com/wp-content/uploads/2017/07/blockchain-p.gif);
   background-size: cover;
   z-index: -1;
+}
+
+.body2 {
+  min-height: 70vh;
+  background: linear-gradient(-45deg, #000000, #3c80e7, #042180, #000000);
+  background-size: 400% 400%;
+  animation: gradient 15s ease infinite;
+}
+
+@keyframes gradient {
+  0% {
+      background-position: 0% 50%;
+  }
+  50% {
+      background-position: 100% 50%;
+  }
+  100% {
+      background-position: 0% 50%;
+  }
 }

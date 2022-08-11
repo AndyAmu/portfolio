@@ -15,7 +15,7 @@
 }
 footer {
     min-height: 10vh;
-    background-color: #1b1919!important;
+    background-color: #000000!important;
 }
 
 .botones-footer {
@@ -42,3 +42,4 @@ footer {
         padding: inherit;
     }
 }
+
