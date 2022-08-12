@@ -21,7 +21,7 @@
 }
 
 .body2 {
-  min-height: 70vh;
+  min-height: 50vh;
   background: linear-gradient(-45deg, #000000, #3c80e7, #042180, #000000);
   background-size: 400% 400%;
   animation: gradient 15s ease infinite;

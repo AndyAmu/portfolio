@@ -42,20 +42,37 @@ const Body = () => {
                         Here you can see my full CV.
                     </Typography>
 
-
-                    <Box sx={{
-                        marginTop: 2
-                    }}>
-                        <a href="https://drive.google.com/u/0/uc?id=1EFbRT3aAr8rCJQf-W2icp7Sw3sTdZV1k&export=download">
-                            <div className="button" data-tooltip="Size: 253Kb">
-                                <div className="button-wrapper">
-                                    <div className="text">Download CV</div>
-                                    <span className="icon">
-                                        <svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" role="img" width="2em" height="2em" preserveAspectRatio="xMidYMid meet" viewBox="0 0 24 24"><path fill="none" stroke="currentColor" d="M12 15V3m0 12l-4-4m4 4l4-4M2 17l.621 2.485A2 2 0 0 0 4.561 21h14.878a2 2 0 0 0 1.94-1.515L22 17"></path></svg>
-                                    </span>
+                    <Box sx= {{display: 'flex', justifyContent: 'center'}}>
+                        <Box sx={{
+                            margin: 1,
+                            marginTop: 2
+                        }}>
+                            <a href="https://drive.google.com/u/0/uc?id=1EFbRT3aAr8rCJQf-W2icp7Sw3sTdZV1k&export=download">
+                                <div className="button" data-tooltip="Size: 253Kb">
+                                    <div className="button-wrapper">
+                                        <div className="text">Download Spanish CV</div>
+                                        <span className="icon">
+                                            <svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" role="img" width="2em" height="2em" preserveAspectRatio="xMidYMid meet" viewBox="0 0 24 24"><path fill="none" stroke="currentColor" d="M12 15V3m0 12l-4-4m4 4l4-4M2 17l.621 2.485A2 2 0 0 0 4.561 21h14.878a2 2 0 0 0 1.94-1.515L22 17"></path></svg>
+                                        </span>
+                                    </div>
                                 </div>
-                            </div>
-                        </a>
+                            </a>
+                        </Box>
+                        <Box sx={{
+                            margin: 1,
+                            marginTop: 2
+                        }}>
+                            <a href="https://drive.google.com/u/0/uc?id=1EFbRT3aAr8rCJQf-W2icp7Sw3sTdZV1k&export=download">
+                                <div className="button" data-tooltip="Size: 253Kb">
+                                    <div className="button-wrapper">
+                                        <div className="text">Download English CV</div>
+                                        <span className="icon">
+                                            <svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" role="img" width="2em" height="2em" preserveAspectRatio="xMidYMid meet" viewBox="0 0 24 24"><path fill="none" stroke="currentColor" d="M12 15V3m0 12l-4-4m4 4l4-4M2 17l.621 2.485A2 2 0 0 0 4.561 21h14.878a2 2 0 0 0 1.94-1.515L22 17"></path></svg>
+                                        </span>
+                                    </div>
+                                </div>
+                            </a>
+                        </Box>
                     </Box>
                 </Box>
                 <Box sx={{ display: 'flex', flexDirection: 'column', justifyContent: 'center', alignItems: 'center' }}>
@@ -133,9 +150,9 @@ const Body = () => {
             <Technologies />
 
             <Box sx={{ display: 'flex', justifyContent: 'center', alignItems: 'center', flexDirection: 'column' }} className="body4">
-                <Typography sx={{ fontFamily: 'Bree Serif', paddingBottom: '5rem', display: 'flex', justifyContent: 'center', zIndex: 10, fontSize: 50, color: 'white' }}>Recommendations</Typography>
+                <Typography sx={{ fontFamily: 'Bree Serif', paddingBottom: '5rem', display: 'flex', justifyContent: 'center', zIndex: 10, fontSize: 50, color: 'white' }}>Recommendations Linkedin</Typography>
                 <a style={{ textDecoration: 'none' }} href="https://www.linkedin.com/in/andr%C3%A9s-amuch%C3%A1stegui-3b47ab21b/details/recommendations/?detailScreenTabIndex=0">
-                    <Card sx={{ maxWidth: 800, marginBottom: '2rem' }}>
+                    <Card sx={{backgroundColor: 'black', color: 'white', maxWidth: 800, marginBottom: '2rem' }}>
                         <CardActionArea>
                             <CardMedia
                                 className="card-recommendations"
@@ -144,7 +161,7 @@ const Body = () => {
                             />
 
                             <CardContent>
-                                <Typography variant="body2" color="text.secondary">
+                                <Typography variant="body2" color="white">
                                     ㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤThese are recommendations on Linkedinㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤ
                                 </Typography>
                             </CardContent>
