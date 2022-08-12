@@ -18,8 +18,8 @@ const Body = () => {
         <>
 
             <Box sx={{ display: 'flex', justifyContent: 'center', alignItems: 'center', flexDirection: 'column' }} className="body">
-                <Typography sx={{ fontFamily: 'Bree Serif', zIndex: 10, fontSize: 80, color: 'white' }}>ANDRÉS AMUCHÁSTEGUI</Typography>
-                <Typography sx={{ fontFamily: 'Bree Serif', zIndex: 10, fontSize: 30, color: 'white' }}>Full Stack Developer | Web | Mobile ㅤ<ComputerIcon sx={{ fontSize: '2.5rem' }} /> +<PhoneIphoneIcon sx={{ fontSize: '2.2rem' }} /></Typography>
+                <Typography className="andresamutitle" sx={{ fontFamily: 'Bree Serif', zIndex: 10, color: 'white' }}>ANDRÉS AMUCHÁSTEGUI</Typography>
+                <Typography className="andresamutitle2" sx={{ fontFamily: 'Bree Serif', zIndex: 10, color: 'white' }}>Full Stack Developer | Web | Mobile ㅤ<ComputerIcon sx={{ fontSize: '2.5rem' }} /> +<PhoneIphoneIcon sx={{ fontSize: '2.2rem' }} /></Typography>
                 <Box sx={{ color: 'white', display: 'flex', justifyContent: 'center', alignItems: 'center', zIndex: 100 }}>
                     <Typography sx={{ fontSize: 50 }}></Typography>
                 </Box>
@@ -150,7 +150,7 @@ const Body = () => {
             <Technologies />
 
             <Box sx={{ display: 'flex', justifyContent: 'center', alignItems: 'center', flexDirection: 'column' }} className="body4">
-                <Typography sx={{marginTop: 5, fontFamily: 'Bree Serif', paddingBottom: '2rem', display: 'flex', justifyContent: 'center', zIndex: 10, fontSize: 50, color: 'white' }}>RECOMMENDATIONS LINKEDIN</Typography>
+                <Typography className="andresamutitle3" sx={{marginTop: 5, fontFamily: 'Bree Serif', paddingBottom: '2rem', display: 'flex', justifyContent: 'center', zIndex: 10, fontSize: 50, color: 'white' }}>RECOMMENDATIONS LINKEDIN</Typography>
                 <a style={{ textDecoration: 'none' }} href="https://www.linkedin.com/in/andr%C3%A9s-amuch%C3%A1stegui-3b47ab21b/details/recommendations/?detailScreenTabIndex=0">
                     <Card sx={{backgroundColor: 'black', color: 'white', maxWidth: 800, marginBottom: '2rem' }}>
                         <CardActionArea>

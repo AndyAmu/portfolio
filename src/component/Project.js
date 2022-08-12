@@ -4,12 +4,12 @@ import './styles/project.css'
 import LanguageIcon from '@mui/icons-material/Language';
 import GitHubIcon from '@mui/icons-material/GitHub';
 import { Box } from "@mui/system";
+import { Typography } from "@mui/material";
 
 
 const Project = () => {
     return (
         <>
-        
             <Box sx={{ display: 'flex', justifyContent: 'space-around', alignItems: 'center' }} className="body">
                 <Box className="card">
                     <Box className="card-info1">

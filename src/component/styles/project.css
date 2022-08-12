@@ -11,6 +11,21 @@
     position: relative;
     z-index: 1;
 }
+@media (max-width: 600px){
+    .card{
+        width: 500px;
+    }
+}
+@media (max-width: 500px){
+    .card{
+        width: 400px;
+    }
+}
+@media (max-width: 400px){
+    .card{
+        width: 300px;
+    }
+}
 
 .card::after {
     position: absolute;

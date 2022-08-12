@@ -7,6 +7,69 @@
 
 @import url('https://fonts.googleapis.com/css2?family=Bree+Serif&family=Expletus+Sans:ital@0;1&family=Mina&family=Ramabhadra&family=Righteous&display=swap');
 
+.andresamutitle {
+  font-size: 5rem!important;
+}
+@media( max-width: 950px){
+  .andresamutitle{
+    font-size: 4rem!important;
+  }
+}
+@media( max-width: 750px){
+  .andresamutitle{
+    font-size: 3rem!important;
+  }
+}
+@media( max-width: 570px){
+  .andresamutitle{
+    font-size: 2rem!important;
+  }
+}
+@media( max-width: 390px){
+  .andresamutitle{
+    font-size: 1.6rem!important;
+  }
+}
+
+.andresamutitle2 {
+  font-size: 3rem!important;
+}
+@media( max-width: 950px){
+  .andresamutitle2{
+    font-size: 2rem!important;
+  }
+}
+@media( max-width: 750px){
+  .andresamutitle2{
+    font-size: 1rem!important;
+  }
+}
+
+@media( max-width: 390px){
+  .andresamutitle2{
+    font-size: .8rem!important;
+  }
+}
+
+.andresamutitle3 {
+  font-size: 4rem!important;
+}
+@media( max-width: 950px){
+  .andresamutitle3{
+    font-size: 3rem!important;
+  }
+}
+@media( max-width: 750px){
+  .andresamutitle3{
+    font-size: 2rem!important;
+  }
+}
+
+@media( max-width: 500px){
+  .andresamutitle3{
+    font-size: 1.5rem!important;
+  }
+}
 
 .andresamu {
   font-family: 'Courier New', Courier, monospace;
