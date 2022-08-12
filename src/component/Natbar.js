@@ -23,13 +23,13 @@ function DrawerAppBar(props) {
 
     const drawer = (
         <Box onClick={handleDrawerToggle} sx={{ textAlign: 'center' }}>
-            <LinkRouter to='/'>  
-            <Typography variant="h6" sx={{ my: 2 }}>
-                Andrés Amuchástegui
-            </Typography>
+            <LinkRouter to='/'>
+                <Typography variant="h6" sx={{ my: 2 }}>
+                    My portfolio
+                </Typography>
             </LinkRouter>
             <Divider />
-            
+
         </Box>
     );
 
@@ -37,7 +37,7 @@ function DrawerAppBar(props) {
 
     return (
         <Box >
-            <AppBar sx={{backgroundColor: 'rgba(0, 0, 0, 0.247)' }} component="nav">
+            <AppBar sx={{ backgroundColor: 'rgba(0, 0, 0, 0.247)' }} component="nav">
                 <Toolbar>
                     <IconButton
                         color="inherit"
@@ -53,10 +53,10 @@ function DrawerAppBar(props) {
                         component="div"
                         sx={{ flexGrow: 1, display: { xs: 'none', sm: 'block' } }}
                     >
-                        Andrés Amuchástegui
+                        My portfolio
                     </Typography>
-                    
-                    
+
+
                 </Toolbar>
             </AppBar>
             <Box component="nav">
@@ -76,7 +76,7 @@ function DrawerAppBar(props) {
                     {drawer}
                 </Drawer>
             </Box>
-            
+
         </Box>
     );
 }

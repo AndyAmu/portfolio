@@ -16,6 +16,7 @@
     transition: background 0.3s;
 }
 
+
 .button::before {
     position: absolute;
     content: attr(data-tooltip);
@@ -114,8 +115,8 @@
 /* AVATAR */
 
 .avatar {
-    width: 300px!important;
-    height: 300px!important;
+    width: 300px !important;
+    height: 300px !important;
     background: #2e0707;
     position: relative;
     display: flex;

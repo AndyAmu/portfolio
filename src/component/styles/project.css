@@ -1,7 +1,7 @@
 /* From uiverse.io by @alexruix */
 .card {
     --background: linear-gradient(to left, #2b3ff7 0%, #2b1b74 100%);
-    width: 300px;
+    width: 600px;
     height: 400px;
     padding: 5px;
     border-radius: 1rem;
@@ -33,7 +33,7 @@
     --color: #e6e6e6;
     background: var(--color);
     color: var(--color);
-    background-image: url(../image/logoMyTinerary.png);
+    background-image: url(../image/MyTineraryGif.gif);
     background-size: cover;
     display: flex;
     justify-content: center;
@@ -57,23 +57,7 @@
     --color: #181818;
     background: var(--color);
     color: var(--color);
-    background-image: url(../image/MyIndustrial.PNG);
-    background-size: cover;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    width: 100%;
-    height: 100%;
-    overflow: visible;
-    border-radius: .7rem;
-}
-
-.card-info3 {
-    margin-bottom: 2rem;
-    --color: #181818;
-    background: var(--color);
-    color: var(--color);
-    background-image: url(../image/amazing.PNG);
+    background-image: url(../image/MyIndustrialHomeGif.gif);
     background-size: cover;
     display: flex;
     justify-content: center;
@@ -89,7 +73,7 @@
     --color: #181818;
     background: var(--color);
     color: var(--color);
-    background-image: url(../image/mindy.png);
+    background-image: url(../image/MindyGif.gif);
     background-size: cover;
     display: flex;
     justify-content: center;
@@ -314,10 +298,6 @@
 .cssbuttons-io:active {
     transform: scale(0.95);
 }
-
-
-
-
 
 * {
 	margin: 0;

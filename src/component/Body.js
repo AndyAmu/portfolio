@@ -5,30 +5,44 @@ import '../index.css'
 import './styles/body.css'
 import LanguageIcon from '@mui/icons-material/Language';
 import GitHubIcon from '@mui/icons-material/GitHub';
-
+import Technologies from './Technologies'
+import ComputerIcon from '@mui/icons-material/Computer';
+import PhoneIphoneIcon from '@mui/icons-material/PhoneIphone';
+import Card from '@mui/material/Card';
+import CardContent from '@mui/material/CardContent';
+import CardMedia from '@mui/material/CardMedia';
+import { CardActionArea } from '@mui/material';
 
 const Body = () => {
     return (
         <>
 
             <Box sx={{ display: 'flex', justifyContent: 'center', alignItems: 'center', flexDirection: 'column' }} className="body">
-                <Typography sx={{ zIndex: 10, fontSize: 80, color: 'white' }}>ANDRÉS AMUCHÁSTEGUI</Typography>
-                <Typography sx={{ zIndex: 10, fontSize: 30, color: 'white' }}>Full Stack Developer | Web | Mobile</Typography>
+                <Typography sx={{ fontFamily: 'Bree Serif', zIndex: 10, fontSize: 80, color: 'white' }}>ANDRÉS AMUCHÁSTEGUI</Typography>
+                <Typography sx={{ fontFamily: 'Bree Serif', zIndex: 10, fontSize: 30, color: 'white' }}>Full Stack Developer | Web | Mobile ㅤ<ComputerIcon sx={{ fontSize: '2.5rem' }} /> +<PhoneIphoneIcon sx={{ fontSize: '2.2rem' }} /></Typography>
+                <Box sx={{ color: 'white', display: 'flex', justifyContent: 'center', alignItems: 'center', zIndex: 100 }}>
+                    <Typography sx={{ fontSize: 50 }}></Typography>
+                </Box>
             </Box>
             <Box sx={{ display: 'flex', justifyContent: 'space-around', alignItems: 'center' }} className='body2'>
                 <Box sx={{ textAlign: 'center', width: 400, display: 'flex', flexDirection: 'column', justifyContent: 'center', alignItems: 'center' }}>
                     <Typography sx={{
+                        fontFamily: 'Bree Serif',
                         color: 'white',
                         fontSize: 40
                     }}>
+
                         Hi, I'm Andrés
                     </Typography>
                     <Typography sx={{
+                        fontFamily: 'Bree Serif',
                         color: 'white'
                     }}>
                         I am a person with good predisposition, creative and passionate.
                         Here you can see my full CV.
                     </Typography>
+
+
                     <Box sx={{
                         marginTop: 2
                     }}>
@@ -60,14 +74,14 @@ const Body = () => {
                 </Box>
             </Box>
             <Box className="body">
-            <Typography sx={{paddingTop: '10rem', paddingBottom: '5rem', display: 'flex', justifyContent: 'center', zIndex: 10, fontSize: 50, color: 'white' }}>PROJECT</Typography>
+                <Typography sx={{ fontFamily: 'Bree Serif', paddingTop: '10rem', paddingBottom: '5rem', display: 'flex', justifyContent: 'center', zIndex: 10, fontSize: 50, color: 'white' }}>PROJECT</Typography>
 
                 <Box sx={{ display: 'flex', justifyContent: 'space-around', alignItems: 'center' }} >
 
                     <Box className="card">
                         <Box className="card-info1">
                         </Box>
-                        <Box sx={{ display: 'flex', justifyContent: 'space-between' }}>
+                        <Box sx={{ display: 'flex', justifyContent: 'space-around' }}>
                             <a style={{ textDecoration: 'none' }} href="http://my-tinerary-and-amu.herokuapp.com/">
                                 <button className="cssbuttons-io">
                                     <span><LanguageIcon />Web</span>
@@ -83,7 +97,7 @@ const Body = () => {
                     <Box className="card">
                         <Box className="card-info2">
                         </Box>
-                        <Box sx={{ display: 'flex', justifyContent: 'space-between' }}>
+                        <Box sx={{ display: 'flex', justifyContent: 'space-around' }}>
                             <a style={{ textDecoration: 'none' }} href="https://my-industrial-home-challange-mind-hub.vercel.app/">
                                 <button className="cssbuttons-io">
                                     <span><LanguageIcon /> Web</span>
@@ -99,7 +113,7 @@ const Body = () => {
                     <Box className="card">
                         <Box className="card-info4">
                         </Box>
-                        <Box sx={{ display: 'flex', justifyContent: 'space-between' }}>
+                        <Box sx={{ display: 'flex', justifyContent: 'space-around' }}>
                             <a style={{ textDecoration: 'none' }} href="https://andresamu.github.io/PETSHOP_MINDY_GRUPO_11/index.html">
                                 <button className="cssbuttons-io">
                                     <span><LanguageIcon /> Web</span>
@@ -114,6 +128,33 @@ const Body = () => {
                     </Box>
                 </Box>
             </Box>
+
+
+            <Technologies />
+
+            <Box sx={{ display: 'flex', justifyContent: 'center', alignItems: 'center', flexDirection: 'column' }} className="body4">
+                <Typography sx={{ fontFamily: 'Bree Serif', paddingBottom: '5rem', display: 'flex', justifyContent: 'center', zIndex: 10, fontSize: 50, color: 'white' }}>Recommendations</Typography>
+                <a style={{ textDecoration: 'none' }} href="https://www.linkedin.com/in/andr%C3%A9s-amuch%C3%A1stegui-3b47ab21b/details/recommendations/?detailScreenTabIndex=0">
+                    <Card sx={{ maxWidth: 800, marginBottom: '2rem' }}>
+                        <CardActionArea>
+                            <CardMedia
+                                className="card-recommendations"
+                                component="img"
+                                height="340"
+                            />
+
+                            <CardContent>
+                                <Typography variant="body2" color="text.secondary">
+                                    ㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤThese are recommendations on Linkedinㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤ
+                                </Typography>
+                            </CardContent>
+                        </CardActionArea>
+                    </Card>
+                </a>
+
+            </Box>
+
+
         </>
     )
 }
