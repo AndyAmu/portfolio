@@ -62,7 +62,7 @@ const Body = () => {
                             margin: 1,
                             marginTop: 2
                         }}>
-                            <a href="https://drive.google.com/u/0/uc?id=1EFbRT3aAr8rCJQf-W2icp7Sw3sTdZV1k&export=download">
+                            <a href="https://drive.google.com/u/0/uc?id=1_bPYb6K89VsFLBqueHvRq3vL0bzCvXoH&export=download">
                                 <div className="button" data-tooltip="Size: 253Kb">
                                     <div className="button-wrapper">
                                         <div className="text">Download English CV</div>
@@ -91,7 +91,7 @@ const Body = () => {
                 </Box>
             </Box>
             <Box className="body">
-                <Typography sx={{ fontFamily: 'Bree Serif', paddingTop: '10rem', paddingBottom: '5rem', display: 'flex', justifyContent: 'center', zIndex: 10, fontSize: 50, color: 'white' }}>PROJECT</Typography>
+                <Typography sx={{ fontFamily: 'Bree Serif', paddingTop: '5rem', paddingBottom: '5rem', display: 'flex', justifyContent: 'center', zIndex: 10, fontSize: 50, color: 'white' }}>PROJECT</Typography>
 
                 <Box sx={{ display: 'flex', justifyContent: 'space-around', alignItems: 'center' }} >
 
@@ -150,7 +150,7 @@ const Body = () => {
             <Technologies />
 
             <Box sx={{ display: 'flex', justifyContent: 'center', alignItems: 'center', flexDirection: 'column' }} className="body4">
-                <Typography sx={{ fontFamily: 'Bree Serif', paddingBottom: '5rem', display: 'flex', justifyContent: 'center', zIndex: 10, fontSize: 50, color: 'white' }}>Recommendations Linkedin</Typography>
+                <Typography sx={{marginTop: 5, fontFamily: 'Bree Serif', paddingBottom: '2rem', display: 'flex', justifyContent: 'center', zIndex: 10, fontSize: 50, color: 'white' }}>RECOMMENDATIONS LINKEDIN</Typography>
                 <a style={{ textDecoration: 'none' }} href="https://www.linkedin.com/in/andr%C3%A9s-amuch%C3%A1stegui-3b47ab21b/details/recommendations/?detailScreenTabIndex=0">
                     <Card sx={{backgroundColor: 'black', color: 'white', maxWidth: 800, marginBottom: '2rem' }}>
                         <CardActionArea>

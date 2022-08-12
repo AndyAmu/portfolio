@@ -20,8 +20,19 @@
   z-index: -1;
 }
 
+@media (max-width: 1500px){
+  .css-135do9d{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+  }
+}
+.card {
+  margin: 1rem;
+}
 .body2 {
-  min-height: 50vh;
+  min-height: 40vh;
   background: linear-gradient(-45deg, #000000, #3c80e7, #042180, #000000);
   background-size: 400% 400%;
   animation: gradient 15s ease infinite;
