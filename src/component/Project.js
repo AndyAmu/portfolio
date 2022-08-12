@@ -9,71 +9,7 @@ import { Box } from "@mui/system";
 const Project = () => {
     return (
         <>
-        <div class="container">
-			<div class="card">
-				<div class="content">
-					<div class="imgBx">
-						<img src="../image/MyIndustrial.PNG" />
-					</div>
-					<div class="contentBx">
-						<h3>Lion</h3>
-					</div>
-				</div>
-				<ul class="sci">
-					<li>
-						<a href="">happy</a>
-					</li>
-					<li>
-						<a href="">birth</a>
-					</li>
-					<li>
-						<a href="">day</a>
-					</li>
-				</ul>
-			</div>
-			<div class="card">
-				<div class="content">
-					<div class="imgBx">
-						<img src="https://image.flaticon.com/icons/png/256/4213/4213736.png" />
-					</div>
-					<div class="contentBx">
-						<h3>Frog</h3>
-					</div>
-				</div>
-				<ul class="sci">
-					<li>
-						<a href="">happy</a>
-					</li>
-					<li>
-						<a href="">birth</a>
-					</li>
-					<li>
-						<a href="">day</a>
-					</li>
-				</ul>
-			</div>
-			<div class="card">
-				<div class="content">
-					<div class="imgBx">
-						<img src="https://image.flaticon.com/icons/png/256/4213/4213641.png" />
-					</div>
-					<div class="contentBx">
-						<h3>Giraffe</h3>
-					</div>
-				</div>
-				<ul class="sci">
-					<li>
-						<a href="">happy</a>
-					</li>
-					<li>
-						<a href="">birth</a>
-					</li>
-					<li>
-						<a href="">day</a>
-					</li>
-				</ul>
-			</div>
-		</div>
+        
             <Box sx={{ display: 'flex', justifyContent: 'space-around', alignItems: 'center' }} className="body">
                 <Box className="card">
                     <Box className="card-info1">

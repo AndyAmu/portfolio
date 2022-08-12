@@ -324,14 +324,6 @@
 	padding: 0;
 }
 
-body {
-	display: flex;
-	justify-content: center;
-	align-items: center;
-	flex-wrap: wrap;
-	background: #161616;
-	min-height: 100vh;
-}
 
 section::before {
 	content: '';
