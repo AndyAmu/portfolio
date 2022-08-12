@@ -50,6 +50,7 @@
     color: var(--color);
     background-image: url(../image/MyTineraryGif.gif);
     background-size: cover;
+    background-position: center;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -73,6 +74,7 @@
     background: var(--color);
     color: var(--color);
     background-image: url(../image/MyIndustrialHomeGif.gif);
+    background-position: center;
     background-size: cover;
     display: flex;
     justify-content: center;
@@ -89,6 +91,7 @@
     background: var(--color);
     color: var(--color);
     background-image: url(../image/MindyGif.gif);
+    background-position: center;
     background-size: cover;
     display: flex;
     justify-content: center;

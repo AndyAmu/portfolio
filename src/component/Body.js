@@ -152,7 +152,7 @@ const Body = () => {
             <Box sx={{ display: 'flex', justifyContent: 'center', alignItems: 'center', flexDirection: 'column' }} className="body4">
                 <Typography className="andresamutitle3" sx={{marginTop: 5, fontFamily: 'Bree Serif', paddingBottom: '2rem', display: 'flex', justifyContent: 'center', zIndex: 10, fontSize: 50, color: 'white' }}>RECOMMENDATIONS LINKEDIN</Typography>
                 <a style={{ textDecoration: 'none' }} href="https://www.linkedin.com/in/andr%C3%A9s-amuch%C3%A1stegui-3b47ab21b/details/recommendations/?detailScreenTabIndex=0">
-                    <Card sx={{backgroundColor: 'black', color: 'white', maxWidth: 800, marginBottom: '2rem' }}>
+                    <Card sx={{backgroundColor: 'black', color: 'white', maxWidth: 765, marginBottom: '2rem' }}>
                         <CardActionArea>
                             <CardMedia
                                 className="card-recommendations"
@@ -161,8 +161,8 @@ const Body = () => {
                             />
 
                             <CardContent>
-                                <Typography variant="body2" color="white">
-                                    ㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤThese are recommendations on Linkedinㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤ
+                                <Typography sx={{textAlign: 'center'}} variant="body2" color="white">
+                                    These are recommendations on Linkedin ㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤ
                                 </Typography>
                             </CardContent>
                         </CardActionArea>

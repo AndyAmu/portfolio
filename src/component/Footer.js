@@ -1,5 +1,4 @@
 import React from 'react'
-import { Link as LinkRouter } from "react-router-dom"
 import 'bootstrap/dist/css/bootstrap.min.css';
 import './styles/footer.css'
 const Footer = () => {
@@ -32,8 +31,7 @@ const Footer = () => {
                             </div>
 
 
-                            <LinkRouter style={{ textDecoration: 'none' }} to='/'><p className='botones-footer'>Home</p></LinkRouter>
-                            <LinkRouter style={{ textDecoration: 'none' }} to='/Project'><p className='botones-footer'>Project</p></LinkRouter>
+                            
                             <p className='derechos'>All rights reserved AND®</p>
                         </div>
                     </div>

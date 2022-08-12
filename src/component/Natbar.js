@@ -8,7 +8,6 @@ import IconButton from '@mui/material/IconButton';
 import MenuIcon from '@mui/icons-material/Menu';
 import Toolbar from '@mui/material/Toolbar';
 import Typography from '@mui/material/Typography';
-import { Link as LinkRouter } from "react-router-dom"
 
 const drawerWidth = 240;
 
@@ -23,11 +22,9 @@ function DrawerAppBar(props) {
 
     const drawer = (
         <Box onClick={handleDrawerToggle} sx={{ textAlign: 'center' }}>
-            <LinkRouter to='/'>
                 <Typography variant="h6" sx={{ my: 2 }}>
                     My portfolio
                 </Typography>
-            </LinkRouter>
             <Divider />
 
         </Box>

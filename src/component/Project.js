@@ -4,7 +4,6 @@ import './styles/project.css'
 import LanguageIcon from '@mui/icons-material/Language';
 import GitHubIcon from '@mui/icons-material/GitHub';
 import { Box } from "@mui/system";
-import { Typography } from "@mui/material";
 
 
 const Project = () => {
