@@ -4,70 +4,86 @@
   box-sizing: border-box;
 }
 
+body::-webkit-scrollbar {
+  width: 10px;
+}
+
+body::-webkit-scrollbar-thumb {
+  background: rgb(27, 15, 134);
+}
+
 
 @import url('https://fonts.googleapis.com/css2?family=Bree+Serif&family=Expletus+Sans:ital@0;1&family=Mina&family=Ramabhadra&family=Righteous&display=swap');
 
 .andresamutitle {
-  font-size: 5rem!important;
+  font-size: 5rem !important;
 }
-@media( max-width: 950px){
-  .andresamutitle{
-    font-size: 4rem!important;
+
+@media(max-width: 950px) {
+  .andresamutitle {
+    font-size: 4rem !important;
   }
 }
-@media( max-width: 750px){
-  .andresamutitle{
-    font-size: 3rem!important;
+
+@media(max-width: 750px) {
+  .andresamutitle {
+    font-size: 3rem !important;
   }
 }
-@media( max-width: 570px){
-  .andresamutitle{
-    font-size: 2rem!important;
+
+@media(max-width: 570px) {
+  .andresamutitle {
+    font-size: 2rem !important;
   }
 }
-@media( max-width: 390px){
-  .andresamutitle{
-    font-size: 1.6rem!important;
+
+@media(max-width: 390px) {
+  .andresamutitle {
+    font-size: 1.6rem !important;
   }
 }
 
 .andresamutitle2 {
-  font-size: 3rem!important;
+  font-size: 3rem !important;
 }
-@media( max-width: 950px){
-  .andresamutitle2{
-    font-size: 2rem!important;
-  }
-}
-@media( max-width: 750px){
-  .andresamutitle2{
-    font-size: 1rem!important;
+
+@media(max-width: 950px) {
+  .andresamutitle2 {
+    font-size: 2rem !important;
   }
 }
 
-@media( max-width: 390px){
-  .andresamutitle2{
-    font-size: .8rem!important;
+@media(max-width: 750px) {
+  .andresamutitle2 {
+    font-size: 1rem !important;
+  }
+}
+
+@media(max-width: 390px) {
+  .andresamutitle2 {
+    font-size: .8rem !important;
   }
 }
 
 .andresamutitle3 {
-  font-size: 4rem!important;
+  font-size: 4rem !important;
 }
-@media( max-width: 950px){
-  .andresamutitle3{
-    font-size: 3rem!important;
-  }
-}
-@media( max-width: 750px){
-  .andresamutitle3{
-    font-size: 2rem!important;
+
+@media(max-width: 950px) {
+  .andresamutitle3 {
+    font-size: 3rem !important;
   }
 }
 
-@media( max-width: 500px){
-  .andresamutitle3{
-    font-size: 1.5rem!important;
+@media(max-width: 750px) {
+  .andresamutitle3 {
+    font-size: 2rem !important;
+  }
+}
+
+@media(max-width: 500px) {
+  .andresamutitle3 {
+    font-size: 1.5rem !important;
   }
 }
 
@@ -75,6 +91,7 @@
   font-family: 'Courier New', Courier, monospace;
 
 }
+
 .body {
   background-attachment: fixed;
   min-height: 100vh;
@@ -83,29 +100,33 @@
   z-index: -1;
 }
 
-@media (max-width: 1500px){
-  .css-135do9d{
+@media (max-width: 1500px) {
+  .css-135do9d {
     display: flex;
     justify-content: center;
     align-items: center;
     flex-direction: column;
   }
 }
+
 .card {
   margin: 1rem;
 }
+
 .body2 {
   min-height: 40vh;
   background: linear-gradient(-45deg, #000000, #3c80e7, #042180, #000000);
   background-size: 400% 400%;
   animation: gradient 15s ease infinite;
 }
+
 .body3 {
   min-height: 50vh;
   background: linear-gradient(-45deg, #000000, #3c80e7, #042180, #000000);
   background-size: 400% 400%;
   animation: gradient 15s ease infinite;
 }
+
 .body4 {
   background-attachment: fixed;
   min-height: 60vh;
@@ -113,18 +134,21 @@
   background-size: cover;
   z-index: -1;
 }
-.card-recommendations{
+
+.card-recommendations {
   background-image: url(./component//image//Recommendations.gif);
 }
 
 @keyframes gradient {
   0% {
-      background-position: 0% 50%;
+    background-position: 0% 50%;
   }
+
   50% {
-      background-position: 100% 50%;
+    background-position: 100% 50%;
   }
+
   100% {
-      background-position: 0% 50%;
+    background-position: 0% 50%;
   }
 }
