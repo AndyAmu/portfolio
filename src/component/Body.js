@@ -91,7 +91,7 @@ const Body = () => {
                 </Box>
             </Box>
             <Box className="body">
-                <Typography sx={{ fontFamily: 'Bree Serif', paddingTop: '5rem', paddingBottom: '5rem', display: 'flex', justifyContent: 'center', zIndex: 10, fontSize: 50, color: 'white' }}>PROJECT</Typography>
+                <Typography sx={{ fontFamily: 'Bree Serif', paddingTop: '5rem', paddingBottom: '5rem', display: 'flex', justifyContent: 'center', zIndex: 10, fontSize: 50, color: 'white' }}>PROJECTS</Typography>
 
                 <Box sx={{ display: 'flex', justifyContent: 'space-around', alignItems: 'center' }} >
 
