@@ -32,7 +32,7 @@ const Body = () => {
                         fontSize: 40
                     }}>
 
-                        Hi, I'm Andrés
+                        Hi, I'm Andréss
                     </Typography>
                     <Typography sx={{
                         fontFamily: 'Bree Serif',
