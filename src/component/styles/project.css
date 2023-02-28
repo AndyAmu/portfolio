@@ -1,9 +1,9 @@
 /* From uiverse.io by @alexruix */
 .card {
     --background: linear-gradient(to left, #2b3ff7 0%, #2b1b74 100%);
-    width: 600px;
+    width: 30%;
     height: 400px;
-    padding: 5px;
+    padding: 1rem;
     border-radius: 1rem;
     overflow: visible;
     background: #1719a3;
