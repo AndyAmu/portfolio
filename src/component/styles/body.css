@@ -150,7 +150,7 @@
 .avatar::after {
     content: '';
     position: absolute;
-    background-image: url(https://media.licdn.com/dms/image/D5603AQEUAvuRrXOHMA/profile-displayphoto-shrink_800_800/0/1681849314360?e=1691020800&v=beta&t=Vwt_LnARsjyD3HnuWezbI8TbnZs1w-V3RO5dpXUE-uc);
+    background-image: url(../image/Andres.png);
     background-size: cover;
     inset: 5px;
     border-radius: 50%;
