@@ -50,7 +50,7 @@ const Body = () => {
                             <a href="https://drive.google.com/file/d/1teJuWRg85MoMIehk1U3smFkwyWZAi_s2/view?usp=sharing">
                                 <div className="button" data-tooltip="Size: 253Kb">
                                     <div className="button-wrapper">
-                                        <div className="text">Download Spanish CV</div>
+                                        <div className="text">Download English CV</div>
                                         <span className="icon">
                                             <svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" role="img" width="2em" height="2em" preserveAspectRatio="xMidYMid meet" viewBox="0 0 24 24"><path fill="none" stroke="currentColor" d="M12 15V3m0 12l-4-4m4 4l4-4M2 17l.621 2.485A2 2 0 0 0 4.561 21h14.878a2 2 0 0 0 1.94-1.515L22 17"></path></svg>
                                         </span>
@@ -65,7 +65,7 @@ const Body = () => {
                             <a href="https://drive.google.com/file/d/19j62HDy_xH2-13wevpoT0ihdXq78oEgu/view?usp=sharing">
                                 <div className="button" data-tooltip="Size: 253Kb">
                                     <div className="button-wrapper">
-                                        <div className="text">Download English CV</div>
+                                        <div className="text">Download Spanish CV</div>
                                         <span className="icon">
                                             <svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" role="img" width="2em" height="2em" preserveAspectRatio="xMidYMid meet" viewBox="0 0 24 24"><path fill="none" stroke="currentColor" d="M12 15V3m0 12l-4-4m4 4l4-4M2 17l.621 2.485A2 2 0 0 0 4.561 21h14.878a2 2 0 0 0 1.94-1.515L22 17"></path></svg>
                                         </span>
