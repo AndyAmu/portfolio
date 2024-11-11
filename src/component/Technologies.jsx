@@ -1,5 +1,7 @@
 import React from "react";
 import "./styles/technologies.css"
+import MagentoLogo from './image/magento-2-logo.svg';
+import Xml from './image/xml.png';
 
 
 function Technologies() {
@@ -21,6 +23,8 @@ function Technologies() {
                 <img src="https://i.imgur.com/RVsMO1u.png" alt="git" />
                 <img src="https://i.imgur.com/u1cm4oO.png" alt="github" />
                 <img src="https://i.imgur.com/my2LijG.png" alt="bootstrap" />
+                <img src={MagentoLogo} alt="Magento 2 Logo" />
+                <img src={Xml} alt="xml-logo" />
             </div>
         </div>
     )

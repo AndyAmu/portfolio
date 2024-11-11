@@ -47,7 +47,7 @@ const Body = () => {
                             margin: 1,
                             marginTop: 2
                         }}>
-                            <a href="https://drive.google.com/file/d/1EFbRT3aAr8rCJQf-W2icp7Sw3sTdZV1k/view?usp=sharing">
+                            <a href="https://drive.google.com/file/d/1teJuWRg85MoMIehk1U3smFkwyWZAi_s2/view?usp=sharing">
                                 <div className="button" data-tooltip="Size: 253Kb">
                                     <div className="button-wrapper">
                                         <div className="text">Download Spanish CV</div>
@@ -62,7 +62,7 @@ const Body = () => {
                             margin: 1,
                             marginTop: 2
                         }}>
-                            <a href="https://drive.google.com/file/d/1_bPYb6K89VsFLBqueHvRq3vL0bzCvXoH/view?usp=sharing">
+                            <a href="https://drive.google.com/file/d/19j62HDy_xH2-13wevpoT0ihdXq78oEgu/view?usp=sharing">
                                 <div className="button" data-tooltip="Size: 253Kb">
                                     <div className="button-wrapper">
                                         <div className="text">Download English CV</div>
