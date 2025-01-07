@@ -47,7 +47,7 @@ const Body = () => {
                             margin: 1,
                             marginTop: 2
                         }}>
-                            <a target="_blank" href="https://drive.google.com/file/d/1teJuWRg85MoMIehk1U3smFkwyWZAi_s2/view?usp=sharing">
+                            <a target="_blank" href="https://drive.google.com/file/d/1N6s2s8hy9irQW2BDakV_pALcZGov-Bcs/view?usp=drive_link">
                                 <div className="button" data-tooltip="Size: 253Kb">
                                     <div className="button-wrapper">
                                         <div className="text">Download English CV</div>
@@ -99,12 +99,12 @@ const Body = () => {
                         <Box className="card-info1">
                         </Box>
                         <Box sx={{ display: 'flex', justifyContent: 'space-around' }}>
-                            <a style={{ textDecoration: 'none' }} href="http://my-tinerary-and-amu.herokuapp.com/">
+                            <a target="_blank" style={{ textDecoration: 'none' }} href="http://my-tinerary-and-amu.herokuapp.com/">
                                 <button className="cssbuttons-io">
                                     <span><LanguageIcon />Web</span>
                                 </button>
                             </a>
-                            <a style={{ textDecoration: 'none' }} href="https://github.com/AndresAmu/my-tinerary">
+                            <a target="_blank" style={{ textDecoration: 'none' }} href="https://github.com/AndresAmu/my-tinerary">
                                 <button className="cssbuttons-io">
                                     <span><GitHubIcon />Code</span>
                                 </button>
@@ -115,12 +115,12 @@ const Body = () => {
                         <Box className="card-info2">
                         </Box>
                         <Box sx={{ display: 'flex', justifyContent: 'space-around' }}>
-                            <a style={{ textDecoration: 'none' }} href="https://my-industrial-home-challange-mind-hub.vercel.app/">
+                            <a target="_blank" style={{ textDecoration: 'none' }} href="https://my-industrial-home-challange-mind-hub.vercel.app/">
                                 <button className="cssbuttons-io">
                                     <span><LanguageIcon /> Web</span>
                                 </button>
                             </a>
-                            <a style={{ textDecoration: 'none' }} href="https://github.com/AndresAmu/my-industrial-home">
+                            <a target="_blank" style={{ textDecoration: 'none' }} href="https://github.com/AndresAmu/my-industrial-home">
                                 <button className="cssbuttons-io">
                                     <span><GitHubIcon />Code</span>
                                 </button>
@@ -131,7 +131,7 @@ const Body = () => {
                         <Box className="card-info4">
                         </Box>
                         <Box sx={{ display: 'flex', justifyContent: 'space-around' }}>
-                            <a style={{ textDecoration: 'none' }} href="https://andresamu.github.io/PETSHOP_MINDY_GRUPO_11/index.html">
+                            <a target="_blank" style={{ textDecoration: 'none' }} href="https://andresamu.github.io/PETSHOP_MINDY_GRUPO_11/index.html">
                                 <button className="cssbuttons-io">
                                     <span><LanguageIcon /> Web</span>
                                 </button>
