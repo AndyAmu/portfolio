@@ -1,0 +1,104 @@
+.contact-container {
+    width: 100%;
+    max-width: 600px;
+    margin: 0 auto;
+    padding: 2rem;
+    background: linear-gradient(-45deg, rgba(0, 0, 0, 0.95), rgba(60, 128, 231, 0.95));
+    border-radius: 16px;
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.contact-title {
+    color: white !important;
+    display: flex;
+    align-items: center;
+    margin-bottom: 1rem !important;
+    font-family: 'Bree Serif', serif !important;
+    font-size: 1.5rem !important;
+}
+
+.contact-subtitle {
+    color: rgba(255, 255, 255, 0.8) !important;
+    margin-bottom: 2rem !important;
+    font-family: 'Bree Serif', serif !important;
+    font-size: 1rem !important;
+    line-height: 1.5 !important;
+}
+
+.contact-form {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+}
+
+.contact-input {
+    background: rgba(255, 255, 255, 0.05) !important;
+    border-radius: 8px !important;
+}
+
+.contact-input .MuiOutlinedInput-root {
+    color: white !important;
+}
+
+.contact-input .MuiInputLabel-root {
+    color: rgba(255, 255, 255, 0.7) !important;
+}
+
+.contact-input .MuiOutlinedInput-notchedOutline {
+    border-color: rgba(255, 255, 255, 0.2) !important;
+}
+
+.contact-input:hover .MuiOutlinedInput-notchedOutline {
+    border-color: rgba(255, 255, 255, 0.3) !important;
+}
+
+.contact-input.Mui-focused .MuiOutlinedInput-notchedOutline {
+    border-color: rgba(255, 255, 255, 0.5) !important;
+}
+
+.contact-button {
+    background: linear-gradient(to right, #8e2de2, #4a00e0) !important;
+    color: white !important;
+    padding: 1rem !important;
+    font-size: 1rem !important;
+    text-transform: none !important;
+    font-family: 'Bree Serif', serif !important;
+    transition: all 0.3s ease !important;
+}
+
+.contact-button:hover:not(:disabled) {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(74, 0, 224, 0.3);
+    background: linear-gradient(to right, #9f43f8, #5a12f3) !important;
+}
+
+.contact-button:disabled {
+    background: rgba(255, 255, 255, 0.1) !important;
+    color: rgba(255, 255, 255, 0.5) !important;
+}
+
+@media (max-width: 600px) {
+    .contact-container {
+        padding: 1.5rem;
+        border-radius: 12px;
+    }
+
+    .contact-title {
+        font-size: 1.25rem !important;
+    }
+
+    .contact-subtitle {
+        font-size: 0.9rem !important;
+    }
+
+    .contact-form {
+        gap: 1rem;
+    }
+
+    .contact-button {
+        padding: 0.875rem !important;
+        font-size: 0.9rem !important;
+    }
+} 

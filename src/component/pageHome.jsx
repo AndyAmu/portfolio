@@ -1,11 +1,13 @@
-import React, { Fragment } from 'react'
+import React from 'react'
 import Body from "./Body"
 
-
-export default function Pagehome () {
+const PageHome = () => {
+    console.log('PageHome rendering'); // Debug log
     return (
-        <Fragment>
-        <Body />
-        </Fragment>
+        <>
+            <Body />
+        </>
     )
-} 
+}
+
+export default PageHome; 

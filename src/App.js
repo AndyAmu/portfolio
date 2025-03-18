@@ -4,25 +4,25 @@ import ScrollToTop from "react-scroll-to-top";
 import FileUploadIcon from '@mui/icons-material/FileUpload';
 import Footer from './component/Footer'
 import { Routes, Route } from 'react-router-dom'
-import Pagehome from './component/pageHome';
-import Project from './component/Project'
-
+import PageHome from './component/pageHome';
+import { LanguageProvider } from './context/LanguageContext';
 
 function App() {
+  console.log('App rendering'); // Debug log
   return (
-    <>
-      <Routes>
-      <Route path="/" element={<Pagehome />} />
-      <Route path="/Project" element={<Project />} />
-      </Routes>
+    <LanguageProvider>
       <ResponsiveAppBar />
+      <Routes>
+        <Route path="/" element={<PageHome />} />
+      </Routes>
       <Footer />
       <ScrollToTop
         style={{ backgroundColor: 'white', opacity: '50%', width: '30px', height: '30px' }}
         smooth
         viewBox="0 0 24 24"
-        component={<FileUploadIcon />} />
-    </>
+        component={<FileUploadIcon />} 
+      />
+    </LanguageProvider>
   );
 }
 
