@@ -123,7 +123,7 @@
     place-content: center;
     place-items: center;
     overflow: hidden;
-    border-radius: 20px;
+    border-radius: 50%;
 }
 
 
@@ -135,6 +135,9 @@
     height: 130%;
     animation: rotBGimg 3s linear infinite;
     transition: all 0.2s linear;
+}
+.css-19kzrtu {
+    padding: 0!important;
 }
 
 @keyframes rotBGimg {
@@ -150,8 +153,13 @@
 .avatar::after {
     content: '';
     position: absolute;
-    background-image: url(../image/Andres.png);
-    background-size: cover;
+    background-image: url(../image/patagonia-and.jpg);
+    background-position-y: 66%;
+    background-position-x: 15%;
+    background-size: 158%;
     inset: 5px;
     border-radius: 50%;
+}
+.css-o69gx8-MuiCardMedia-root {
+    background-size: contain!important;
 }
