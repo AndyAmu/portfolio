@@ -9,7 +9,10 @@ require('dotenv').config(); // Carga las variables de entorno
 const app = express();
 
 // Middleware
-app.use(cors());
+app.use(cors({
+  origin: process.env.FRONTEND_URL,
+  methods: ['GET', 'POST'],
+}));
 app.use(express.json()); // Para parsear JSON en el cuerpo de las solicitudes
 
 // Servir los archivos estáticos del frontend (carpeta build)
@@ -23,10 +26,8 @@ app.get('*', (req, res) => {
 const server = http.createServer(app);
 const io = new Server(server, {
   cors: {
-    origin: process.env.FRONTEND_URL || '*', // En producción, usa la URL de Render.com
+    origin: process.env.FRONTEND_URL,
     methods: ['GET', 'POST'],
-    credentials: true,
-    allowedHeaders: ['*'],
   },
 });
 

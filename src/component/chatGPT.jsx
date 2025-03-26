@@ -61,7 +61,7 @@ const ChatGPT = () => {
         socketRef.current.disconnect();
       }
     };
-  }, []);
+  }, [initializeSocket]);
 
   const initializeSocket = () => {
     try {
