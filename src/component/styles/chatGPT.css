@@ -194,6 +194,12 @@
 .css-i4bv87-MuiSvgIcon-root {
   color: #ccc!important;
 }
+.css-wje2me-MuiStack-root{
+  border-radius: 16px 16px 0 0;
+}
+.css-wgj3ms-MuiStack-root {
+  border-radius: 16px;
+}
 
 .clear-button {
   font-family: inherit;
