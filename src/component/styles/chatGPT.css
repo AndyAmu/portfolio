@@ -188,6 +188,12 @@
   font-size: 1rem;
   font-weight: 500;
 }
+.css-1x4vipr-MuiButtonBase-root-MuiToggleButton-root.Mui-selected {
+  background-color: rgba(0, 0, 0, 1)!important;
+}
+.css-i4bv87-MuiSvgIcon-root {
+  color: #ccc!important;
+}
 
 .clear-button {
   font-family: inherit;
