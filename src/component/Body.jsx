@@ -50,7 +50,7 @@ const Body = () => {
                             margin: 1,
                             marginTop: 2
                         }}>
-                            <a target="_blank" href="https://drive.google.com/file/d/1N6s2s8hy9irQW2BDakV_pALcZGov-Bcs/view?usp=drive_link">
+                            <a target="_blank" rel="noreferrer" href="https://drive.google.com/file/d/1N6s2s8hy9irQW2BDakV_pALcZGov-Bcs/view?usp=drive_link">
                                 <div className="button" data-tooltip="Size: 253Kb">
                                     <div className="button-wrapper">
                                         <div className="text">{translations.downloadEnglishCV}</div>
@@ -65,7 +65,7 @@ const Body = () => {
                             margin: 1,
                             marginTop: 2
                         }}>
-                            <a target="_blank" href="https://drive.google.com/file/d/1_ONV3jDL2PisB2BciQAFlKIsHyQ7kQZN/view?usp=drive_link">
+                            <a target="_blank" rel="noreferrer" href="https://drive.google.com/file/d/1_ONV3jDL2PisB2BciQAFlKIsHyQ7kQZN/view?usp=drive_link">
                                 <div className="button" data-tooltip="Size: 253Kb">
                                     <div className="button-wrapper">
                                         <div className="text">{translations.downloadSpanishCV}</div>
