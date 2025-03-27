@@ -1,0 +1,43 @@
+{
+  "intents": {
+    "experiencia": {
+      "patterns": [
+        "¿qué experiencia tiene Andrés?",
+        "¿dónde ha trabajado?",
+        "¿cuál es su experiencia laboral?",
+        "háblame de su experiencia"
+      ],
+      "responses": [
+        "Andrés es un desarrollador Full Stack con experiencia en XCONS. Ha trabajado en proyectos usando React, Node.js y otras tecnologías modernas."
+      ]
+    },
+    "habilidades": {
+      "patterns": [
+        "¿qué sabe hacer?",
+        "¿cuáles son sus habilidades?",
+        "¿qué tecnologías maneja?"
+      ],
+      "responses": [
+        "Andrés maneja tecnologías como React, Node.js, Express, MongoDB, y tiene experiencia en desarrollo web full stack. También tiene conocimientos en diseño audiovisual."
+      ]
+    },
+    "educacion": {
+      "patterns": [
+        "¿qué estudió?",
+        "¿cuál es su formación?",
+        "¿dónde estudió?"
+      ],
+      "responses": [
+        "Andrés tiene formación en desarrollo web full stack y un background en artes audiovisuales."
+      ]
+    },
+    "fuera_de_contexto": {
+      "patterns": [
+        "*"
+      ],
+      "responses": [
+        "Lo siento, solo puedo responder preguntas sobre Andrés y su perfil profesional. ¿Hay algo específico que quieras saber sobre su experiencia o habilidades?"
+      ]
+    }
+  }
+} 
