@@ -32,6 +32,7 @@ const ChatGPT = () => {
   const [isLoading, setIsLoading] = useState(false);
   const [chatType, setChatType] = useState('local');
   const [apiError, setApiError] = useState(false);
+  const [errorMessageShown, setErrorMessageShown] = useState(false);
   const socketRef = useRef(null);
   const lastUserInputRef = useRef('');
 
@@ -59,19 +60,27 @@ const ChatGPT = () => {
       socketRef.current.on('connect', () => {
         console.log('🟢 Conectado al servidor');
         setApiError(false);
+        setErrorMessageShown(false);
       });
 
       socketRef.current.on('connect_error', (error) => {
         console.error('🔴 Error de conexión:', error);
         setApiError(true);
         
-        setMessages(prev => [
-          ...prev,
-          {
-            role: 'bot',
-            content: '⚠️ Error de conexión con el servidor. Los chats ChatGPT y Deepseek no están disponibles en este momento. Usando Chat Local automáticamente.'
+        if (!errorMessageShown) {
+          setErrorMessageShown(true);
+          
+          const lastMessage = messages[messages.length - 1]?.content || '';
+          if (!lastMessage.includes('Error de conexión')) {
+            setMessages(prev => [
+              ...prev,
+              {
+                role: 'bot',
+                content: '⚠️ Utilizando Chat Local por problemas de conexión con servicios externos.'
+              }
+            ]);
           }
-        ]);
+        }
         
         setChatType('local');
       });
@@ -186,6 +195,7 @@ const ChatGPT = () => {
     if (!socketRef.current || !socketRef.current.connected) {
       console.log('⚠️ Socket no conectado, usando chat local');
       setApiError(true);
+      
       handleLocalChat(message);
       return;
     }
@@ -222,10 +232,13 @@ const ChatGPT = () => {
       console.log(`🔄 Cambiando tipo de chat a: ${newType}`);
       
       if (apiError && (newType === 'chatgpt' || newType === 'deepseek')) {
-        setMessages(prev => [...prev, {
-          role: 'bot',
-          content: '⚠️ Los servicios externos no están disponibles en este momento. Por favor, usa el Chat Local mientras resolvemos el problema.'
-        }]);
+        if (!errorMessageShown) {
+          setErrorMessageShown(true);
+          setMessages(prev => [...prev, {
+            role: 'bot',
+            content: '⚠️ Servicios externos no disponibles actualmente.'
+          }]);
+        }
         return;
       }
       
@@ -234,6 +247,10 @@ const ChatGPT = () => {
         role: 'bot',
         content: getMensajeBienvenida(newType)
       }]);
+      
+      if (newType === 'local') {
+        setErrorMessageShown(false);
+      }
     }
   };
 

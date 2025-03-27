@@ -104,10 +104,20 @@ const Body = () => {
                     gap: '1rem',
                     zIndex: 10, 
                     fontSize: 50, 
-                    color: 'white' 
+                    color: 'white',
+                    width: '100%',
+                    textAlign: 'center'
                 }}>
-                    <SmartToyIcon sx={{ fontSize: '3rem' }} />
-                    {translations.virtualAssistant}
+                    <Box sx={{
+                        display: 'flex',
+                        justifyContent: 'center',
+                        alignItems: 'center',
+                        gap: '1rem',
+                        flexWrap: 'wrap'
+                    }}>
+                        <SmartToyIcon sx={{ fontSize: '3rem' }} />
+                        <span>{translations.virtualAssistant}</span>
+                    </Box>
                 </Typography>
                 
                 <Typography sx={{
