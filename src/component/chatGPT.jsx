@@ -35,6 +35,7 @@ const ChatGPT = () => {
   const [errorMessageShown, setErrorMessageShown] = useState(false);
   const socketRef = useRef(null);
   const lastUserInputRef = useRef('');
+  const chatBoxRef = useRef(null);
 
   const getMensajeBienvenida = (tipo) => {
     switch(tipo) {
@@ -70,8 +71,14 @@ const ChatGPT = () => {
         if (!errorMessageShown) {
           setErrorMessageShown(true);
           
-          const lastMessage = messages[messages.length - 1]?.content || '';
-          if (!lastMessage.includes('Error de conexión')) {
+          const hasErrorMessage = messages.some(
+            msg => msg.role === 'bot' && 
+            (msg.content.includes('Error de conexión') || 
+             msg.content.includes('Utilizando Chat Local') ||
+             msg.content.includes('servicios externos'))
+          );
+          
+          if (!hasErrorMessage) {
             setMessages(prev => [
               ...prev,
               {
@@ -227,27 +234,73 @@ const ChatGPT = () => {
     }]);
   };
 
-  const handleChatTypeChange = (event, newType) => {
+  const tryReconnectSocket = () => {
+    console.log('🔄 Intentando reconectar con el servidor...');
+    
+    // Desconectar el socket existente si hay alguno
+    if (socketRef.current) {
+      socketRef.current.disconnect();
+    }
+    
+    // Inicializar un nuevo socket
+    initializeSocket();
+    
+    return new Promise((resolve) => {
+      // Dar un tiempo para que se establezca la conexión
+      setTimeout(() => {
+        resolve(socketRef.current && socketRef.current.connected);
+      }, 2000);
+    });
+  };
+
+  const handleChatTypeChange = async (event, newType) => {
     if (newType !== null) {
       console.log(`🔄 Cambiando tipo de chat a: ${newType}`);
       
-      if (apiError && (newType === 'chatgpt' || newType === 'deepseek')) {
-        if (!errorMessageShown) {
-          setErrorMessageShown(true);
-          setMessages(prev => [...prev, {
-            role: 'bot',
-            content: '⚠️ Servicios externos no disponibles actualmente.'
-          }]);
+      // Si se selecciona un chat externo y hay error de conexión, intentar reconectar
+      if ((newType === 'chatgpt' || newType === 'deepseek')) {
+        if (apiError) {
+          // Mostrar mensaje de intento de reconexión (solo una vez)
+          const isReconnectingMessage = messages.some(
+            msg => msg.role === 'bot' && msg.content.includes('Intentando conectar')
+          );
+          
+          if (!isReconnectingMessage) {
+            setMessages(prev => [...prev, {
+              role: 'bot',
+              content: '🔄 Intentando conectar con servicios externos...'
+            }]);
+          }
+          
+          // Intentar reconectar
+          const connected = await tryReconnectSocket();
+          
+          if (!connected) {
+            // Verificar que no haya otro mensaje de error similar reciente (últimos 3 mensajes)
+            const recentMessages = messages.slice(-3);
+            const hasErrorMessage = recentMessages.some(
+              msg => msg.role === 'bot' && msg.content.includes('No se pudo establecer conexión')
+            );
+            
+            if (!hasErrorMessage) {
+              setMessages(prev => [...prev, {
+                role: 'bot',
+                content: '⚠️ No se pudo establecer conexión con servicios externos. Permaneciendo en Chat Local.'
+              }]);
+            }
+            return;
+          }
         }
-        return;
       }
       
+      // Cambiar el tipo de chat y mostrar mensaje de bienvenida
       setChatType(newType);
       setMessages([{
         role: 'bot',
         content: getMensajeBienvenida(newType)
       }]);
       
+      // Resetear el estado de error si cambiamos a chat local
       if (newType === 'local') {
         setErrorMessageShown(false);
       }
@@ -266,6 +319,18 @@ const ChatGPT = () => {
         return '';
     }
   };
+
+  // Función para hacer scroll hacia abajo
+  const scrollToBottom = () => {
+    if (chatBoxRef.current) {
+      chatBoxRef.current.scrollTop = chatBoxRef.current.scrollHeight;
+    }
+  };
+
+  // Hacer scroll cuando se añadan nuevos mensajes
+  useEffect(() => {
+    scrollToBottom();
+  }, [messages]);
 
   return (
     <Box 
@@ -297,7 +362,7 @@ const ChatGPT = () => {
           </Typography>
           <Chip 
             label={getChatTypeName()}
-            color={apiError ? "error" : "primary"}
+            color={apiError && chatType !== 'local' ? "error" : "primary"}
             size="small"
             sx={{ ml: 1 }}
           />
@@ -314,9 +379,9 @@ const ChatGPT = () => {
             </ToggleButton>
             <ToggleButton 
               value="deepseek" 
-              disabled={apiError}
+              // disabled={apiError} - Removemos esta restricción
             >
-              <Tooltip title={apiError ? "Deepseek no disponible" : "Chat Deepseek"}>
+              <Tooltip title={apiError ? "Deepseek (Intentar conectar)" : "Chat Deepseek"}>
                 <Box
                   component="img"
                   src={deepseekIcon}
@@ -325,16 +390,16 @@ const ChatGPT = () => {
                     width: 36, 
                     height: 24,
                     filter: chatType === 'deepseek' ? 'brightness(0) invert(1)' : 'none',
-                    opacity: apiError ? 0.5 : 1
+                    opacity: apiError && chatType !== 'deepseek' ? 0.7 : 1
                   }}
                 />
               </Tooltip>
             </ToggleButton>
             <ToggleButton 
               value="chatgpt"
-              disabled={apiError}
+              // disabled={apiError} - Removemos esta restricción
             >
-              <Tooltip title={apiError ? "ChatGPT no disponible" : "ChatGPT"}>
+              <Tooltip title={apiError ? "ChatGPT (Intentar conectar)" : "ChatGPT"}>
                 <Box
                   component="img"
                   src={gptIcon}
@@ -343,7 +408,7 @@ const ChatGPT = () => {
                     width: 36, 
                     height: 22,
                     filter: chatType === 'chatgpt' ? 'brightness(0) invert(1)' : 'none',
-                    opacity: apiError ? 0.5 : 1
+                    opacity: apiError && chatType !== 'chatgpt' ? 0.7 : 1
                   }}
                 />
               </Tooltip>
@@ -361,6 +426,7 @@ const ChatGPT = () => {
       </Stack>
 
       <Box 
+        ref={chatBoxRef}
         className="chat-box"
         sx={{ 
           height: '350px',
