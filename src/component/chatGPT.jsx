@@ -48,21 +48,6 @@ const ChatGPT = () => {
     }
   };
 
-  useEffect(() => {
-    setMessages([{
-      role: 'bot',
-      content: getMensajeBienvenida('local')
-    }]);
-    
-    initializeSocket();
-    
-    return () => {
-      if (socketRef.current) {
-        socketRef.current.disconnect();
-      }
-    };
-  }, [initializeSocket]);
-
   const initializeSocket = () => {
     try {
       socketRef.current = io('http://localhost:4000', {
@@ -102,6 +87,21 @@ const ChatGPT = () => {
       setApiError(true);
     }
   };
+
+  useEffect(() => {
+    setMessages([{
+      role: 'bot',
+      content: getMensajeBienvenida('local')
+    }]);
+    
+    initializeSocket();
+    
+    return () => {
+      if (socketRef.current) {
+        socketRef.current.disconnect();
+      }
+    };
+  }, []);
 
   const processServerResponse = (response) => {
     if (response && typeof response === 'object' && response.content) {
