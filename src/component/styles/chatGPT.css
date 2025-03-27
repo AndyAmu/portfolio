@@ -312,4 +312,11 @@
   .css-c9k3qg {
     max-width: 100%!important;
   }
+  .css-iwuri4, .css-1x4jos1 {
+    flex-direction: column!important;
+    gap: 24px;
+  }
+  .css-1y20fz, .css-wkpw2c {
+    padding: 2rem!important;
+  }
 } 
