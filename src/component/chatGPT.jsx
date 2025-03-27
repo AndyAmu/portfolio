@@ -68,7 +68,7 @@ const ChatGPT = () => {
         console.error('🔴 Error de conexión:', error);
         setApiError(true);
         
-        if (!errorMessageShown) {
+        if (!errorMessageShown && (chatType === 'chatgpt' || chatType === 'deepseek')) {
           setErrorMessageShown(true);
           
           const hasErrorMessage = messages.some(
@@ -83,13 +83,12 @@ const ChatGPT = () => {
               ...prev,
               {
                 role: 'bot',
-                content: '⚠️ Utilizando Chat Local por problemas de conexión con servicios externos.'
+                content: '⚠️ Hay problemas de conexión con los servicios externos. Puedes seguir usando este chat, pero si no recibes respuestas, selecciona la opción "Chat Local".'
               }
             ]);
+            scrollToBottom();
           }
         }
-        
-        setChatType('local');
       });
 
       socketRef.current.on('chat message', (response) => {
@@ -166,6 +165,40 @@ const ChatGPT = () => {
     }]);
   };
 
+  // Función para hacer scroll hacia abajo
+  const scrollToBottom = () => {
+    if (chatBoxRef.current) {
+      // Usar setTimeout para asegurar que el DOM se ha actualizado
+      setTimeout(() => {
+        chatBoxRef.current.scrollTop = chatBoxRef.current.scrollHeight;
+      }, 100);
+    }
+  };
+
+  // Hacer scroll cuando se añadan nuevos mensajes
+  useEffect(() => {
+    scrollToBottom();
+  }, [messages, isLoading]);
+
+  // Función auxiliar para forzar scroll después de la renderización
+  useEffect(() => {
+    // Scroll inicial
+    scrollToBottom();
+    
+    // Configurar MutationObserver para detectar cambios en el contenido del chat
+    if (chatBoxRef.current) {
+      const observer = new MutationObserver(scrollToBottom);
+      observer.observe(chatBoxRef.current, { 
+        childList: true, 
+        subtree: true,
+        characterData: true 
+      });
+      
+      return () => observer.disconnect();
+    }
+  }, []);
+
+  // Función para manejar el envío de mensajes
   const handleSendMessage = () => {
     if (!input.trim()) return;
     
@@ -176,7 +209,23 @@ const ChatGPT = () => {
     setInput('');
     setIsLoading(true);
     
+    // Forzar scroll después de enviar un mensaje
+    scrollToBottom();
+    
     console.log(`📤 Enviando mensaje en modo ${chatType}`);
+    
+    if ((chatType === 'chatgpt' || chatType === 'deepseek') && (apiError || !socketRef.current || !socketRef.current.connected)) {
+      console.log('⚠️ Usando chat externo sin conexión');
+      setTimeout(() => {
+        setMessages(prev => [...prev, {
+          role: 'bot',
+          content: `⚠️ El servicio de ${getChatTypeName()} no está disponible en este momento. Por favor, selecciona la opción "Chat Local" o vuelve a intentarlo más tarde.`
+        }]);
+        setIsLoading(false);
+        scrollToBottom();
+      }, 500);
+      return;
+    }
     
     if (chatType === 'local' || apiError) {
       handleLocalChat(input);
@@ -194,6 +243,8 @@ const ChatGPT = () => {
         content: respuesta
       }]);
       setIsLoading(false);
+      // Forzar scroll después de recibir respuesta
+      scrollToBottom();
     }, 500);
   };
   
@@ -257,52 +308,20 @@ const ChatGPT = () => {
     if (newType !== null) {
       console.log(`🔄 Cambiando tipo de chat a: ${newType}`);
       
-      // Si se selecciona un chat externo y hay error de conexión, intentar reconectar
-      if ((newType === 'chatgpt' || newType === 'deepseek')) {
-        if (apiError) {
-          // Mostrar mensaje de intento de reconexión (solo una vez)
-          const isReconnectingMessage = messages.some(
-            msg => msg.role === 'bot' && msg.content.includes('Intentando conectar')
-          );
-          
-          if (!isReconnectingMessage) {
-            setMessages(prev => [...prev, {
-              role: 'bot',
-              content: '🔄 Intentando conectar con servicios externos...'
-            }]);
-          }
-          
-          // Intentar reconectar
-          const connected = await tryReconnectSocket();
-          
-          if (!connected) {
-            // Verificar que no haya otro mensaje de error similar reciente (últimos 3 mensajes)
-            const recentMessages = messages.slice(-3);
-            const hasErrorMessage = recentMessages.some(
-              msg => msg.role === 'bot' && msg.content.includes('No se pudo establecer conexión')
-            );
-            
-            if (!hasErrorMessage) {
-              setMessages(prev => [...prev, {
-                role: 'bot',
-                content: '⚠️ No se pudo establecer conexión con servicios externos. Permaneciendo en Chat Local.'
-              }]);
-            }
-            return;
-          }
-        }
-      }
-      
-      // Cambiar el tipo de chat y mostrar mensaje de bienvenida
       setChatType(newType);
       setMessages([{
         role: 'bot',
         content: getMensajeBienvenida(newType)
       }]);
       
-      // Resetear el estado de error si cambiamos a chat local
-      if (newType === 'local') {
-        setErrorMessageShown(false);
+      if ((newType === 'chatgpt' || newType === 'deepseek') && apiError) {
+        setTimeout(() => {
+          setMessages(prev => [...prev, {
+            role: 'bot',
+            content: `⚠️ Aviso: El servicio de ${getChatTypeName()} podría no estar disponible. Puedes intentar usarlo, pero si no obtienes respuesta, por favor selecciona "Chat Local".`
+          }]);
+          scrollToBottom();
+        }, 1000);
       }
     }
   };
@@ -319,18 +338,6 @@ const ChatGPT = () => {
         return '';
     }
   };
-
-  // Función para hacer scroll hacia abajo
-  const scrollToBottom = () => {
-    if (chatBoxRef.current) {
-      chatBoxRef.current.scrollTop = chatBoxRef.current.scrollHeight;
-    }
-  };
-
-  // Hacer scroll cuando se añadan nuevos mensajes
-  useEffect(() => {
-    scrollToBottom();
-  }, [messages]);
 
   return (
     <Box 
@@ -379,7 +386,6 @@ const ChatGPT = () => {
             </ToggleButton>
             <ToggleButton 
               value="deepseek" 
-              // disabled={apiError} - Removemos esta restricción
             >
               <Tooltip title={apiError ? "Deepseek (Intentar conectar)" : "Chat Deepseek"}>
                 <Box
@@ -397,7 +403,6 @@ const ChatGPT = () => {
             </ToggleButton>
             <ToggleButton 
               value="chatgpt"
-              // disabled={apiError} - Removemos esta restricción
             >
               <Tooltip title={apiError ? "ChatGPT (Intentar conectar)" : "ChatGPT"}>
                 <Box
@@ -432,7 +437,8 @@ const ChatGPT = () => {
           height: '350px',
           overflow: 'auto',
           p: 2,
-          backgroundColor: 'background.default'
+          backgroundColor: 'background.default',
+          scrollBehavior: 'smooth' // Añadir desplazamiento suave
         }}
       >
         {messages.map((msg, index) => (
@@ -466,7 +472,16 @@ const ChatGPT = () => {
               >
                 {msg.role === 'bot' ? <BotIcon /> : <PersonIcon />}
               </Avatar>
-              <Typography variant="body1">{msg.content}</Typography>
+              <Typography 
+                variant="body1"
+                component="div" // Cambiar a div para mejor renderizado
+                sx={{ 
+                  wordBreak: 'break-word', // Asegurar que el texto largo se rompa correctamente
+                  overflowWrap: 'break-word'
+                }}
+              >
+                {msg.content}
+              </Typography>
             </Box>
           </Stack>
         ))}
