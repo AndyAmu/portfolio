@@ -1,104 +1,212 @@
-.contact-container {
-    width: 100%;
-    max-width: 600px;
-    margin: 0 auto;
-    padding: 2rem;
-    background: linear-gradient(-45deg, rgba(0, 0, 0, 0.95), rgba(60, 128, 231, 0.95));
-    border-radius: 16px;
-    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+/* Contenedor principal */
+.contact-outer-container {
+    padding: 2rem 1rem;
+}
+
+/* Papel/tarjeta principal */
+.contact-paper {
+    background: linear-gradient(135deg, rgba(0, 0, 0, 0.9), rgba(60, 128, 231, 0.9)) !important;
     backdrop-filter: blur(10px);
+    border-radius: 16px !important;
+    overflow: hidden;
     border: 1px solid rgba(255, 255, 255, 0.1);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.contact-paper:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 15px 35px rgba(0, 0, 0, 0.4) !important;
+}
+
+/* Cabecera del formulario */
+.contact-header {
+    padding: 2.5rem 2.5rem 1.5rem;
+    text-align: center;
 }
 
 .contact-title {
     color: white !important;
+    font-family: 'Bree Serif', serif !important;
+    font-size: 2rem !important;
     display: flex;
     align-items: center;
+    justify-content: center;
     margin-bottom: 1rem !important;
-    font-family: 'Bree Serif', serif !important;
-    font-size: 1.5rem !important;
+    gap: 0.75rem;
+}
+
+.contact-icon {
+    color: #4a00e0;
+    font-size: 2rem !important;
 }
 
 .contact-subtitle {
     color: rgba(255, 255, 255, 0.8) !important;
-    margin-bottom: 2rem !important;
     font-family: 'Bree Serif', serif !important;
+    max-width: 600px;
+    margin: 0 auto !important;
     font-size: 1rem !important;
-    line-height: 1.5 !important;
+    line-height: 1.6 !important;
 }
 
+/* Formulario */
 .contact-form {
-    display: flex;
-    flex-direction: column;
-    gap: 1.5rem;
+    padding: 0 2.5rem 2.5rem;
 }
 
-.contact-input {
-    background: rgba(255, 255, 255, 0.05) !important;
+/* Prevenir estilos de autocompletado del navegador */
+input:-webkit-autofill,
+input:-webkit-autofill:hover,
+input:-webkit-autofill:focus,
+textarea:-webkit-autofill,
+textarea:-webkit-autofill:hover,
+textarea:-webkit-autofill:focus,
+select:-webkit-autofill,
+select:-webkit-autofill:hover,
+select:-webkit-autofill:focus {
+    -webkit-box-shadow: 0 0 0 1000px rgba(30, 30, 30, 0.9) inset !important;
+    -webkit-text-fill-color: white !important;
+    transition: background-color 5000s ease-in-out 0s !important;
+}
+
+/* Campos de texto */
+.contact-field {
+    margin-bottom: 0.5rem !important;
+    background-color: transparent !important;
+}
+
+.contact-field .MuiInputBase-root {
+    background-color: rgba(255, 255, 255, 0.05) !important;
+}
+
+.contact-input-field {
+    background-color: rgba(255, 255, 255, 0.05) !important;
     border-radius: 8px !important;
-}
-
-.contact-input .MuiOutlinedInput-root {
     color: white !important;
+    transition: background-color 0.3s ease;
 }
 
-.contact-input .MuiInputLabel-root {
+.contact-input-field:hover {
+    background-color: rgba(255, 255, 255, 0.08) !important;
+}
+
+/* Estilos para el autocompletado del navegador */
+.contact-input-field:-webkit-autofill,
+.contact-input-field:-webkit-autofill:hover,
+.contact-input-field:-webkit-autofill:focus,
+.contact-input-field:-webkit-autofill:active {
+    -webkit-box-shadow: 0 0 0 30px rgba(30, 30, 30, 0.9) inset !important;
+    -webkit-text-fill-color: white !important;
+    transition: background-color 5000s ease-in-out 0s !important;
+    font-size: inherit !important;
+    font-family: inherit !important;
+}
+
+/* Selector específico para aumentar la especificidad */
+input.MuiInputBase-input.contact-input-field:-webkit-autofill {
+    background-color: transparent !important;
+    -webkit-box-shadow: 0 0 0 30px rgba(30, 30, 30, 0.9) inset !important;
+    -webkit-text-fill-color: white !important;
+}
+
+/* Específico para Firefox */
+.contact-input-field:autofill {
+    background-color: rgba(30, 30, 30, 0.9) !important;
+    color: white !important;
+    box-shadow: 0 0 0 30px rgba(30, 30, 30, 0.9) inset !important;
+}
+
+.contact-input-label {
     color: rgba(255, 255, 255, 0.7) !important;
+    font-family: 'Bree Serif', serif !important;
 }
 
-.contact-input .MuiOutlinedInput-notchedOutline {
+/* Sobrescribe los estilos de Material UI */
+.contact-field .MuiOutlinedInput-notchedOutline {
     border-color: rgba(255, 255, 255, 0.2) !important;
+    transition: border-color 0.3s ease;
 }
 
-.contact-input:hover .MuiOutlinedInput-notchedOutline {
+.contact-field:hover .MuiOutlinedInput-notchedOutline {
     border-color: rgba(255, 255, 255, 0.3) !important;
 }
 
-.contact-input.Mui-focused .MuiOutlinedInput-notchedOutline {
-    border-color: rgba(255, 255, 255, 0.5) !important;
+.contact-field.Mui-focused .MuiOutlinedInput-notchedOutline {
+    border-color: #4a00e0 !important;
+    border-width: 2px !important;
+}
+
+/* Botón de envío */
+.button-container {
+    display: flex;
+    justify-content: center;
+    margin-top: 1rem;
 }
 
 .contact-button {
     background: linear-gradient(to right, #8e2de2, #4a00e0) !important;
     color: white !important;
-    padding: 1rem !important;
+    padding: 0.75rem 2rem !important;
     font-size: 1rem !important;
-    text-transform: none !important;
+    border-radius: 50px !important;
+    min-width: 200px;
     font-family: 'Bree Serif', serif !important;
+    text-transform: none !important;
     transition: all 0.3s ease !important;
+    box-shadow: 0 4px 15px rgba(74, 0, 224, 0.3) !important;
 }
 
 .contact-button:hover:not(:disabled) {
-    transform: translateY(-2px);
-    box-shadow: 0 4px 12px rgba(74, 0, 224, 0.3);
     background: linear-gradient(to right, #9f43f8, #5a12f3) !important;
+    box-shadow: 0 6px 20px rgba(74, 0, 224, 0.5) !important;
+    transform: translateY(-2px);
 }
 
 .contact-button:disabled {
     background: rgba(255, 255, 255, 0.1) !important;
     color: rgba(255, 255, 255, 0.5) !important;
+    box-shadow: none !important;
+}
+
+/* Responsive */
+@media (max-width: 900px) {
+    .contact-header {
+        padding: 2rem 1.5rem 1rem;
+    }
+    
+    .contact-form {
+        padding: 0 1.5rem 2rem;
+    }
 }
 
 @media (max-width: 600px) {
-    .contact-container {
-        padding: 1.5rem;
-        border-radius: 12px;
+    .contact-paper {
+        border-radius: 12px !important;
     }
-
+    
+    .contact-header {
+        padding: 1.5rem 1.25rem 0.75rem;
+    }
+    
     .contact-title {
-        font-size: 1.25rem !important;
+        font-size: 1.5rem !important;
     }
-
+    
+    .contact-icon {
+        font-size: 1.5rem !important;
+    }
+    
     .contact-subtitle {
         font-size: 0.9rem !important;
     }
-
+    
     .contact-form {
-        gap: 1rem;
+        padding: 0 1.25rem 1.5rem;
     }
-
+    
     .contact-button {
-        padding: 0.875rem !important;
+        padding: 0.6rem 1.5rem !important;
         font-size: 0.9rem !important;
+        min-width: 180px;
     }
 } 
