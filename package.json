@@ -19,7 +19,7 @@
     "react-bootstrap": "^2.5.0",
     "react-dom": "^18.2.0",
     "react-router-dom": "^6.3.0",
-    "react-scripts": "5.0.1",
+    "react-scripts": "^5.0.1",
     "react-scroll-to-top": "^3.0.0",
     "serve": "^14.0.1",
     "socket.io": "^4.8.1",
@@ -28,7 +28,7 @@
   },
   "scripts": {
     "dev": "react-scripts start",
-    "build": "react-scripts build",
+    "build": "npm cache clean --force && npm install && npm install react-scripts && npm run build:react && cd server && npm install",
     "test": "react-scripts test",
     "eject": "react-scripts eject",
     "start": "serve -s build",
@@ -41,7 +41,7 @@
     ]
   },
   "engines": {
-    "node": "16.x",
+    "node": "18.x",
     "npm": "6.x"
   },
   "browserslist": {
