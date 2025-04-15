@@ -153,8 +153,11 @@ const Body = () => {
                             <CardMedia
                                 className="card-recommendations"
                                 component="img"
-                                height="340"
-                                width="630"
+                                sx={{
+                                    height: { xs: 200, sm: 400, md: 500 },
+                                    width: { xs: '100%', sm: 400, md: 800 },
+                                    objectFit: 'cover'
+                                }}
                             />
 
                             <CardContent>

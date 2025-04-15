@@ -1,13 +1,26 @@
+body, h1, h2, h3, h4, h5, h6, p, a, span, div {
+    font-family: 'Bree Serif', serif;
+}
+
+h1, .tech-title h1 {
+    font-size: 2.5rem;
+    color: var(--color-primary);
+    text-align: center;
+    margin-bottom: 1rem;
+}
+
 .tech-container {
-    min-height: 30vh;
-    background: linear-gradient(-45deg, #000000, #3c80e7, #042180, #000000);
+    min-height: 50vh;
+    background: linear-gradient(-45deg, #127083, #3c80e7, #000000, #212529);
     background-size: 400% 400%;
     animation: gradient 15s ease infinite;
     display: flex;
     vertical-align: center;
     align-items: center;
-    padding: 30px 0 30px 0;
-
+    padding: 2rem;
+    background-color: var(--color-bg);
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 }
 
 .tech-title {
@@ -20,11 +33,11 @@
 }
 
 .img-container {
-    width: 55%;
+    width: 50%;
     display: flex;
-    justify-content: center;
+    justify-content: start;
     flex-wrap: wrap;
-    gap: 2rem;
+    gap: 1rem;
     padding-top: 5rem;
     padding-bottom: 5rem;
 }

@@ -60,6 +60,7 @@
   background: rgba(255, 255, 255, 0.05);
   backdrop-filter: blur(5px);
   border: 1px solid rgba(255, 255, 255, 0.05);
+  animation: fadeIn 0.5s ease-in-out;
 }
 
 .message.user .message-content {
@@ -110,6 +111,7 @@
   background: rgba(0, 0, 0, 0.3);
   border-radius: 12px;
   border: 1px solid rgba(255, 255, 255, 0.05);
+  animation: fadeIn 0.5s ease-in-out;
 }
 
 .chat-input {
@@ -316,7 +318,7 @@
     flex-direction: column!important;
     gap: 24px;
   }
-  .css-1y20fz, .css-wkpw2c {
-    padding: 2rem!important;
+  .css-1y20fz, .css-wkpw2c, .css-xp83j7-MuiTypography-root {
+    padding: 2rem 1rem!important;
   }
 } 
