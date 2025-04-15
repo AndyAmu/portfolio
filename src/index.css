@@ -9,7 +9,7 @@ body::-webkit-scrollbar {
 }
 
 body::-webkit-scrollbar-thumb {
-  background: rgb(27, 15, 134);
+  background: #000;
 }
 
 
@@ -64,26 +64,25 @@ body::-webkit-scrollbar-thumb {
     font-size: .8rem !important;
   }
 }
-
-.andresamutitle3 {
-  font-size: 3rem !important;
+.andresamutitle3, .css-xp83j7-MuiTypography-root, .css-1byrpkw-MuiTypography-root {
+  font-size: 48px !important;
 }
 
 @media(max-width: 950px) {
-  .andresamutitle3 {
-    font-size: 3rem !important;
+  .andresamutitle3, .css-xp83j7-MuiTypography-root, .css-1byrpkw-MuiTypography-root {
+    font-size: 48px !important;
   }
 }
 
 @media(max-width: 750px) {
-  .andresamutitle3 {
-    font-size: 2rem !important;
+  .andresamutitle3, .css-xp83j7-MuiTypography-root, .css-1byrpkw-MuiTypography-root {
+    font-size: 32px !important;
   }
 }
 
 @media(max-width: 500px) {
-  .andresamutitle3 {
-    font-size: 1.5rem !important;
+  .andresamutitle3, .css-xp83j7-MuiTypography-root, .css-1byrpkw-MuiTypography-root {
+    font-size: 24px !important;
   }
 }
 
@@ -114,15 +113,15 @@ body::-webkit-scrollbar-thumb {
 }
 
 .body2 {
-  min-height: 40vh;
-  background: linear-gradient(-45deg, #000000, #3c80e7, #042180, #000000);
+  min-height: 50vh;
+  background: linear-gradient(-45deg, #127083, #3c80e7, #000000, #212529);
   background-size: 400% 400%;
   animation: gradient 15s ease infinite;
 }
 
 .body3 {
   min-height: 50vh;
-  background: linear-gradient(-45deg, #000000, #3c80e7, #042180, #000000);
+  background: linear-gradient(-45deg, #127083, #3c80e7, #000000, #212529);
   background-size: 400% 400%;
   animation: gradient 15s ease infinite;
 }

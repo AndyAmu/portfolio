@@ -58,11 +58,14 @@ export const respuestas = {
       "tell me about", "about him", "about", "know him", "know", "personal info", "info", "details"
     ],
     response: `
-👨‍💻 **Andrés Amuchástegui**  
-🎂 31 años | 📍 Córdoba, Argentina  
-🌟 Desarrollador Full Stack especializado en MERN (MongoDB, Express, React, Node.js).  
-🎨 Combina su pasión por la tecnología con un background en artes audiovisuales.  
-💡 Apasionado por resolver problemas y crear soluciones escalables con un toque creativo.`
+👨‍💻 **¿Quién es Andrés Amuchástegui?**  
+📍 Córdoba, Argentina  
+💼 Desarrollador Full Stack especializado en el stack MERN (MongoDB, Express, React, Node.js).  
+🎨 Con formación en cine y artes audiovisuales.  
+🤖 Usa herramientas de IA como ChatGPT en su día a día para crear soluciones inteligentes.  
+🚀 Siempre a la vanguardia con nuevas tecnologías y buenas prácticas de desarrollo.  
+💡 Creativo, autodidacta y resolutivo.  
+`
   },
 
   edad: {
@@ -85,12 +88,12 @@ export const respuestas = {
       "what he did", "what did he do", "jobs", "things done", "completed projects", "done", "made"
     ],
     response: `
-🛠 **Proyectos Destacados de Andrés**  
-1. **XCONS**: Desarrollo de apps web empresariales con React, Node.js, PHP y Magento 2.  
-2. **MY INDUSTRIAL HOME**: Plataforma e-commerce con MERN y API RESTful desplegada en Heroku.  
-3. **Freelance**: Proyectos web full stack personalizados.  
-4. **Portfolio Interactivo**: Este sitio que estás explorando.  
-📌 ¿Querés más detalles de alguno?"
+🚧 **Proyectos destacados**  
+1. **XCONS** – Apps web con React, Node.js, PHP y Magento 2.  
+2. **MY INDUSTRIAL HOME** – E-commerce con stack MERN, desplegado en Heroku.  
+3. **Freelance** – Sitios y sistemas a medida.  
+4. **Portfolio interactivo** – El sitio donde estás chateando ahora 😉  
+📌 ¿Querés más detalles sobre alguno?"
     `
   },
 
