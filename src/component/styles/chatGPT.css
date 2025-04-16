@@ -1,0 +1,324 @@
+.chat-container {
+  width: 100%;
+  background: var(--color-bg-variant);
+  border-radius: 1rem;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+  padding: 1.5rem;
+  backdrop-filter: blur(10px);
+  border: 1px solid var(--color-primary);
+  position: relative;
+  z-index: 1000;
+}
+
+.chat-box {
+  height: 350px;
+  overflow-y: auto;
+  padding: 1rem;
+  margin-bottom: 1rem;
+  scrollbar-width: thin;
+  scrollbar-color: var(--color-primary) transparent;
+  border-radius: 0 0 1rem 1rem;
+}
+
+.chat-box::-webkit-scrollbar {
+  width: 6px;
+}
+
+.chat-box::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+.chat-box::-webkit-scrollbar-thumb {
+  background-color: var(--color-primary);
+  border-radius: 20px;
+}
+
+.message {
+  margin-bottom: 1rem;
+  animation: fadeIn 0.3s ease-in;
+  position: relative;
+  z-index: 1001;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.message-content {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.75rem;
+  padding: 1rem;
+  border-radius: 12px;
+  background: rgba(255, 255, 255, 0.05);
+  backdrop-filter: blur(5px);
+  border: 1px solid rgba(255, 255, 255, 0.05);
+  animation: fadeIn 0.5s ease-in-out;
+}
+
+.message.user .message-content {
+  flex-direction: row-reverse;
+  background: rgba(60, 128, 231, 0.15);
+}
+
+.bot-icon, .user-icon {
+  width: 35px;
+  height: 35px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.1);
+  font-size: 1.2rem;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.message-text {
+  color: white;
+  line-height: 1.6;
+  flex: 1;
+  font-size: 0.95rem;
+}
+
+.loading {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.loading::after {
+  content: "...";
+  animation: loading 1s infinite;
+}
+
+@keyframes loading {
+  0% { content: "."; }
+  33% { content: ".."; }
+  66% { content: "..."; }
+}
+
+.input-container {
+  display: flex;
+  gap: 1rem;
+  padding: 1.25rem;
+  background: rgba(0, 0, 0, 0.3);
+  border-radius: 12px;
+  border: 1px solid rgba(255, 255, 255, 0.05);
+  animation: fadeIn 0.5s ease-in-out;
+}
+
+.chat-input {
+  flex: 1;
+  padding: 0.75rem 1rem;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 8px;
+  background: rgba(255, 255, 255, 0.05);
+  color: white;
+  resize: none;
+  font-family: inherit;
+  font-size: 0.95rem;
+  transition: all 0.3s ease;
+}
+
+.chat-input::placeholder {
+  color: rgba(255, 255, 255, 0.4);
+}
+
+.chat-input:focus {
+  outline: none;
+  background: rgba(255, 255, 255, 0.1);
+  border-color: rgba(255, 255, 255, 0.2);
+}
+
+.send-button {
+  padding: 0.75rem 1.75rem;
+  border: none;
+  border-radius: 8px;
+  background: linear-gradient(to right, #8e2de2, #4a00e0);
+  color: white;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  font-size: 0.95rem;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.send-button:hover:not(:disabled) {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(74, 0, 224, 0.3);
+  background: linear-gradient(to right, #9f43f8, #5a12f3);
+}
+
+.send-button:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+  transform: none;
+}
+
+.error-message {
+  color: #ff6b6b;
+  text-align: center;
+  padding: 0.75rem;
+  margin: 0.75rem 0;
+  background: rgba(255, 107, 107, 0.1);
+  border-radius: 8px;
+  border: 1px solid rgba(255, 107, 107, 0.2);
+  font-size: 0.9rem;
+}
+
+.chat-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 12px 20px;
+  background: var(--color-bg-variant);
+  border-radius: 1rem 1rem 0 0;
+  border-bottom: 1px solid var(--color-primary);
+}
+
+.chat-header h3, .clear-button span  {
+  margin: 0;
+  color: #FFF;
+  font-size: 1rem;
+  font-weight: 500;
+}
+.css-1x4vipr-MuiButtonBase-root-MuiToggleButton-root.Mui-selected {
+  background-color: rgba(0, 0, 0, 1)!important;
+}
+.css-i4bv87-MuiSvgIcon-root {
+  color: #ccc!important;
+}
+.css-wje2me-MuiStack-root{
+  border-radius: 16px 16px 0 0;
+}
+.css-wgj3ms-MuiStack-root {
+  border-radius: 16px;
+}
+
+.clear-button {
+  font-family: inherit;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  background: var(--color-primary);
+  color: var(--color-bg);
+  padding: 0.7em 1.4em;
+  border-radius: 0.9em;
+  position: relative;
+  overflow: hidden;
+  transition: all 0.2s;
+  border: 1px solid var(--color-primary);
+  font-weight: 500;
+  cursor: pointer;
+}
+
+.clear-button span {
+  position: relative;
+  z-index: 1;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.clear-button::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 0;
+  height: 100%;
+  width: 100%;
+  background: var(--color-white);
+  z-index: 0;
+  transform: translateX(-100%);
+  transition: all 0.3s ease;
+}
+
+.clear-button:hover {
+  color: var(--color-bg);
+}
+
+.clear-button:hover::after {
+  transform: translateX(0);
+}
+
+.clear-button:active {
+  transform: scale(0.95);
+}
+
+.typing-indicator {
+  display: flex;
+  gap: 4px;
+  padding: 4px 8px;
+}
+
+.typing-indicator span {
+  width: 8px;
+  height: 8px;
+  background: rgba(255, 255, 255, 0.7);
+  border-radius: 50%;
+  animation: typing 1s infinite ease-in-out;
+}
+
+.typing-indicator span:nth-child(1) {
+  animation-delay: 0.2s;
+}
+
+.typing-indicator span:nth-child(2) {
+  animation-delay: 0.4s;
+}
+
+.typing-indicator span:nth-child(3) {
+  animation-delay: 0.6s;
+}
+
+@keyframes typing {
+  0%, 100% {
+    transform: scale(1);
+    opacity: 0.5;
+  }
+  50% {
+    transform: scale(1.2);
+    opacity: 1;
+  }
+}
+
+@media (max-width: 480px) {
+  .chat-header {
+    flex-direction: column;
+    gap: 1rem;
+    padding: 1rem;
+  }
+
+  .clear-button {
+    width: 100%;
+    justify-content: center;
+  }
+}
+
+@media screen and (max-width: 768px) {
+  .chat-container {
+    width: 100%;
+  }
+  .css-1sos3zc-MuiStack-root, .css-wje2me-MuiStack-root {
+    flex-direction: column!important  ;
+    gap: 16px;
+  }
+  .css-c9k3qg {
+    max-width: 100%!important;
+  }
+  .css-iwuri4, .css-1x4jos1 {
+    flex-direction: column!important;
+    gap: 24px;
+  }
+  .css-1y20fz, .css-wkpw2c, .css-xp83j7-MuiTypography-root {
+    padding: 2rem 1rem!important;
+  }
+} 

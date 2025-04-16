@@ -3,8 +3,6 @@ import { Box, Typography } from "@mui/material"
 import Avatar from '@mui/material/Avatar';
 import '../index.css'
 import './styles/body.css'
-import LanguageIcon from '@mui/icons-material/Language';
-import GitHubIcon from '@mui/icons-material/GitHub';
 import Technologies from './Technologies'
 import ComputerIcon from '@mui/icons-material/Computer';
 import PhoneIphoneIcon from '@mui/icons-material/PhoneIphone';
@@ -12,12 +10,19 @@ import Card from '@mui/material/Card';
 import CardContent from '@mui/material/CardContent';
 import CardMedia from '@mui/material/CardMedia';
 import { CardActionArea } from '@mui/material';
+import ChatComponent from './chatGPT';
+import SmartToyIcon from '@mui/icons-material/SmartToy';
+import ContactEmail from './ContactEmail';
+import { useLanguage } from '../context/LanguageContext';
+
 
 const Body = () => {
+    const { translations } = useLanguage();
+
     return (
         <>
 
-            <Box sx={{ display: 'flex', justifyContent: 'center', alignItems: 'center', flexDirection: 'column' }} className="body">
+            <Box id="home" sx={{ display: 'flex', justifyContent: 'center', alignItems: 'center', flexDirection: 'column' }} className="body">
                 <Typography className="andresamutitle" sx={{ fontFamily: 'Bree Serif', zIndex: 10, color: 'white' }}>ANDRÉS AMUCHÁSTEGUI</Typography>
                 <Typography className="andresamutitle2" sx={{ fontFamily: 'Bree Serif', zIndex: 10, color: 'white' }}>Full Stack Developer | Web | Mobile ㅤ<ComputerIcon sx={{ fontSize: '2.5rem' }} /> +<PhoneIphoneIcon sx={{ fontSize: '2.2rem' }} /></Typography>
                 <Box sx={{ color: 'white', display: 'flex', justifyContent: 'center', alignItems: 'center', zIndex: 100 }}>
@@ -31,26 +36,24 @@ const Body = () => {
                         color: 'white',
                         fontSize: 40
                     }}>
-
-                        Hi, I'm Andrés
+                        {translations.greeting}
                     </Typography>
                     <Typography sx={{
                         fontFamily: 'Bree Serif',
                         color: 'white'
                     }}>
-                        I am a person with good predisposition, creative and passionate.
-                        Here you can see my full CV.
+                        {translations.introduction}
                     </Typography>
 
-                    <Box sx= {{display: 'flex', justifyContent: 'center'}}>
+                    <Box sx={{ display: 'flex', justifyContent: 'center' }}>
                         <Box sx={{
                             margin: 1,
                             marginTop: 2
                         }}>
-                            <a target="_blank" href="https://drive.google.com/file/d/1N6s2s8hy9irQW2BDakV_pALcZGov-Bcs/view?usp=drive_link">
+                            <a target="_blank" rel="noreferrer" href="https://drive.google.com/file/d/1N6s2s8hy9irQW2BDakV_pALcZGov-Bcs/view?usp=drive_link">
                                 <div className="button" data-tooltip="Size: 253Kb">
                                     <div className="button-wrapper">
-                                        <div className="text">Download English CV</div>
+                                        <div className="text">{translations.downloadEnglishCV}</div>
                                         <span className="icon">
                                             <svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" role="img" width="2em" height="2em" preserveAspectRatio="xMidYMid meet" viewBox="0 0 24 24"><path fill="none" stroke="currentColor" d="M12 15V3m0 12l-4-4m4 4l4-4M2 17l.621 2.485A2 2 0 0 0 4.561 21h14.878a2 2 0 0 0 1.94-1.515L22 17"></path></svg>
                                         </span>
@@ -62,10 +65,10 @@ const Body = () => {
                             margin: 1,
                             marginTop: 2
                         }}>
-                            <a target="_blank" href="https://drive.google.com/file/d/19j62HDy_xH2-13wevpoT0ihdXq78oEgu/view?usp=sharing">
+                            <a target="_blank" rel="noreferrer" href="https://drive.google.com/file/d/1_ONV3jDL2PisB2BciQAFlKIsHyQ7kQZN/view?usp=drive_link">
                                 <div className="button" data-tooltip="Size: 253Kb">
                                     <div className="button-wrapper">
-                                        <div className="text">Download Spanish CV</div>
+                                        <div className="text">{translations.downloadSpanishCV}</div>
                                         <span className="icon">
                                             <svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" role="img" width="2em" height="2em" preserveAspectRatio="xMidYMid meet" viewBox="0 0 24 24"><path fill="none" stroke="currentColor" d="M12 15V3m0 12l-4-4m4 4l4-4M2 17l.621 2.485A2 2 0 0 0 4.561 21h14.878a2 2 0 0 0 1.94-1.515L22 17"></path></svg>
                                         </span>
@@ -90,79 +93,76 @@ const Body = () => {
                     </Typography>
                 </Box>
             </Box>
-            <Box className="body">
-                <Typography sx={{ fontFamily: 'Bree Serif', paddingTop: '5rem', paddingBottom: '5rem', display: 'flex', justifyContent: 'center', zIndex: 10, fontSize: 50, color: 'white' }}>PROJECTS</Typography>
+            <Box id="chat" className="body">
+                <Typography sx={{ 
+                    fontFamily: 'Bree Serif', 
+                    paddingTop: '5rem', 
+                    paddingBottom: '2rem', 
+                    display: 'flex', 
+                    justifyContent: 'center', 
+                    alignItems: 'center',
+                    gap: '1rem',
+                    zIndex: 10, 
+                    fontSize: 50, 
+                    color: 'white',
+                    width: '100%',
+                    textAlign: 'center'
+                }}>
+                    <Box sx={{
+                        display: 'flex',
+                        justifyContent: 'center',
+                        alignItems: 'center',
+                        gap: '1rem',
+                        flexWrap: 'wrap'
+                    }}>
+                        <SmartToyIcon sx={{ fontSize: '3rem' }} />
+                        <span>{translations.virtualAssistant}</span>
+                    </Box>
+                </Typography>
+                
+                <Typography sx={{
+                    fontFamily: 'Bree Serif',
+                    color: 'white',
+                    textAlign: 'center',
+                    maxWidth: '800px',
+                    margin: '0 auto 2rem auto',
+                    fontSize: '1.2rem',
+                    opacity: 0.9
+                }}>
+                    {translations.chatIntro}
+                </Typography>
 
-                <Box sx={{ display: 'flex', justifyContent: 'space-around', alignItems: 'center' }} >
-
-                    <Box className="card">
-                        <Box className="card-info1">
-                        </Box>
-                        <Box sx={{ display: 'flex', justifyContent: 'space-around' }}>
-                            <a target="_blank" style={{ textDecoration: 'none' }} href="http://my-tinerary-and-amu.herokuapp.com/">
-                                <button className="cssbuttons-io">
-                                    <span><LanguageIcon />Web</span>
-                                </button>
-                            </a>
-                            <a target="_blank" style={{ textDecoration: 'none' }} href="https://github.com/AndresAmu/my-tinerary">
-                                <button className="cssbuttons-io">
-                                    <span><GitHubIcon />Code</span>
-                                </button>
-                            </a>
-                        </Box>
-                    </Box>
-                    <Box className="card">
-                        <Box className="card-info2">
-                        </Box>
-                        <Box sx={{ display: 'flex', justifyContent: 'space-around' }}>
-                            <a target="_blank" style={{ textDecoration: 'none' }} href="https://my-industrial-home-challange-mind-hub.vercel.app/">
-                                <button className="cssbuttons-io">
-                                    <span><LanguageIcon /> Web</span>
-                                </button>
-                            </a>
-                            <a target="_blank" style={{ textDecoration: 'none' }} href="https://github.com/AndresAmu/my-industrial-home">
-                                <button className="cssbuttons-io">
-                                    <span><GitHubIcon />Code</span>
-                                </button>
-                            </a>
-                        </Box>
-                    </Box>
-                    <Box className="card">
-                        <Box className="card-info4">
-                        </Box>
-                        <Box sx={{ display: 'flex', justifyContent: 'space-around' }}>
-                            <a target="_blank" style={{ textDecoration: 'none' }} href="https://andresamu.github.io/PETSHOP_MINDY_GRUPO_11/index.html">
-                                <button className="cssbuttons-io">
-                                    <span><LanguageIcon /> Web</span>
-                                </button>
-                            </a>
-                            <a style={{ textDecoration: 'none' }} href="https://github.com/AndresAmu/PETSHOP_MINDY_GRUPO_11">
-                                <button className="cssbuttons-io">
-                                    <span><GitHubIcon />Code</span>
-                                </button>
-                            </a>
-                        </Box>
-                    </Box>
+                <Box sx={{
+                    maxWidth: '1200px',
+                    margin: '0 auto',
+                    padding: '0 1rem'
+                }}>
+                    <ChatComponent />
                 </Box>
             </Box>
-
 
             <Technologies />
 
             <Box sx={{ display: 'flex', justifyContent: 'center', alignItems: 'center', flexDirection: 'column' }} className="body4">
-                <Typography className="andresamutitle3" sx={{marginTop: 5, fontFamily: 'Bree Serif', paddingBottom: '2rem', display: 'flex', justifyContent: 'center', zIndex: 10, fontSize: 50, color: 'white' }}>RECOMMENDATIONS LINKEDIN</Typography>
+                <Typography className="andresamutitle3" sx={{marginTop: 5, fontFamily: 'Bree Serif', paddingBottom: '2rem', display: 'flex', justifyContent: 'center', zIndex: 10, fontSize: 50, color: 'white' }}>
+                    {translations.recommendations}
+                </Typography>
                 <a style={{ textDecoration: 'none' }} href="https://www.linkedin.com/in/andr%C3%A9s-amuch%C3%A1stegui-3b47ab21b/details/recommendations/?detailScreenTabIndex=0">
-                    <Card sx={{backgroundColor: 'black', color: 'white', maxWidth: 765, marginBottom: '2rem' }}>
+                    <Card sx={{backgroundColor: 'black', color: 'white', marginBottom: '2rem' }}>
                         <CardActionArea>
                             <CardMedia
                                 className="card-recommendations"
                                 component="img"
-                                height="340"
+                                sx={{
+                                    height: { xs: 200, sm: 400, md: 500 },
+                                    width: { xs: '100%', sm: 400, md: 800 },
+                                    objectFit: 'cover'
+                                }}
                             />
 
                             <CardContent>
                                 <Typography sx={{textAlign: 'center'}} variant="body2" color="white">
-                                    These are recommendations on Linkedin ㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤ
+                                    {translations.recommendationsDesc}
                                 </Typography>
                             </CardContent>
                         </CardActionArea>
@@ -171,6 +171,25 @@ const Body = () => {
 
             </Box>
 
+            <section id="contact">
+                <Box className="body" sx={{ paddingBottom: '3rem' }}>
+                    <Typography sx={{ 
+                        fontFamily: 'Bree Serif', 
+                        paddingTop: '5rem', 
+                        paddingBottom: '2rem', 
+                        display: 'flex', 
+                        justifyContent: 'center', 
+                        alignItems: 'center',
+                        gap: '1rem',
+                        zIndex: 10, 
+                        fontSize: 50, 
+                        color: 'white' 
+                    }}>
+                        {translations.contact}
+                    </Typography>
+                    <ContactEmail />
+                </Box>
+            </section>
 
         </>
     )
