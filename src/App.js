@@ -58,7 +58,13 @@ function App() {
       </Routes>
       <Footer />
       <ScrollToTop
-        style={{ backgroundColor: 'white', opacity: '50%', width: '30px', height: '30px' }}
+        style={{ 
+          backgroundColor: 'white', 
+          opacity: '50%', 
+          width: '30px', 
+          height: '30px',
+          bottom: '70px' // Aumentado de 40px a 70px para que no quede debajo del menú
+        }}
         smooth
         viewBox="0 0 24 24"
         component={<FileUploadIcon />}
