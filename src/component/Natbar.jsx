@@ -3,144 +3,40 @@ import PropTypes from 'prop-types';
 import AppBar from '@mui/material/AppBar';
 import Box from '@mui/material/Box';
 import Divider from '@mui/material/Divider';
-import Drawer from '@mui/material/Drawer';
-import IconButton from '@mui/material/IconButton';
-import MenuIcon from '@mui/icons-material/Menu';
 import Toolbar from '@mui/material/Toolbar';
 import Typography from '@mui/material/Typography';
 import Button from '@mui/material/Button';
 import SmartToyIcon from '@mui/icons-material/SmartToy';
 import EmailIcon from '@mui/icons-material/Email';
 import HomeIcon from '@mui/icons-material/Home';
+import BottomNavigation from '@mui/material/BottomNavigation';
+import BottomNavigationAction from '@mui/material/BottomNavigationAction';
+import Paper from '@mui/material/Paper';
 import { useLanguage } from '../context/LanguageContext';
-
-const drawerWidth = 240;
 
 function DrawerAppBar(props) {
     const { window } = props;
-    const [mobileOpen, setMobileOpen] = React.useState(false);
+    const [value, setValue] = React.useState(0);
     const { language, toggleLanguage, translations } = useLanguage();
-
-    const handleDrawerToggle = () => {
-        setMobileOpen(!mobileOpen);
-    };
 
     const container = window !== undefined ? () => window().document.body : undefined;
 
-    const drawer = (
-        <Box sx={{ 
-            textAlign: 'center',
-            height: '100%',
-            backgroundColor: 'rgba(0, 0, 0, 0.95)'
-        }}>
-            <Typography variant="h6" sx={{ my: 2, color: 'white', fontFamily: 'Bree Serif' }}>
-                {translations.portfolio}
-            </Typography>
-            <Divider sx={{ backgroundColor: 'rgba(255, 255, 255, 0.1)' }} />
-            <Box sx={{ 
-                display: 'flex', 
-                flexDirection: 'column', 
-                gap: 2, 
-                p: 3,
-                alignItems: 'stretch'
-            }}>
-                <a href="#home" style={{ textDecoration: 'none' }} onClick={handleDrawerToggle}>
-                    <Button 
-                        fullWidth
-                        sx={{ 
-                            color: 'white',
-                            display: 'flex',
-                            gap: 1,
-                            justifyContent: 'flex-start',
-                            padding: '12px 16px',
-                            '&:hover': {
-                                backgroundColor: 'rgba(255, 255, 255, 0.1)'
-                            }
-                        }}
-                    >
-                        <HomeIcon /> {translations.home}
-                    </Button>
-                </a>
-                <a href="#chat" style={{ textDecoration: 'none' }} onClick={handleDrawerToggle}>
-                    <Button 
-                        fullWidth
-                        sx={{ 
-                            color: 'white',
-                            display: 'flex',
-                            gap: 1,
-                            justifyContent: 'flex-start',
-                            padding: '12px 16px',
-                            '&:hover': {
-                                backgroundColor: 'rgba(255, 255, 255, 0.1)'
-                            }
-                        }}
-                    >
-                        <SmartToyIcon /> {translations.chat}
-                    </Button>
-                </a>
-                <a href="#contact" style={{ textDecoration: 'none' }} onClick={handleDrawerToggle}>
-                    <Button 
-                        fullWidth
-                        sx={{ 
-                            color: 'white',
-                            display: 'flex',
-                            gap: 1,
-                            justifyContent: 'flex-start',
-                            padding: '12px 16px',
-                            '&:hover': {
-                                backgroundColor: 'rgba(255, 255, 255, 0.1)'
-                            }
-                        }}
-                    >
-                        <EmailIcon /> {translations.contact}
-                    </Button>
-                </a>
-                <Button 
-                    onClick={(e) => {
-                        e.stopPropagation();
-                        toggleLanguage();
-                    }}
-                    sx={{ 
-                        color: 'white',
-                        border: '1px solid rgba(255, 255, 255, 0.3)',
-                        padding: '8px',
-                        marginTop: 2,
-                        '&:hover': {
-                            backgroundColor: 'rgba(255, 255, 255, 0.1)',
-                            border: '1px solid rgba(255, 255, 255, 0.5)'
-                        }
-                    }}
-                >
-                    {language === 'en' ? 'ES' : 'EN'}
-                </Button>
-            </Box>
-        </Box>
-    );
-
     return (
         <Box sx={{ display: 'flex' }}>
+            {/* Barra de navegación superior (solo visible en pantallas sm y superiores) */}
             <AppBar 
                 component="nav" 
                 sx={{ 
                     backgroundColor: 'rgba(0, 0, 0, 0.85)',
-                    backdropFilter: 'blur(10px)'
+                    backdropFilter: 'blur(10px)',
+                    display: { xs: 'block', sm: 'block' }
                 }}
             >
                 <Toolbar sx={{ justifyContent: 'space-between' }}>
-                    <IconButton
-                        color="inherit"
-                        aria-label="open drawer"
-                        edge="start"
-                        onClick={handleDrawerToggle}
-                        sx={{ display: { sm: 'none' } }}
-                    >
-                        <MenuIcon />
-                    </IconButton>
                     <Typography
                         variant="h6"
                         component="div"
                         sx={{ 
-                            display: { xs: 'block', sm: 'block' },
                             fontFamily: 'Bree Serif',
                             fontSize: { xs: '1.1rem', sm: '1.25rem' }
                         }}
@@ -196,28 +92,65 @@ function DrawerAppBar(props) {
                     </Box>
                 </Toolbar>
             </AppBar>
-            <Box component="nav">
-                <Drawer
-                    container={container}
-                    variant="temporary"
-                    open={mobileOpen}
-                    onClose={handleDrawerToggle}
-                    ModalProps={{
-                        keepMounted: true,
+
+            {/* Barra de navegación inferior para móviles */}
+            <Paper 
+                sx={{ 
+                    position: 'fixed', 
+                    bottom: 0, 
+                    left: 0, 
+                    right: 0, 
+                    display: { xs: 'block', sm: 'none' },
+                    zIndex: 1100,
+                    backgroundColor: 'rgba(0, 0, 0, 0.85)',
+                    backdropFilter: 'blur(10px)'
+                }} 
+                elevation={3}
+            >
+                <BottomNavigation
+                    showLabels
+                    value={value}
+                    onChange={(event, newValue) => {
+                        setValue(newValue);
                     }}
                     sx={{
-                        display: { xs: 'block', sm: 'none' },
-                        '& .MuiDrawer-paper': { 
-                            boxSizing: 'border-box', 
-                            width: drawerWidth,
-                            backgroundColor: 'rgba(0, 0, 0, 0.95)',
-                            backdropFilter: 'blur(10px)'
+                        backgroundColor: 'transparent',
+                        '& .MuiBottomNavigationAction-root': {
+                            color: 'rgba(255, 255, 255, 0.7)'
                         },
+                        '& .Mui-selected': {
+                            color: 'white'
+                        }
                     }}
                 >
-                    {drawer}
-                </Drawer>
-            </Box>
+                    <BottomNavigationAction 
+                        label={translations.home} 
+                        icon={<HomeIcon />} 
+                        component="a"
+                        href="#home"
+                    />
+                    <BottomNavigationAction 
+                        label={translations.chat} 
+                        icon={<SmartToyIcon />} 
+                        component="a"
+                        href="#chat"
+                    />
+                    <BottomNavigationAction 
+                        label={translations.contact} 
+                        icon={<EmailIcon />} 
+                        component="a"
+                        href="#contact"
+                    />
+                    <BottomNavigationAction 
+                        label={language === 'en' ? 'ES' : 'EN'} 
+                        onClick={(e) => {
+                            e.preventDefault();
+                            toggleLanguage();
+                        }}
+                    />
+                </BottomNavigation>
+            </Paper>
+
             <Box component="main" sx={{ p: 3 }}>
                 <Toolbar />
             </Box>

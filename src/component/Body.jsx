@@ -17,7 +17,13 @@ import { useLanguage } from '../context/LanguageContext';
 
 
 const Body = () => {
-    const { translations } = useLanguage();
+    const { translations, language } = useLanguage();
+    
+    // URLs de los CVs según el idioma
+    const cvUrls = {
+        en: "https://drive.google.com/file/d/1BEMQj9VB7l3yvk5Jam9aAfZmnHxgIF96/view?usp=sharing",
+        es: "https://drive.google.com/file/d/14-FGhRxK-rmz4bc6xiTsU7cX3yq5EbZf/view?usp=sharing"
+    };
 
     return (
         <>
@@ -50,25 +56,10 @@ const Body = () => {
                             margin: 1,
                             marginTop: 2
                         }}>
-                            <a target="_blank" rel="noreferrer" href="https://drive.google.com/file/d/14-FGhRxK-rmz4bc6xiTsU7cX3yq5EbZf/view?usp=sharing">
+                            <a target="_blank" rel="noreferrer" href={cvUrls[language]}>
                                 <div className="button" data-tooltip="Size: 253Kb">
                                     <div className="button-wrapper">
-                                        <div className="text">{translations.downloadEnglishCV}</div>
-                                        <span className="icon">
-                                            <svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" role="img" width="2em" height="2em" preserveAspectRatio="xMidYMid meet" viewBox="0 0 24 24"><path fill="none" stroke="currentColor" d="M12 15V3m0 12l-4-4m4 4l4-4M2 17l.621 2.485A2 2 0 0 0 4.561 21h14.878a2 2 0 0 0 1.94-1.515L22 17"></path></svg>
-                                        </span>
-                                    </div>
-                                </div>
-                            </a>
-                        </Box>
-                        <Box sx={{
-                            margin: 1,
-                            marginTop: 2
-                        }}>
-                            <a target="_blank" rel="noreferrer" href="https://drive.google.com/file/d/14-FGhRxK-rmz4bc6xiTsU7cX3yq5EbZf/view?usp=sharing">
-                                <div className="button" data-tooltip="Size: 253Kb">
-                                    <div className="button-wrapper">
-                                        <div className="text">{translations.downloadSpanishCV}</div>
+                                        <div className="text">{language === 'en' ? translations.downloadEnglishCV : translations.downloadSpanishCV}</div>
                                         <span className="icon">
                                             <svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" role="img" width="2em" height="2em" preserveAspectRatio="xMidYMid meet" viewBox="0 0 24 24"><path fill="none" stroke="currentColor" d="M12 15V3m0 12l-4-4m4 4l4-4M2 17l.621 2.485A2 2 0 0 0 4.561 21h14.878a2 2 0 0 0 1.94-1.515L22 17"></path></svg>
                                         </span>
