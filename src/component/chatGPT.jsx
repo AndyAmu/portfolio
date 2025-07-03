@@ -1,30 +1,46 @@
 import React, { useState, useEffect, useRef } from 'react';
-import { 
-  Box,
-  Typography,
-  IconButton,
-  TextField,
-  Stack,
-  Avatar,
-  CircularProgress,
-  ToggleButtonGroup,
-  ToggleButton,
-  Tooltip,
-  Chip
-} from '@mui/material';
-import { 
-  Send as SendIcon, 
-  Delete as DeleteIcon,
-  SmartToy as BotIcon,
-  Person as PersonIcon,
-  Chat as ChatIcon
-} from '@mui/icons-material';
+import './styles/modernChat.css'; // Importamos el nuevo estilo
 import io from 'socket.io-client';
-import './styles/chatGPT.css';
+import { obtenerRespuesta } from '../utils/responses';
+
 // Importar las imágenes
 import gptIcon from './image/gpt.png';
 import deepseekIcon from './image/deepseek.svg';
-import { obtenerRespuesta } from '../utils/responses';
+
+// Iconos para el chat
+const SendIcon = () => (
+  <svg width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+    <path d="M22 2L11 13" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
+    <path d="M22 2L15 22L11 13L2 9L22 2Z" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
+  </svg>
+);
+
+const TrashIcon = () => (
+  <svg width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+    <path d="M3 6H5H21" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
+    <path d="M8 6V4C8 3.46957 8.21071 2.96086 8.58579 2.58579C8.96086 2.21071 9.46957 2 10 2H14C14.5304 2 15.0391 2.21071 15.4142 2.58579C15.7893 2.96086 16 3.46957 16 4V6M19 6V20C19 20.5304 18.7893 21.0391 18.4142 21.4142C18.0391 21.7893 17.5304 22 17 22H7C6.46957 22 5.96086 21.7893 5.58579 21.4142C5.21071 21.0391 5 20.5304 5 20V6H19Z" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
+  </svg>
+);
+
+const BotIcon = () => (
+  <svg width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+    <rect x="4" y="6" width="16" height="12" rx="2" stroke="currentColor" strokeWidth="2"/>
+    <circle cx="9" cy="12" r="1.5" fill="currentColor"/>
+    <circle cx="15" cy="12" r="1.5" fill="currentColor"/>
+    <path d="M8 16H16" stroke="currentColor" strokeWidth="2" strokeLinecap="round"/>
+    <path d="M12 3L12 6" stroke="currentColor" strokeWidth="2" strokeLinecap="round"/>
+    <path d="M10 20L8 22" stroke="currentColor" strokeWidth="2" strokeLinecap="round"/>
+    <path d="M14 20L16 22" stroke="currentColor" strokeWidth="2" strokeLinecap="round"/>
+    <path d="M8 20H16" stroke="currentColor" strokeWidth="2" strokeLinecap="round"/>
+  </svg>
+);
+
+const UserIcon = () => (
+  <svg width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+    <path d="M12 11C14.2091 11 16 9.20914 16 7C16 4.79086 14.2091 3 12 3C9.79086 3 8 4.79086 8 7C8 9.20914 9.79086 11 12 11Z" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
+    <path d="M6 21V19C6 17.9391 6.42143 16.9217 7.17157 16.1716C7.92172 15.4214 8.93913 15 10 15H14C15.0609 15 16.0783 15.4214 16.8284 16.1716C17.5786 16.9217 18 17.9391 18 19V21" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
+  </svg>
+);
 
 const ChatGPT = () => {
   const [messages, setMessages] = useState([]);
@@ -36,6 +52,7 @@ const ChatGPT = () => {
   const socketRef = useRef(null);
   const lastUserInputRef = useRef('');
   const chatBoxRef = useRef(null);
+  const textareaRef = useRef(null);
 
   const getMensajeBienvenida = (tipo) => {
     switch(tipo) {
@@ -83,7 +100,8 @@ const ChatGPT = () => {
               ...prev,
               {
                 role: 'bot',
-                content: '⚠️ Hay problemas de conexión con los servicios externos. Puedes seguir usando este chat, pero si no recibes respuestas, selecciona la opción "Chat Local".'
+                content: '⚠️ Hay problemas de conexión con los servicios externos. Puedes seguir usando este chat, pero si no recibes respuestas, selecciona la opción "Chat Local".',
+                timestamp: new Date().toISOString()
               }
             ]);
             scrollToBottom();
@@ -106,7 +124,8 @@ const ChatGPT = () => {
   useEffect(() => {
     setMessages([{
       role: 'bot',
-      content: getMensajeBienvenida('local')
+      content: getMensajeBienvenida('local'),
+      timestamp: new Date().toISOString()
     }]);
     
     initializeSocket();
@@ -125,13 +144,15 @@ const ChatGPT = () => {
         
         setMessages(prev => [...prev, {
           role: 'bot',
-          content: response.content
+          content: response.content,
+          timestamp: new Date().toISOString()
         }]);
         
         setTimeout(() => {
           setMessages(prev => [...prev, {
             role: 'bot',
-            content: "Parece que hay problemas con este servicio. ¿Te gustaría cambiar al chat local? Puedes seleccionar 'Chat Local' arriba."
+            content: "Parece que hay problemas con este servicio. ¿Te gustaría cambiar al chat local? Puedes seleccionar 'Chat Local' arriba.",
+            timestamp: new Date().toISOString()
           }]);
         }, 1000);
         
@@ -140,7 +161,8 @@ const ChatGPT = () => {
       
       setMessages(prev => [...prev, {
         role: 'bot',
-        content: response.content
+        content: response.content,
+        timestamp: new Date().toISOString()
       }]);
       return;
     }
@@ -161,7 +183,8 @@ const ChatGPT = () => {
     
     setMessages(prev => [...prev, {
       role: 'bot',
-      content: botResponse
+      content: botResponse,
+      timestamp: new Date().toISOString()
     }]);
   };
 
@@ -198,13 +221,25 @@ const ChatGPT = () => {
     }
   }, []);
 
+  // Auto-resize textarea
+  useEffect(() => {
+    if (textareaRef.current) {
+      textareaRef.current.style.height = 'auto';
+      textareaRef.current.style.height = `${Math.min(textareaRef.current.scrollHeight, 150)}px`;
+    }
+  }, [input]);
+
   // Función para manejar el envío de mensajes
   const handleSendMessage = () => {
     if (!input.trim()) return;
     
     lastUserInputRef.current = input;
     
-    const userMessage = { role: 'user', content: input };
+    const userMessage = { 
+      role: 'user', 
+      content: input,
+      timestamp: new Date().toISOString()
+    };
     setMessages(prev => [...prev, userMessage]);
     setInput('');
     setIsLoading(true);
@@ -219,7 +254,8 @@ const ChatGPT = () => {
       setTimeout(() => {
         setMessages(prev => [...prev, {
           role: 'bot',
-          content: `⚠️ El servicio de ${getChatTypeName()} no está disponible en este momento. Por favor, selecciona la opción "Chat Local" o vuelve a intentarlo más tarde.`
+          content: `⚠️ El servicio de ${getChatTypeName()} no está disponible en este momento. Por favor, selecciona la opción "Chat Local" o vuelve a intentarlo más tarde.`,
+          timestamp: new Date().toISOString()
         }]);
         setIsLoading(false);
         scrollToBottom();
@@ -240,7 +276,8 @@ const ChatGPT = () => {
       const respuesta = obtenerRespuesta(message);
       setMessages(prev => [...prev, {
         role: 'bot',
-        content: respuesta
+        content: respuesta,
+        timestamp: new Date().toISOString()
       }]);
       setIsLoading(false);
       // Forzar scroll después de recibir respuesta
@@ -281,44 +318,28 @@ const ChatGPT = () => {
   const handleClearChat = () => {
     setMessages([{
       role: 'bot',
-      content: getMensajeBienvenida(chatType)
+      content: getMensajeBienvenida(chatType),
+      timestamp: new Date().toISOString()
     }]);
   };
 
-  const tryReconnectSocket = () => {
-    console.log('🔄 Intentando reconectar con el servidor...');
-    
-    // Desconectar el socket existente si hay alguno
-    if (socketRef.current) {
-      socketRef.current.disconnect();
-    }
-    
-    // Inicializar un nuevo socket
-    initializeSocket();
-    
-    return new Promise((resolve) => {
-      // Dar un tiempo para que se establezca la conexión
-      setTimeout(() => {
-        resolve(socketRef.current && socketRef.current.connected);
-      }, 2000);
-    });
-  };
-
-  const handleChatTypeChange = async (event, newType) => {
-    if (newType !== null) {
+  const handleChatTypeChange = (newType) => {
+    if (newType !== chatType) {
       console.log(`🔄 Cambiando tipo de chat a: ${newType}`);
       
       setChatType(newType);
       setMessages([{
         role: 'bot',
-        content: getMensajeBienvenida(newType)
+        content: getMensajeBienvenida(newType),
+        timestamp: new Date().toISOString()
       }]);
       
       if ((newType === 'chatgpt' || newType === 'deepseek') && apiError) {
         setTimeout(() => {
           setMessages(prev => [...prev, {
             role: 'bot',
-            content: `⚠️ Aviso: El servicio de ${getChatTypeName()} podría no estar disponible. Puedes intentar usarlo, pero si no obtienes respuesta, por favor selecciona "Chat Local".`
+            content: `⚠️ Aviso: El servicio de ${getChatTypeName(newType)} podría no estar disponible. Puedes intentar usarlo, pero si no obtienes respuesta, por favor selecciona "Chat Local".`,
+            timestamp: new Date().toISOString()
           }]);
           scrollToBottom();
         }, 1000);
@@ -326,8 +347,8 @@ const ChatGPT = () => {
     }
   };
 
-  const getChatTypeName = () => {
-    switch(chatType) {
+  const getChatTypeName = (type = chatType) => {
+    switch(type) {
       case 'chatgpt':
         return 'ChatGPT';
       case 'deepseek':
@@ -340,224 +361,95 @@ const ChatGPT = () => {
   };
 
   return (
-    <Box 
-      className="chat-container"
-      sx={{ 
-        position: 'relative',
-        zIndex: 1000,
-        backgroundColor: 'background.paper',
-        borderRadius: 2,
-        boxShadow: 3,
-        border: 1,
-        borderColor: 'primary.main'
-      }}
-    >
-      <Stack 
-        direction="row" 
-        sx={{ 
-          p: 2,
-          borderBottom: 1,
-          borderColor: 'primary.main',
-          backgroundColor: 'background.default'
-        }}
-        justifyContent="space-between"
-        alignItems="center"
-      >
-        <Stack direction="row" spacing={2} alignItems="center">
-          <Typography variant="h6" color="primary">
-            Chat Virtual
-          </Typography>
-          <Chip 
-            label={getChatTypeName()}
-            color={apiError && chatType !== 'local' ? "error" : "primary"}
-            size="small"
-            sx={{ ml: 1 }}
-          />
-          <ToggleButtonGroup
-            value={chatType}
-            exclusive
-            onChange={handleChatTypeChange}
-            size="small"
+    <div className="modern-chat-container">
+      <div className="modern-chat-header">
+        <div className="modern-chat-header-left">
+          <h2 className="modern-chat-title">Asistente Virtual</h2>
+          <div className={`modern-chat-model-badge ${(chatType !== 'local' && apiError) ? 'error-status' : 'success-status'}`}>
+            {getChatTypeName()}
+          </div>
+          <div className="modern-chat-model-selector">
+            <button 
+              className={`modern-chat-button ${chatType === 'local' ? 'active' : ''}`}
+              onClick={() => handleChatTypeChange('local')}
+              title="Chat Local (Siempre disponible)"
+            >
+              Chat Local
+            </button>
+            <button 
+              className={`modern-chat-button ${chatType === 'deepseek' ? 'active' : ''}`}
+              onClick={() => handleChatTypeChange('deepseek')}
+              title={apiError ? "Deepseek (Intentar conectar)" : "Chat Deepseek"}
+            >
+              Deepseek
+            </button>
+            <button 
+              className={`modern-chat-button ${chatType === 'chatgpt' ? 'active' : ''}`}
+              onClick={() => handleChatTypeChange('chatgpt')}
+              title={apiError ? "ChatGPT (Intentar conectar)" : "ChatGPT"}
+            >
+              ChatGPT
+            </button>
+          </div>
+        </div>
+        <div className="modern-chat-actions">
+          <button 
+            className="modern-chat-button" 
+            onClick={handleClearChat}
+            title="Limpiar chat"
           >
-            <ToggleButton value="local">
-              <Tooltip title="Chat Local (Siempre disponible)">
-                <ChatIcon />
-              </Tooltip>
-            </ToggleButton>
-            <ToggleButton 
-              value="deepseek" 
-            >
-              <Tooltip title={apiError ? "Deepseek (Intentar conectar)" : "Chat Deepseek"}>
-                <Box
-                  component="img"
-                  src={deepseekIcon}
-                  alt="Deepseek"
-                  sx={{ 
-                    width: 36, 
-                    height: 24,
-                    filter: chatType === 'deepseek' ? 'brightness(0) invert(1)' : 'none',
-                    opacity: apiError && chatType !== 'deepseek' ? 0.7 : 1
-                  }}
-                />
-              </Tooltip>
-            </ToggleButton>
-            <ToggleButton 
-              value="chatgpt"
-            >
-              <Tooltip title={apiError ? "ChatGPT (Intentar conectar)" : "ChatGPT"}>
-                <Box
-                  component="img"
-                  src={gptIcon}
-                  alt="ChatGPT"
-                  sx={{ 
-                    width: 36, 
-                    height: 22,
-                    filter: chatType === 'chatgpt' ? 'brightness(0) invert(1)' : 'none',
-                    opacity: apiError && chatType !== 'chatgpt' ? 0.7 : 1
-                  }}
-                />
-              </Tooltip>
-            </ToggleButton>
-          </ToggleButtonGroup>
-        </Stack>
-        <IconButton
-          onClick={handleClearChat}
-          color="primary"
-          size="small"
-          title="Limpiar chat"
-        >
-          <DeleteIcon />
-        </IconButton>
-      </Stack>
+            <TrashIcon />
+          </button>
+        </div>
+      </div>
 
-      <Box 
-        ref={chatBoxRef}
-        className="chat-box"
-        sx={{ 
-          height: '350px',
-          overflow: 'auto',
-          p: 2,
-          backgroundColor: 'background.default',
-          scrollBehavior: 'smooth' // Añadir desplazamiento suave
-        }}
-      >
+      <div className="modern-chat-messages" ref={chatBoxRef}>
         {messages.map((msg, index) => (
-          <Stack
-            key={index}
-            direction="row"
-            spacing={1}
-            sx={{
-              mb: 2,
-              justifyContent: msg.role === 'user' ? 'flex-end' : 'flex-start'
-            }}
-          >
-            <Box
-              sx={{
-                display: 'flex',
-                gap: 1,
-                maxWidth: '80%',
-                backgroundColor: msg.role === 'user' ? 'primary.main' : 'background.paper',
-                color: msg.role === 'user' ? 'common.white' : 'text.primary',
-                p: 1.5,
-                borderRadius: 2,
-                boxShadow: 1
-              }}
-            >
-              <Avatar 
-                sx={{ 
-                  width: 28, 
-                  height: 28,
-                  bgcolor: msg.role === 'user' ? 'primary.dark' : 'primary.main'
-                }}
-              >
-                {msg.role === 'bot' ? <BotIcon /> : <PersonIcon />}
-              </Avatar>
-              <Typography 
-                variant="body1"
-                component="div" // Cambiar a div para mejor renderizado
-                sx={{ 
-                  wordBreak: 'break-word', // Asegurar que el texto largo se rompa correctamente
-                  overflowWrap: 'break-word'
-                }}
-              >
-                {msg.content}
-              </Typography>
-            </Box>
-          </Stack>
+          <div key={index} className={`modern-chat-message ${msg.role}`}>
+            <div className="modern-chat-avatar">
+              {msg.role === 'bot' ? <BotIcon /> : <UserIcon />}
+            </div>
+            <div className="modern-chat-bubble">
+              {msg.content}
+            </div>
+          </div>
         ))}
         
         {isLoading && (
-          <Stack
-            direction="row"
-            spacing={1}
-            sx={{
-              mb: 2,
-              p: 1.5,
-              borderRadius: 2,
-              backgroundColor: 'background.paper'
-            }}
-          >
-            <Avatar 
-              sx={{ 
-                width: 28, 
-                height: 28,
-                bgcolor: 'primary.main'
-              }}
-            >
+          <div className="modern-chat-message bot">
+            <div className="modern-chat-avatar">
               <BotIcon />
-            </Avatar>
-            <CircularProgress size={20} color="primary" />
-          </Stack>
+            </div>
+            <div className="modern-chat-typing">
+              <div className="modern-chat-typing-dot"></div>
+              <div className="modern-chat-typing-dot"></div>
+              <div className="modern-chat-typing-dot"></div>
+            </div>
+          </div>
         )}
-      </Box>
+      </div>
 
-      <Stack
-        direction="row"
-        spacing={1}
-        sx={{
-          p: 2,
-          borderTop: 1,
-          borderColor: 'primary.main',
-          backgroundColor: 'background.paper'
-        }}
-        component="form"
-        onSubmit={(e) => {
-          e.preventDefault();
-          handleSendMessage();
-        }}
-      >
-        <TextField
-          fullWidth
-          multiline
-          maxRows={4}
-        value={input}
-        onChange={(e) => setInput(e.target.value)}
+      <div className="modern-chat-input-container">
+        <textarea
+          ref={textareaRef}
+          className="modern-chat-input"
+          value={input}
+          onChange={(e) => setInput(e.target.value)}
           onKeyPress={handleKeyPress}
           placeholder="Escribe tu mensaje aquí..."
           disabled={isLoading}
-          size="small"
-          variant="outlined"
-          sx={{
-            '& .MuiOutlinedInput-root': {
-              '& fieldset': {
-                borderColor: 'primary.main',
-              },
-              '&:hover fieldset': {
-                borderColor: 'primary.light',
-              }
-            }
-          }}
-        />
-        <IconButton
-          color="primary"
+          rows="1"
+        ></textarea>
+        <button
+          className="modern-chat-send-button"
           onClick={handleSendMessage}
           disabled={isLoading || !input.trim()}
-          sx={{ alignSelf: 'flex-end' }}
+          title="Enviar mensaje"
         >
           <SendIcon />
-        </IconButton>
-      </Stack>
-    </Box>
+        </button>
+      </div>
+    </div>
   );
 };
 

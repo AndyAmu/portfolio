@@ -35,7 +35,7 @@ const Body = () => {
                     <Typography sx={{ fontSize: 50 }}></Typography>
                 </Box>
             </Box>
-            <Box sx={{ display: 'flex', justifyContent: 'space-around', alignItems: 'center' }} className='body2'>
+            <Box id="cv" sx={{ display: 'flex', justifyContent: 'space-around', alignItems: 'center' }} className='body2'>
                 <Box sx={{ textAlign: 'center', width: 400, display: 'flex', flexDirection: 'column', justifyContent: 'center', alignItems: 'center' }}>
                     <Typography sx={{
                         fontFamily: 'Bree Serif',
@@ -126,7 +126,7 @@ const Body = () => {
                 <Box sx={{
                     maxWidth: '1200px',
                     margin: '0 auto',
-                    padding: '0 1rem'
+                    padding: '0 1rem 6rem 1rem',
                 }}>
                     <ChatComponent />
                 </Box>
@@ -163,7 +163,7 @@ const Body = () => {
             </Box>
 
             <section id="contact">
-                <Box className="body" sx={{ paddingBottom: '3rem' }}>
+                <Box className="body" >
                     <Typography sx={{ 
                         fontFamily: 'Bree Serif', 
                         paddingTop: '5rem', 

@@ -6,7 +6,8 @@ export const translations = {
   en: {
     home: "Home",
     chat: "Chat",
-    contact: "CONTACT",
+    contact: "Contact",
+    cv: "Cv",
     portfolio: "Portfolio Andrés Amuchástegui",
     greeting: "Hi, I'm Andrés",
     introduction: "I am a person with good predisposition, creative and passionate. Here you can see my full CV.",
@@ -25,12 +26,14 @@ export const translations = {
     sending: "Sending...",
     sendMessage: "Send Message",
     successMessage: "Message sent successfully!",
-    errorMessage: "Error sending message. Please try again."
+    errorMessage: "Error sending message. Please try again.",
+    allRightsReserved: "All rights reserved AND®"
   },
   es: {
     home: "Inicio",
     chat: "Chat",
-    contact: "CONTACTO",
+    contact: "Contacto",
+    cv: "Cv",
     portfolio: "Portafolio Andrés Amuchástegui",
     greeting: "Hola, soy Andrés",
     introduction: "Soy una persona con buena predisposición, creativa y apasionada. Aquí puedes ver mi CV completo.",
@@ -49,7 +52,8 @@ export const translations = {
     sending: "Enviando...",
     sendMessage: "Enviar Mensaje",
     successMessage: "¡Mensaje enviado con éxito!",
-    errorMessage: "Error al enviar el mensaje. Por favor, intenta nuevamente."
+    errorMessage: "Error al enviar el mensaje. Por favor, intenta nuevamente.",
+    allRightsReserved: "Todos los derechos reservados AND®"
   }
 };
 
@@ -73,4 +77,4 @@ export const useLanguage = () => {
     throw new Error('useLanguage must be used within a LanguageProvider');
   }
   return context;
-}; 
+};

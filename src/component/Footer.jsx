@@ -1,7 +1,11 @@
 import React from 'react'
 import 'bootstrap/dist/css/bootstrap.min.css';
 import './styles/footer.css'
+import { useLanguage } from '../context/LanguageContext';
+
 const Footer = () => {
+    const { translations } = useLanguage();
+    
     return (
         <>
             <div>
@@ -32,7 +36,7 @@ const Footer = () => {
 
 
                             
-                            <p className='derechos'>All rights reserved AND®</p>
+                            <p className='derechos'>{translations.allRightsReserved}</p>
                         </div>
                     </div>
 
