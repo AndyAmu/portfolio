@@ -153,7 +153,7 @@
 .avatar::after {
     content: '';
     position: absolute;
-    background-image: url(../image/patagonia-and.jpg);
+    background-image: url(../image/patagonia-and.webp);
     background-position-y: 66%;
     background-position-x: 15%;
     background-size: 158%;
