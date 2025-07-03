@@ -9,6 +9,7 @@ import Button from '@mui/material/Button';
 import SmartToyIcon from '@mui/icons-material/SmartToy';
 import EmailIcon from '@mui/icons-material/Email';
 import HomeIcon from '@mui/icons-material/Home';
+import DescriptionIcon from '@mui/icons-material/Description';
 import BottomNavigation from '@mui/material/BottomNavigation';
 import BottomNavigationAction from '@mui/material/BottomNavigationAction';
 import Paper from '@mui/material/Paper';
@@ -52,6 +53,16 @@ function DrawerAppBar(props) {
                                 }
                             }}>
                                 <HomeIcon sx={{ mr: 1 }} /> {translations.home}
+                            </Button>
+                        </a>
+                        <a href="#cv" style={{ textDecoration: 'none' }}>
+                            <Button sx={{ 
+                                color: 'white',
+                                '&:hover': {
+                                    backgroundColor: 'rgba(255, 255, 255, 0.1)'
+                                }
+                            }}>
+                                <DescriptionIcon sx={{ mr: 1 }} /> {translations.cv}
                             </Button>
                         </a>
                         <a href="#chat" style={{ textDecoration: 'none' }}>
@@ -128,6 +139,12 @@ function DrawerAppBar(props) {
                         icon={<HomeIcon />} 
                         component="a"
                         href="#home"
+                    />
+                    <BottomNavigationAction 
+                        label={translations.cv} 
+                        icon={<DescriptionIcon />} 
+                        component="a"
+                        href="#cv"
                     />
                     <BottomNavigationAction 
                         label={translations.chat} 
