@@ -1,4 +1,4 @@
-import React from "react"
+﻿import React from "react"
 import { Box, Typography } from "@mui/material"
 import Avatar from '@mui/material/Avatar';
 import '../index.css'
@@ -14,12 +14,13 @@ import ChatComponent from './chatGPT';
 import SmartToyIcon from '@mui/icons-material/SmartToy';
 import ContactEmail from './ContactEmail';
 import { useLanguage } from '../context/LanguageContext';
+import ScrollFloat from './ScrollFloat';
 
 
 const Body = () => {
     const { translations, language } = useLanguage();
     
-    // URLs de los CVs según el idioma
+    // URLs de los CVs segun el idioma
     const cvUrls = {
         en: "https://drive.google.com/file/d/1BEMQj9VB7l3yvk5Jam9aAfZmnHxgIF96/view?usp=sharing",
         es: "https://drive.google.com/file/d/14-FGhRxK-rmz4bc6xiTsU7cX3yq5EbZf/view?usp=sharing"
@@ -29,9 +30,30 @@ const Body = () => {
         <>
 
             <Box id="home" sx={{ display: 'flex', justifyContent: 'center', alignItems: 'center', flexDirection: 'column' }} className="body">
-                <Typography className="andresamutitle" sx={{ fontFamily: 'Bree Serif', zIndex: 10, color: 'white' }}>ANDRÉS AMUCHÁSTEGUI</Typography>
-                <Typography className="andresamutitle2" sx={{ fontFamily: 'Bree Serif', zIndex: 10, color: 'white' }}>Full Stack Developer | Web | Mobile ㅤ<ComputerIcon sx={{ fontSize: '2.5rem' }} /> +<PhoneIphoneIcon sx={{ fontSize: '2.2rem' }} /></Typography>
-                <Box sx={{ color: 'white', display: 'flex', justifyContent: 'center', alignItems: 'center', zIndex: 100 }}>
+                <Typography className="andresamutitle" sx={{ fontFamily: 'Bree Serif', zIndex: 10, color: 'white' }}>
+                    <ScrollFloat
+                        animationDuration={1}
+                        ease='back.inOut(2)'
+                        scrollStart='center bottom+=50%'
+                        scrollEnd='bottom bottom-=40%'
+                        stagger={0.03}
+                    >
+                        ANDRÉS AMUCHÁSTEGUI
+                    </ScrollFloat>
+                </Typography>
+                <Typography className="andresamutitle2" sx={{ fontFamily: 'Bree Serif', zIndex: 10, color: 'white', display: 'flex', alignItems: 'center', gap: 1 }}>
+                    <ScrollFloat
+                        animationDuration={1}
+                        ease='back.inOut(2)'
+                        scrollStart='center bottom+=50%'
+                        scrollEnd='bottom bottom-=40%'
+                        stagger={0.03}
+                    >
+                        Full Stack Developer | Web | Mobile&nbsp;
+                        <ComputerIcon sx={{ fontSize: '2.5rem' }} /> + <PhoneIphoneIcon sx={{ fontSize: '2.2rem' }} />
+                    </ScrollFloat>
+                </Typography>
+                <Box sx={{ color: 'white', display: 'flex', justifyContent: 'center', alignItems: 'center', zIndex: 100, gap: 2 }}>
                     <Typography sx={{ fontSize: 50 }}></Typography>
                 </Box>
             </Box>
@@ -72,7 +94,7 @@ const Body = () => {
                 <Box sx={{ display: 'flex', flexDirection: 'column', justifyContent: 'center', alignItems: 'center' }}>
                     <Avatar
                         className="avatar"
-                        alt="Andrés Amuchástegui"
+                        alt="Andres Amuchastegui"
 
                     />
                     <Typography sx={{

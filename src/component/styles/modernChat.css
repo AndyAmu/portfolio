@@ -181,6 +181,11 @@
   order: 1;
 }
 
+.modern-chat-bubble a {
+  color: #0078ff;
+  text-decoration: underline;
+}
+
 /* Indicador de escritura */
 .modern-chat-typing {
   display: flex;

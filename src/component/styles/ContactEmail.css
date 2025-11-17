@@ -5,7 +5,7 @@
 
 /* Papel/tarjeta principal */
 .contact-paper {
-    background: linear-gradient(135deg, rgba(0, 0, 0, 0.9), rgba(60, 128, 231, 0.9)) !important;
+    background: linear-gradient(-45deg, #4c4f50, #000000, #4e4d4d, #212529)!important;
     backdrop-filter: blur(10px);
     border-radius: 16px !important;
     overflow: hidden;
@@ -35,7 +35,7 @@
 }
 
 .contact-icon {
-    color: #4a00e0;
+    color: #FFF;
     font-size: 2rem !important;
 }
 
@@ -143,7 +143,7 @@ input.MuiInputBase-input.contact-input-field:-webkit-autofill {
 }
 
 .contact-button {
-    background: linear-gradient(to right, #8e2de2, #4a00e0) !important;
+    background: linear-gradient(to right, #000000, #656466) !important;
     color: white !important;
     padding: 0.75rem 2rem !important;
     font-size: 1rem !important;
@@ -152,12 +152,12 @@ input.MuiInputBase-input.contact-input-field:-webkit-autofill {
     font-family: 'Bree Serif', serif !important;
     text-transform: none !important;
     transition: all 0.3s ease !important;
-    box-shadow: 0 4px 15px rgba(74, 0, 224, 0.3) !important;
+    box-shadow: 0 4px 15px rgba(20, 20, 20, 0.3) !important;
 }
 
 .contact-button:hover:not(:disabled) {
-    background: linear-gradient(to right, #9f43f8, #5a12f3) !important;
-    box-shadow: 0 6px 20px rgba(74, 0, 224, 0.5) !important;
+    background: linear-gradient(to right, #302f2f, #313033) !important;
+    box-shadow: 0 6px 20px rgba(52, 52, 53, 0.5) !important;
     transform: translateY(-2px);
 }
 

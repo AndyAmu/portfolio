@@ -8,6 +8,7 @@ import PageHome from './component/pageHome';
 import { LanguageProvider } from './context/LanguageContext';
 import { useEffect, useState } from 'react';
 import io from 'socket.io-client';
+import LetterGlitch from './component/LetterGlitch';
 
 // URL del backend (en producción será la URL de Render.com)
 const ENDPOINT = process.env.REACT_APP_API_URL || '';
@@ -41,6 +42,12 @@ function App() {
 
   return (
     <LanguageProvider>
+      <LetterGlitch
+        glitchSpeed={50}
+        centerVignette={false}
+        outerVignette={false}
+        smooth={true}
+      />
       <ResponsiveAppBar />
       <Routes>
         <Route

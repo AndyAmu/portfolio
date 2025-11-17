@@ -4,7 +4,7 @@
     --tooltip-height: 35px;
     --tooltip-width: 90px;
     --gap-between-tooltip-to-button: calc(var(--tooltip-height) + 3px);
-    --button-color: #1163ff;
+    --button-color: linear-gradient(to right, #000000, #656466) !important;
     --tooltip-color: #fff;
     width: var(--width);
     height: var(--height);
@@ -84,7 +84,7 @@
 }
 
 .button:hover {
-    background: #6c18ff;
+    background: #000000;
 }
 
 .button:hover .text {
@@ -115,8 +115,8 @@
 /* AVATAR */
 
 .avatar {
-    width: 300px !important;
-    height: 300px !important;
+    width: 400px !important;
+    height: 400px !important;
     background: #2e0707;
     position: relative;
     display: flex;
@@ -162,4 +162,10 @@
 }
 .css-o69gx8-MuiCardMedia-root {
     background-size: contain!important;
+}
+@media(max-width: 768px){
+    .avatar {
+    width: 300px !important;
+    height: 300px !important;
+}
 }

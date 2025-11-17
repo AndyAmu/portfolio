@@ -1,11 +1,6 @@
 import React, { useState, useEffect, useRef } from 'react';
 import './styles/modernChat.css'; // Importamos el nuevo estilo
 import io from 'socket.io-client';
-import { obtenerRespuesta } from '../utils/responses';
-
-// Importar las imágenes
-import gptIcon from './image/gpt.png';
-import deepseekIcon from './image/deepseek.svg';
 
 // Iconos para el chat
 const SendIcon = () => (
@@ -46,26 +41,10 @@ const ChatGPT = () => {
   const [messages, setMessages] = useState([]);
   const [input, setInput] = useState('');
   const [isLoading, setIsLoading] = useState(false);
-  const [chatType, setChatType] = useState('local');
   const [apiError, setApiError] = useState(false);
-  const [errorMessageShown, setErrorMessageShown] = useState(false);
   const socketRef = useRef(null);
-  const lastUserInputRef = useRef('');
   const chatBoxRef = useRef(null);
   const textareaRef = useRef(null);
-
-  const getMensajeBienvenida = (tipo) => {
-    switch(tipo) {
-      case 'chatgpt':
-        return '¡Hola! Estás usando ChatGPT. Este chat utiliza la API de OpenAI para responder tus preguntas.';
-      case 'deepseek':
-        return '¡Hola! Estás usando Deepseek. Este chat utiliza la API de Deepseek para responder tus preguntas.';
-      case 'local':
-        return '¡Hola! Estás usando el Chat Local. Puedes preguntarme sobre Andrés, sus proyectos, tecnologías o cualquier otra cosa.';
-      default:
-        return '¡Hola! Soy el asistente virtual de Andrés. ¿En qué puedo ayudarte?';
-    }
-  };
 
   const initializeSocket = () => {
     try {
@@ -78,35 +57,21 @@ const ChatGPT = () => {
       socketRef.current.on('connect', () => {
         console.log('🟢 Conectado al servidor');
         setApiError(false);
-        setErrorMessageShown(false);
       });
 
       socketRef.current.on('connect_error', (error) => {
         console.error('🔴 Error de conexión:', error);
         setApiError(true);
         
-        if (!errorMessageShown && (chatType === 'chatgpt' || chatType === 'deepseek')) {
-          setErrorMessageShown(true);
-          
-          const hasErrorMessage = messages.some(
-            msg => msg.role === 'bot' && 
-            (msg.content.includes('Error de conexión') || 
-             msg.content.includes('Utilizando Chat Local') ||
-             msg.content.includes('servicios externos'))
-          );
-          
-          if (!hasErrorMessage) {
-            setMessages(prev => [
-              ...prev,
-              {
-                role: 'bot',
-                content: '⚠️ Hay problemas de conexión con los servicios externos. Puedes seguir usando este chat, pero si no recibes respuestas, selecciona la opción "Chat Local".',
-                timestamp: new Date().toISOString()
-              }
-            ]);
-            scrollToBottom();
+        setMessages(prev => [
+          ...prev,
+          {
+            role: 'bot',
+            content: '⚠️ Hay problemas de conexión con el servidor. Por favor, intenta de nuevo más tarde.',
+            timestamp: new Date().toISOString()
           }
-        }
+        ]);
+        scrollToBottom();
       });
 
       socketRef.current.on('chat message', (response) => {
@@ -124,7 +89,7 @@ const ChatGPT = () => {
   useEffect(() => {
     setMessages([{
       role: 'bot',
-      content: getMensajeBienvenida('local'),
+      content: '👋 Hola, soy el asistente virtual de Andrés. Pregúntame lo que necesites saber sobre su perfil profesional.',
       timestamp: new Date().toISOString()
     }]);
     
@@ -147,15 +112,6 @@ const ChatGPT = () => {
           content: response.content,
           timestamp: new Date().toISOString()
         }]);
-        
-        setTimeout(() => {
-          setMessages(prev => [...prev, {
-            role: 'bot',
-            content: "Parece que hay problemas con este servicio. ¿Te gustaría cambiar al chat local? Puedes seleccionar 'Chat Local' arriba.",
-            timestamp: new Date().toISOString()
-          }]);
-        }, 1000);
-        
         return;
       }
       
@@ -175,10 +131,6 @@ const ChatGPT = () => {
       botResponse = response.text || response.message || 'Sin respuesta del servidor';
     } else {
       botResponse = 'Sin respuesta del servidor';
-    }
-    
-    if (botResponse === 'Sin respuesta del servidor') {
-      botResponse = "No se pudo obtener respuesta del servidor. ¿Te gustaría intentar con el chat local?";
     }
     
     setMessages(prev => [...prev, {
@@ -233,8 +185,6 @@ const ChatGPT = () => {
   const handleSendMessage = () => {
     if (!input.trim()) return;
     
-    lastUserInputRef.current = input;
-    
     const userMessage = { 
       role: 'user', 
       content: input,
@@ -247,14 +197,14 @@ const ChatGPT = () => {
     // Forzar scroll después de enviar un mensaje
     scrollToBottom();
     
-    console.log(`📤 Enviando mensaje en modo ${chatType}`);
+    console.log('📤 Enviando mensaje al servidor');
     
-    if ((chatType === 'chatgpt' || chatType === 'deepseek') && (apiError || !socketRef.current || !socketRef.current.connected)) {
-      console.log('⚠️ Usando chat externo sin conexión');
+    if (!socketRef.current || !socketRef.current.connected) {
+      console.log('⚠️ Socket no conectado');
       setTimeout(() => {
         setMessages(prev => [...prev, {
           role: 'bot',
-          content: `⚠️ El servicio de ${getChatTypeName()} no está disponible en este momento. Por favor, selecciona la opción "Chat Local" o vuelve a intentarlo más tarde.`,
+          content: '⚠️ No hay conexión con el servidor. Por favor, intenta de nuevo más tarde.',
           timestamp: new Date().toISOString()
         }]);
         setIsLoading(false);
@@ -263,101 +213,33 @@ const ChatGPT = () => {
       return;
     }
     
-    if (chatType === 'local' || apiError) {
-      handleLocalChat(input);
-    } else {
-      handleExternalChat(input);
-    }
-  };
-  
-  const handleLocalChat = (message) => {
-    console.log('🏠 Procesando chat local');
-    setTimeout(() => {
-      const respuesta = obtenerRespuesta(message);
-      setMessages(prev => [...prev, {
-        role: 'bot',
-        content: respuesta,
-        timestamp: new Date().toISOString()
-      }]);
-      setIsLoading(false);
-      // Forzar scroll después de recibir respuesta
-      scrollToBottom();
-    }, 500);
-  };
-  
-  const handleExternalChat = (message) => {
-    console.log(`🌐 Enviando a ${chatType}`);
-    if (!socketRef.current || !socketRef.current.connected) {
-      console.log('⚠️ Socket no conectado, usando chat local');
-      setApiError(true);
-      
-      handleLocalChat(message);
-      return;
-    }
-    
     socketRef.current.emit('chat message', {
-      content: message,
-      chatType: chatType
+      content: input
     });
     
+    // Volver a enfocar el textarea después de enviar el mensaje
     setTimeout(() => {
-      if (isLoading) {
-        console.log('⏱️ Timeout, usando chat local');
-        handleLocalChat(message);
+      if (textareaRef.current) {
+        textareaRef.current.focus();
       }
-    }, 10000);
+    }, 0);
   };
 
   const handleKeyPress = (e) => {
     if (e.key === 'Enter' && !e.shiftKey) {
       e.preventDefault();
       handleSendMessage();
+      
+      // No es necesario añadir el focus aquí ya que handleSendMessage ya lo hace
     }
   };
 
   const handleClearChat = () => {
     setMessages([{
       role: 'bot',
-      content: getMensajeBienvenida(chatType),
+      content: '👋 Hola, soy el asistente virtual de Andrés. Pregúntame lo que necesites saber sobre su perfil profesional.',
       timestamp: new Date().toISOString()
     }]);
-  };
-
-  const handleChatTypeChange = (newType) => {
-    if (newType !== chatType) {
-      console.log(`🔄 Cambiando tipo de chat a: ${newType}`);
-      
-      setChatType(newType);
-      setMessages([{
-        role: 'bot',
-        content: getMensajeBienvenida(newType),
-        timestamp: new Date().toISOString()
-      }]);
-      
-      if ((newType === 'chatgpt' || newType === 'deepseek') && apiError) {
-        setTimeout(() => {
-          setMessages(prev => [...prev, {
-            role: 'bot',
-            content: `⚠️ Aviso: El servicio de ${getChatTypeName(newType)} podría no estar disponible. Puedes intentar usarlo, pero si no obtienes respuesta, por favor selecciona "Chat Local".`,
-            timestamp: new Date().toISOString()
-          }]);
-          scrollToBottom();
-        }, 1000);
-      }
-    }
-  };
-
-  const getChatTypeName = (type = chatType) => {
-    switch(type) {
-      case 'chatgpt':
-        return 'ChatGPT';
-      case 'deepseek':
-        return 'Deepseek';
-      case 'local':
-        return 'Chat Local';
-      default:
-        return '';
-    }
   };
 
   return (
@@ -365,32 +247,6 @@ const ChatGPT = () => {
       <div className="modern-chat-header">
         <div className="modern-chat-header-left">
           <h2 className="modern-chat-title">Asistente Virtual</h2>
-          <div className={`modern-chat-model-badge ${(chatType !== 'local' && apiError) ? 'error-status' : 'success-status'}`}>
-            {getChatTypeName()}
-          </div>
-          <div className="modern-chat-model-selector">
-            <button 
-              className={`modern-chat-button ${chatType === 'local' ? 'active' : ''}`}
-              onClick={() => handleChatTypeChange('local')}
-              title="Chat Local (Siempre disponible)"
-            >
-              Chat Local
-            </button>
-            <button 
-              className={`modern-chat-button ${chatType === 'deepseek' ? 'active' : ''}`}
-              onClick={() => handleChatTypeChange('deepseek')}
-              title={apiError ? "Deepseek (Intentar conectar)" : "Chat Deepseek"}
-            >
-              Deepseek
-            </button>
-            <button 
-              className={`modern-chat-button ${chatType === 'chatgpt' ? 'active' : ''}`}
-              onClick={() => handleChatTypeChange('chatgpt')}
-              title={apiError ? "ChatGPT (Intentar conectar)" : "ChatGPT"}
-            >
-              ChatGPT
-            </button>
-          </div>
         </div>
         <div className="modern-chat-actions">
           <button 
@@ -410,7 +266,11 @@ const ChatGPT = () => {
               {msg.role === 'bot' ? <BotIcon /> : <UserIcon />}
             </div>
             <div className="modern-chat-bubble">
-              {msg.content}
+              {msg.role === 'bot' ? (
+                <div dangerouslySetInnerHTML={{ __html: msg.content }} />
+              ) : (
+                msg.content
+              )}
             </div>
           </div>
         ))}
