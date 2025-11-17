@@ -48,10 +48,13 @@ const ChatGPT = () => {
 
   const initializeSocket = () => {
     try {
-      socketRef.current = io('http://localhost:4000', {
+      const ENDPOINT = process.env.REACT_APP_API_URL || window.location.origin;
+      socketRef.current = io(ENDPOINT, {
         reconnection: true,
         reconnectionAttempts: 3,
-        timeout: 10000
+        timeout: 10000,
+        withCredentials: true,
+        transports: ['websocket', 'polling'],
       });
 
       socketRef.current.on('connect', () => {

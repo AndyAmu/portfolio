@@ -30,7 +30,7 @@ const Body = () => {
         <>
 
             <Box id="home" sx={{ display: 'flex', justifyContent: 'center', alignItems: 'center', flexDirection: 'column' }} className="body">
-                <Typography className="andresamutitle" sx={{ fontFamily: 'Bree Serif', zIndex: 10, color: 'white' }}>
+                <Typography component="div" className="andresamutitle" sx={{ fontFamily: 'Bree Serif', zIndex: 10, color: 'white' }}>
                     <ScrollFloat
                         animationDuration={1}
                         ease='back.inOut(2)'
@@ -41,7 +41,7 @@ const Body = () => {
                         ANDRÉS AMUCHÁSTEGUI
                     </ScrollFloat>
                 </Typography>
-                <Typography className="andresamutitle2" sx={{ fontFamily: 'Bree Serif', zIndex: 10, color: 'white', display: 'flex', alignItems: 'center', gap: 1 }}>
+                <Typography component="div" className="andresamutitle2" sx={{ fontFamily: 'Bree Serif', zIndex: 10, color: 'white', display: 'flex', alignItems: 'center', gap: 1 }}>
                     <ScrollFloat
                         animationDuration={1}
                         ease='back.inOut(2)'

@@ -12,19 +12,31 @@ import { RecursiveCharacterTextSplitter } from 'langchain/text_splitter';
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
-
 const app = express();
-app.use(cors());
-const server = http.createServer(app);
-const io = new Server(server, {
-    cors: {
-        origin: "*",
-        methods: ["GET", "POST"]
-    }
-});
+const allowedOrigins = [
+    "https://andresamuchastegui.com",
+    "https://www.andresamuchastegui.com",
+    "https://portfolio-f3m9.onrender.com",
+    "http://localhost:3000",
+    "http://localhost:4000",
+    process.env.CORS_ORIGIN
+].filter(Boolean);
 
 const PORT = process.env.PORT || 4000;
 
+app.use(cors({
+    origin: allowedOrigins.length ? allowedOrigins : "*",
+    credentials: true
+}));
+
+const server = http.createServer(app);
+const io = new Server(server, {
+    cors: {
+        origin: allowedOrigins.length ? allowedOrigins : "*",
+        methods: ["GET", "POST"],
+        credentials: true
+    }
+});
 let vectorStore;
 let cvData = {};
 
@@ -431,3 +443,4 @@ server.listen(PORT, async () => {
     console.log(`Server listening on ${PORT}`);
     await initializeChat();
 });
+
