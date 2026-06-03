@@ -2,7 +2,6 @@ import * as React from 'react';
 import PropTypes from 'prop-types';
 import AppBar from '@mui/material/AppBar';
 import Box from '@mui/material/Box';
-import Divider from '@mui/material/Divider';
 import Toolbar from '@mui/material/Toolbar';
 import Typography from '@mui/material/Typography';
 import Button from '@mui/material/Button';
@@ -19,8 +18,6 @@ function DrawerAppBar(props) {
     const { window } = props;
     const [value, setValue] = React.useState(0);
     const { language, toggleLanguage, translations } = useLanguage();
-
-    const container = window !== undefined ? () => window().document.body : undefined;
 
     return (
         <Box sx={{ display: 'flex' }}>
