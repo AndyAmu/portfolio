@@ -60,26 +60,26 @@ const respuestas = {
         es: [
             "<b>XCONS</b> (<a href='https://www.xcons.com/' target='_blank' style='color: #0078ff; text-decoration: underline;'>https://www.xcons.com/</a>) - Front-End - Soporte e Implementación | Noviembre 2022 - Actualidad.<br><br><b>Implementación y Desarrollo:</b><br>• Desarrollo, mantenimiento y optimización de soluciones web utilizando PHP, Magento 2, JavaScript, HTML5, CSS3, Bootstrap, jQuery y XML.<br>• Construcción de páginas web dinámicas con interacción mediante AJAX.<br>• Integración avanzada del motor de búsqueda Algolia con capacidades de inteligencia artificial.<br>• Diseño e implementación de calculadoras interactivas para presupuestar materiales.<br>• Desarrollo y mantenimiento de funcionalidades avanzadas en React.<br><br><b>Organización y Optimización:</b><br>• Creación de componentes reutilizables para optimizar la escalabilidad.<br>• Gestión integral y seguimiento de proyectos.<br>• Elaboración de manual de estilo completo.<br><br><b>Colaboración y Soporte:</b><br>• Trabajo colaborativo con diseñadores UX/UI.<br>• Participación en la redefinición de la identidad visual.<br>• Soporte técnico y operativo continuo.<br>• Uso de GitLab para gestión de versiones.",
             
-            "<b>IMPULZOONE</b> (<a href='https://impulzoone.com/' target='_blank' style='color: #0078ff; text-decoration: underline;'>https://impulzoone.com/</a>) - Front-End Developer y Project Manager | 2024 - Actualidad.<br><br><b>Gestión del Cliente y Proyecto:</b><br>• Gestión integral del cliente, desde captación hasta consolidación.<br>• Definición y planificación de estrategia digital.<br>• Coordinación entre stakeholders.<br><br><b>Implementación Técnica y Desarrollo:</b><br>• Desarrollo y personalización completa de tienda en TiendaNube.<br>• Modificación avanzada de plantillas (HTML/CSS y JavaScript).<br>• Implementación de carruseles y banners dinámicos.<br>• Creación de elementos visuales responsive desde Figma.<br><br><b>SEO y Marketing Digital:</b><br>• Integración de técnicas SEO en el código.<br>• Configuración del píxel de Meta Ads.<br>• Asesoramiento para anuncios en redes sociales.<br><br><b>Optimización de Rendimiento:</b><br>• Optimización de carga y performance del sitio.<br>• Solución de conflictos técnicos de integración.<br><br><b>Branding y Contenido:</b><br>• Colaboración en creación de contenido visual.<br>• Gestión de adaptación de contenidos para redes sociales.",
+            "<b>CONDAMIND</b> (<a href='https://condamind.com/' target='_blank' style='color: #0078ff; text-decoration: underline;'>https://condamind.com/</a>) - Front-End Developer & AI Integration | Junio 2023 - Marzo 2025.<br><br>Proyecto de desarrollo de solución conversacional basada en IA para automatizar la atención al cliente vía WhatsApp. Trabajo de desarrollo grupal y colaborativo junto a los colegas Alexis, Mati y Porta, gestionado a través de repositorios en GitHub.<br><br><b>Desarrollo Front-End:</b><br>• Diseño y optimización de interfaces responsivas con React, Material UI y Lovable.<br>• Creación de componentes modulares y reutilizables.<br>• Aplicación de técnicas avanzadas en React como lazy loading y hooks personalizados.<br><br><b>Integración de APIs y servicios:</b><br>• Conexión con APIs backend, usando Supabase como base de datos en tiempo real.<br>• Implementación de flujos conversacionales con OpenAI API.<br>• Automatización de reservas de turnos vía Twilio y Meta WhatsApp Business API.",
             
-            "<b>CONDAMIND</b> (<a href='https://condamind.com/' target='_blank' style='color: #0078ff; text-decoration: underline;'>https://condamind.com/</a>) - Front-End Developer & AI Integration | Junio 2023 - Marzo 2025.<br><br>Proyecto de desarrollo de solución conversacional basada en IA para automatizar la atención al cliente vía WhatsApp.<br><br><b>Desarrollo Front-End:</b><br>• Diseño y optimización de interfaces responsivas con React, Material UI y Lovable.<br>• Creación de componentes modulares y reutilizables.<br>• Aplicación de técnicas avanzadas en React como lazy loading y hooks personalizados.<br><br><b>Integración de APIs y servicios:</b><br>• Conexión con APIs backend, usando Supabase como base de datos en tiempo real.<br>• Implementación de flujos conversacionales con OpenAI API.<br>• Automatización de reservas de turnos vía Twilio y Meta WhatsApp Business API."
+            "<b>Freelancer en Upwork y Experiencia en Andorra</b><br><br><b>Desarrollador Full-Stack & Upwork:</b><br>• Andrés tiene su perfil profesional aprobado y activo en la plataforma Upwork, gestionando trabajos y licitaciones de proyectos de desarrollo a nivel internacional como Desarrollador Full-Stack.<br>• Trabajo continuado aplicando conocimientos técnicos avanzados en el ecosistema de React, Node.js, PHP y Magento 2.<br><br><b>Experiencia en Andorra:</b><br>• Durante su estancia en Andorra, además de ejercer como desarrollador, sumó valiosa experiencia trabajando en el sector hotelero durante la temporada de invierno, desarrollando excelentes habilidades interpersonales y de atención al cliente."
         ],
         en: [
             "<b>XCONS</b> (<a href='https://www.xcons.com/' target='_blank' style='color: #0078ff; text-decoration: underline;'>https://www.xcons.com/</a>) - Front-End - Support and Implementation | November 2022 - Present.<br><br><b>Implementation and Development:</b><br>• Development, maintenance, and optimization of web solutions using PHP, Magento 2, JavaScript, HTML5, CSS3, Bootstrap, jQuery, and XML.<br>• Construction of dynamic web pages with AJAX interaction.<br>• Advanced integration of the Algolia search engine with AI capabilities.<br>• Design and implementation of interactive calculators for budgeting materials.<br>• Development and maintenance of advanced React functionalities.<br><br><b>Organization and Optimization:</b><br>• Creation of reusable components to optimize scalability.<br>• Comprehensive project management and tracking.<br>• Development of a complete style manual.<br><br><b>Collaboration and Support:</b><br>• Collaborative work with UX/UI designers.<br>• Participation in visual identity redefinition.<br>• Continuous technical and operational support.<br>• Use of GitLab for version management.",
             
-            "<b>IMPULZOONE</b> (<a href='https://impulzoone.com/' target='_blank' style='color: #0078ff; text-decoration: underline;'>https://impulzoone.com/</a>) - Front-End Developer and Project Manager | 2024 - Present.<br><br><b>Client and Project Management:</b><br>• Comprehensive client management, from acquisition to consolidation.<br>• Definition and planning of digital strategy.<br>• Coordination between stakeholders.<br><br><b>Technical Implementation and Development:</b><br>• Complete development and customization of TiendaNube store.<br>• Advanced template modification (HTML/CSS and JavaScript).<br>• Implementation of dynamic carousels and banners.<br>• Creation of responsive visual elements from Figma.<br><br><b>SEO and Digital Marketing:</b><br>• Integration of SEO techniques in the code.<br>• Configuration of Meta Ads pixel.<br>• Consulting for social media ads.<br><br><b>Performance Optimization:</b><br>• Site load and performance optimization.<br>• Resolution of technical integration conflicts.<br><br><b>Branding and Content:</b><br>• Collaboration in visual content creation.<br>• Management of content adaptation for social media.",
+            "<b>CONDAMIND</b> (<a href='https://condamind.com/' target='_blank' style='color: #0078ff; text-decoration: underline;'>https://condamind.com/</a>) - Front-End Developer & AI Integration | June 2023 - March 2025.<br><br>Development project of an AI-based conversational solution to automate customer service via WhatsApp. It is a group collaborative development work alongside his colleagues Alexis, Mati, and Porta, managed through GitHub repositories.<br><br><b>Front-End Development:</b><br>• Design and optimization of responsive interfaces with React, Material UI, and Lovable.<br>• Creation of modular and reusable components.<br>• Application of advanced React techniques such as lazy loading and custom hooks.<br><br><b>API and Service Integration:</b><br>• Connection with backend APIs, using Supabase as a real-time database.<br>• Implementation of conversational flows with OpenAI API.<br>• Automation of appointment bookings via Twilio and Meta WhatsApp Business API.",
             
-            "<b>CONDAMIND</b> (<a href='https://condamind.com/' target='_blank' style='color: #0078ff; text-decoration: underline;'>https://condamind.com/</a>) - Front-End Developer & AI Integration | June 2023 - March 2025.<br><br>Development project of an AI-based conversational solution to automate customer service via WhatsApp.<br><br><b>Front-End Development:</b><br>• Design and optimization of responsive interfaces with React, Material UI, and Lovable.<br>• Creation of modular and reusable components.<br>• Application of advanced React techniques such as lazy loading and custom hooks.<br><br><b>API and Service Integration:</b><br>• Connection with backend APIs, using Supabase as a real-time database.<br>• Implementation of conversational flows with OpenAI API.<br>• Automation of appointment bookings via Twilio and Meta WhatsApp Business API."
+            "<b>Upwork Freelancer & Experience in Andorra</b><br><br><b>Full-Stack Developer & Upwork:</b><br>• Andrés has his professional profile approved and active on Upwork, allowing him to manage international development projects and bids as a Full-Stack Developer.<br>• Continuous work applying advanced technical knowledge in the React, Node.js, PHP, and Magento 2 ecosystem.<br><br><b>Experience in Andorra:</b><br>• During his stay in Andorra, in addition to working as a developer, he gained valuable experience working in the hotel sector during the winter season, developing strong customer service skills."
         ]
     },
     
     // Respuesta general sobre experiencia laboral
     experiencia_general: {
         es: [
-            "Entre los trabajos más relevantes, Andrés ha trabajado para estas empresas: <br><br><b>XCONS</b> - Front-End - Soporte e Implementación<br><b>CONDAMIND</b> - Front-End Developer & AI Integration<br><b>IMPULZOONE</b> - Front-End Developer y Project Manager<br><br>¿Quieres saber cuál fue su rol en alguna de estas empresas?"
+            "Entre sus experiencias más relevantes, Andrés trabaja de manera continuada como <b>Desarrollador Full-Stack</b> (React, Node.js, PHP, Magento 2) para empresas como <b>XCONS</b>. También tiene experiencia como <b>Freelancer en Upwork</b> a nivel internacional, ha participado en proyectos colaborativos como <b>CONDAMIND</b>, y cuenta con experiencia laboral y de vida en <b>Andorra</b> (incluyendo el sector hotelero en invierno).<br><br>¿Quieres saber más sobre su rol en alguno de estos lugares?"
         ],
         en: [
-            "Among his most relevant jobs, Andrés has worked for these companies: <br><br><b>XCONS</b> - Front-End - Support and Implementation<br><b>CONDAMIND</b> - Front-End Developer & AI Integration<br><b>IMPULZOONE</b> - Front-End Developer and Project Manager<br><br>Would you like to know about his role in any of these companies?"
+            "Among his most relevant experiences, Andrés works continuously as a <b>Full-Stack Developer</b> (React, Node.js, PHP, Magento 2) for companies like <b>XCONS</b>. He also has experience as an international <b>Freelancer on Upwork</b>, has participated in collaborative projects like <b>CONDAMIND</b>, and has work experience in <b>Andorra</b> (including the hotel sector during the winter).<br><br>Would you like to know more about his role in any of these places?"
         ]
     },
     
@@ -92,34 +92,36 @@ const respuestas = {
             "<b>XCONS</b> (<a href='https://www.xcons.com/' target='_blank' style='color: #0078ff; text-decoration: underline;'>https://www.xcons.com/</a>) - Front-End - Support and Implementation | November 2022 - Present.<br><br><b>Implementation and Development:</b><br>• Development, maintenance, and optimization of web solutions using PHP, Magento 2, JavaScript, HTML5, CSS3, Bootstrap, jQuery, and XML.<br>• Construction of dynamic web pages with AJAX interaction.<br>• Advanced integration of the Algolia search engine with AI capabilities.<br>• Design and implementation of interactive calculators for budgeting materials.<br>• Development and maintenance of advanced React functionalities.<br><br><b>Organization and Optimization:</b><br>• Creation of reusable components to optimize scalability.<br>• Comprehensive project management and tracking.<br>• Development of a complete style manual.<br><br><b>Collaboration and Support:</b><br>• Collaborative work with UX/UI designers.<br>• Participation in visual identity redefinition.<br>• Continuous technical and operational support.<br>• Use of GitLab for version management."
         ]
     },
-    impulzoone: {
-        es: [
-            "<b>IMPULZOONE</b> (<a href='https://impulzoone.com/' target='_blank' style='color: #0078ff; text-decoration: underline;'>https://impulzoone.com/</a>) - Front-End Developer y Project Manager | 2024 - Actualidad.<br><br><b>Gestión del Cliente y Proyecto:</b><br>• Gestión integral del cliente, desde captación hasta consolidación.<br>• Definición y planificación de estrategia digital.<br>• Coordinación entre stakeholders.<br><br><b>Implementación Técnica y Desarrollo:</b><br>• Desarrollo y personalización completa de tienda en TiendaNube.<br>• Modificación avanzada de plantillas (HTML/CSS y JavaScript).<br>• Implementación de carruseles y banners dinámicos.<br>• Creación de elementos visuales responsive desde Figma.<br><br><b>SEO y Marketing Digital:</b><br>• Integración de técnicas SEO en el código.<br>• Configuración del píxel de Meta Ads.<br>• Asesoramiento para anuncios en redes sociales.<br><br><b>Optimización de Rendimiento:</b><br>• Optimización de carga y performance del sitio.<br>• Solución de conflictos técnicos de integración.<br><br><b>Branding y Contenido:</b><br>• Colaboración en creación de contenido visual.<br>• Gestión de adaptación de contenidos para redes sociales."
-        ],
-        en: [
-            "<b>IMPULZOONE</b> (<a href='https://impulzoone.com/' target='_blank' style='color: #0078ff; text-decoration: underline;'>https://impulzoone.com/</a>) - Front-End Developer and Project Manager | 2024 - Present.<br><br><b>Client and Project Management:</b><br>• Comprehensive client management, from acquisition to consolidation.<br>• Definition and planning of digital strategy.<br>• Coordination between stakeholders.<br><br><b>Technical Implementation and Development:</b><br>• Complete development and customization of TiendaNube store.<br>• Advanced template modification (HTML/CSS and JavaScript).<br>• Implementation of dynamic carousels and banners.<br>• Creation of responsive visual elements from Figma.<br><br><b>SEO and Digital Marketing:</b><br>• Integration of SEO techniques in the code.<br>• Configuration of Meta Ads pixel.<br>• Consulting for social media ads.<br><br><b>Performance Optimization:</b><br>• Site load and performance optimization.<br>• Resolution of technical integration conflicts.<br><br><b>Branding and Content:</b><br>• Collaboration in visual content creation.<br>• Management of content adaptation for social media."
-        ]
-    },
     condamind: {
         es: [
-            "<b>CONDAMIND</b> (<a href='https://condamind.com/' target='_blank' style='color: #0078ff; text-decoration: underline;'>https://condamind.com/</a>) - Front-End Developer & AI Integration | Junio 2023 - Marzo 2025.<br><br>Proyecto de desarrollo de solución conversacional basada en IA para automatizar la atención al cliente vía WhatsApp.<br><br><b>Desarrollo Front-End:</b><br>• Diseño y optimización de interfaces responsivas con React, Material UI y Lovable.<br>• Creación de componentes modulares y reutilizables.<br>• Aplicación de técnicas avanzadas en React como lazy loading y hooks personalizados.<br><br><b>Integración de APIs y servicios:</b><br>• Conexión con APIs backend, usando Supabase como base de datos en tiempo real.<br>• Implementación de flujos conversacionales con OpenAI API.<br>• Automatización de reservas de turnos vía Twilio y Meta WhatsApp Business API."
+            "<b>CONDAMIND</b> (<a href='https://condamind.com/' target='_blank' style='color: #0078ff; text-decoration: underline;'>https://condamind.com/</a>) - Front-End Developer & AI Integration | Junio 2023 - Marzo 2025.<br><br>Proyecto de desarrollo de solución conversacional basada en IA para automatizar la atención al cliente vía WhatsApp. Trabajo de desarrollo grupal y colaborativo junto a los colegas Alexis, Mati y Porta, gestionado a través de repositorios en GitHub.<br><br><b>Desarrollo Front-End:</b><br>• Diseño y optimización de interfaces responsivas con React, Material UI y Lovable.<br>• Creación de componentes modulares y reutilizables.<br>• Aplicación de técnicas avanzadas en React como lazy loading y hooks personalizados.<br><br><b>Integración de APIs y servicios:</b><br>• Conexión con APIs backend, usando Supabase como base de datos en tiempo real.<br>• Implementación de flujos conversacionales con OpenAI API.<br>• Automatización de reservas de turnos vía Twilio y Meta WhatsApp Business API."
         ],
         en: [
-            "<b>CONDAMIND</b> (<a href='https://condamind.com/' target='_blank' style='color: #0078ff; text-decoration: underline;'>https://condamind.com/</a>) - Front-End Developer & AI Integration | June 2023 - March 2025.<br><br>Development project of an AI-based conversational solution to automate customer service via WhatsApp.<br><br><b>Front-End Development:</b><br>• Design and optimization of responsive interfaces with React, Material UI, and Lovable.<br>• Creation of modular and reusable components.<br>• Application of advanced React techniques such as lazy loading and custom hooks.<br><br><b>API and Service Integration:</b><br>• Connection with backend APIs, using Supabase as a real-time database.<br>• Implementation of conversational flows with OpenAI API.<br>• Automation of appointment bookings via Twilio and Meta WhatsApp Business API."
+            "<b>CONDAMIND</b> (<a href='https://condamind.com/' target='_blank' style='color: #0078ff; text-decoration: underline;'>https://condamind.com/</a>) - Front-End Developer & AI Integration | June 2023 - March 2025.<br><br>Development project of an AI-based conversational solution to automate customer service via WhatsApp. It is a group collaborative development work alongside his colleagues Alexis, Mati, and Porta, managed through GitHub repositories.<br><br><b>Front-End Development:</b><br>• Design and optimization of responsive interfaces with React, Material UI, and Lovable.<br>• Creation of modular and reusable components.<br>• Application of advanced React techniques such as lazy loading and custom hooks.<br><br><b>API and Service Integration:</b><br>• Connection with backend APIs, using Supabase as a real-time database.<br>• Implementation of conversational flows with OpenAI API.<br>• Automation of appointment bookings via Twilio and Meta WhatsApp Business API."
+        ]
+    },
+    seguimiento_empresas: {
+        es: [
+            "¡Perfecto! ¿Sobre cuál de estas experiencias te gustaría conocer más detalles? Puedes preguntarme por <b>XCONS</b> o <b>CONDAMIND</b>.",
+            "¡Claro! Dime, ¿te interesa saber más sobre el rol en <b>XCONS</b> o sobre <b>CONDAMIND</b>?"
+        ],
+        en: [
+            "Great! Which of these experiences would you like to know more about? You can ask me about <b>XCONS</b> or <b>CONDAMIND</b>.",
+            "Sure! Tell me, are you interested in <b>XCONS</b> or <b>CONDAMIND</b>?"
         ]
     },
     
     // Educación y formación
     educacion: {
         es: [
-            "Andrés tiene formación en ingeniería informática y ha complementado sus estudios con cursos especializados en desarrollo web, React, Node.js y otras tecnologías modernas.",
-            "En cuanto a su educación, Andrés se ha formado en tecnologías modernas de desarrollo y sigue aprendiendo constantemente para mantenerse actualizado en este campo tan dinámico.",
-            "Andrés ha realizado diversos cursos y certificaciones en plataformas como Udemy, Coursera y freeCodeCamp para perfeccionar sus habilidades técnicas."
+            "🎓 <b>MindHub Bootcamp (2022):</b> Más de 700 horas de cursado intensivo en Desarrollo Full Stack (MERN).<br><br>🎥 <b>Univ. Nacional de Córdoba (2018-2022):</b> Tecnicatura en Cine y Artes Audiovisuales.<br><br>💻 <b>Inst. Dr. Bernardo Houssay (2013-2016):</b> Técnico en Redes e Infraestructura.<br><br>⚙️ <b>Inst. La Falda (2006-2011):</b> Técnico Mecánico.",
+            "La formación académica de Andrés incluye un <b>Bootcamp en Desarrollo Full Stack (MERN)</b> en MindHub (2022) con más de 700 horas, además de una <b>Tecnicatura en Cine y Artes Audiovisuales</b> en la Universidad Nacional de Córdoba. También tiene experiencia previa como Técnico en Redes e Infraestructura.",
+            "Andrés cuenta con una sólida base técnica y creativa: se graduó del <b>Bootcamp Full Stack de MindHub</b> (MERN), estudió <b>Cine y Artes Audiovisuales</b> en la UNC, y posee títulos técnicos en <b>Redes e Infraestructura</b> y <b>Mecánica</b>. Sigue aprendiendo constantemente para mantenerse actualizado."
         ],
         en: [
-            "Andrés has a background in computer engineering and has complemented his studies with specialized courses in web development, React, Node.js, and other modern technologies.",
-            "Regarding his education, Andrés has trained in modern development technologies and continues to learn constantly to stay updated in this dynamic field.",
-            "Andrés has completed various courses and certifications on platforms such as Udemy, Coursera, and freeCodeCamp to perfect his technical skills."
+            "🎓 <b>MindHub Bootcamp (2022):</b> Over 700 hours of intensive Full Stack Development (MERN).<br><br>🎥 <b>National University of Córdoba (2018-2022):</b> Degree in Film and Audiovisual Arts.<br><br>💻 <b>Dr. Bernardo Houssay Institute (2013-2016):</b> Network and Infrastructure Technician.<br><br>⚙️ <b>La Falda Institute (2006-2011):</b> Mechanical Technician.",
+            "Andrés's academic background includes a <b>Full Stack Development (MERN) Bootcamp</b> at MindHub (2022) with over 700 hours, as well as a <b>Degree in Film and Audiovisual Arts</b> from the National University of Córdoba. He is also a Network and Infrastructure Technician.",
+            "Andrés has a solid technical foundation: he graduated from the <b>MindHub Full Stack Bootcamp</b> (MERN), studied <b>Film and Audiovisual Arts</b> at UNC, and holds technical degrees in <b>Networks and Infrastructure</b> and <b>Mechanics</b>. He continues learning constantly to stay updated."
         ]
     },
     // Habilidades técnicas
@@ -138,27 +140,27 @@ const respuestas = {
     // Proyectos realizados
     proyectos: {
         es: [
-            "Andrés ha trabajado en diversos proyectos, incluyendo aplicaciones web, sistemas de gestión, e-commerce y sitios web corporativos. Este portfolio con asistente virtual integrado es uno de sus proyectos más recientes.",
-            "Entre los proyectos destacados de Andrés se encuentran aplicaciones de comercio electrónico, dashboards administrativos, y plataformas de gestión de contenidos personalizadas.",
-            "Andrés ha desarrollado proyectos utilizando el stack MERN (MongoDB, Express, React, Node.js), creando soluciones completas desde el diseño hasta la implementación."
+            "Andrés ha desarrollado diversos proyectos destacados, entre ellos:<br><br>• <b>Gustavo Fleiuss Arte (Gus Art):</b> Desarrollo integral de galería digital y e-commerce. Configuración de catálogo, integración de pasarelas de pago (Mercado Pago, PayPal) y creación de manuales de gestión operativa en WordPress y WooCommerce (tareas gestionadas vía Trello).<br><br>• <b>Chiringuito (Valencia):</b> Sitio web bilingüe con enfoque 'Mobile-First' usando React, Vite y Tailwind CSS, logrando una interfaz moderna y optimizada.<br><br>• <b>Condamind:</b> Solución de IA conversacional, trabajo colaborativo junto a Alexis, Mati y Porta, gestionado en GitHub.",
+            "Entre los proyectos de Andrés se encuentran: <b>Gustavo Fleiuss Arte (Gus Art)</b> (una plataforma e-commerce de arte digital con WordPress), <b>Chiringuito</b> en Valencia (un sitio bilingüe Mobile-First con React y Tailwind CSS), y <b>Condamind</b> (un desarrollo grupal de IA conversacional junto a Alexis, Mati y Porta).",
+            "Andrés ha trabajado en proyectos como <b>Gus Art</b> (e-commerce y galería digital con integraciones de pago), <b>Chiringuito (Valencia)</b> (sitio web optimizado para móviles con React y Vite), y proyectos grupales colaborativos como <b>Condamind</b>."
         ],
         en: [
-            "Andrés ha trabajado en diversos proyectos, incluyendo aplicaciones web, sistemas de gestión, e-commerce y sitios web corporativos. Este portfolio con asistente virtual integrado es uno de sus proyectos más recientes.",
-            "Entre los proyectos destacados de Andrés se encuentran aplicaciones de comercio electrónico, dashboards administrativos, y plataformas de gestión de contenidos personalizadas.",
-            "Andrés ha desarrollado proyectos utilizando el stack MERN (MongoDB, Express, React, Node.js), creando soluciones completas desde el diseño hasta la implementación."
+            "Andrés has developed several notable projects, including:<br><br>• <b>Gustavo Fleiuss Arte (Gus Art):</b> Comprehensive development of a digital gallery and e-commerce. Catalog setup, payment gateway integration (Mercado Pago, PayPal), and creation of operational manuals in WordPress and WooCommerce (tasks managed via Trello).<br><br>• <b>Chiringuito (Valencia):</b> Bilingual 'Mobile-First' website using React, Vite, and Tailwind CSS, achieving a modern and optimized interface.<br><br>• <b>Condamind:</b> Conversational AI solution, collaborative work with Alexis, Mati, and Porta, managed via GitHub.",
+            "Among Andrés's projects are: <b>Gustavo Fleiuss Arte (Gus Art)</b> (a digital art e-commerce platform with WordPress), <b>Chiringuito</b> in Valencia (a bilingual Mobile-First site with React and Tailwind CSS), and <b>Condamind</b> (a group conversational AI development alongside Alexis, Mati, and Porta).",
+            "Andrés has worked on projects such as <b>Gus Art</b> (e-commerce and digital gallery with payment integrations), <b>Chiringuito (Valencia)</b> (mobile-optimized website with React and Vite), and collaborative group projects like <b>Condamind</b>."
         ]
     },
     // Información de contacto
     contacto: {
         es: [
-            "Puedes contactar con Andrés a través de LinkedIn: https://www.linkedin.com/in/andr%C3%A9s-amuch%C3%A1stegui-3b47ab21b/, por email a amuchastegui1994@gmail.com o por WhatsApp al +543517720552.",
-            "Si estás interesado en contactar con Andrés, puedes hacerlo a través de su LinkedIn: https://www.linkedin.com/in/andr%C3%A9s-amuch%C3%A1stegui-3b47ab21b/, email: amuchastegui1994@gmail.com o WhatsApp: +543517720552.",
-            "La mejor manera de contactar a Andrés es por email a amuchastegui1994@gmail.com, por WhatsApp al +543517720552 o a través de su perfil de LinkedIn: https://www.linkedin.com/in/andr%C3%A9s-amuch%C3%A1stegui-3b47ab21b/."
+            "Puedes contactar con Andrés a través de su <a href='https://www.linkedin.com/in/andr%C3%A9s-amuch%C3%A1stegui-3b47ab21b/' target='_blank' style='color: #0078ff; text-decoration: underline;'>LinkedIn</a>, por email a <a href='mailto:amuchastegui1994@gmail.com' style='color: #0078ff; text-decoration: underline;'>amuchastegui1994@gmail.com</a> o por WhatsApp al <a href='https://wa.me/543517720552' target='_blank' style='color: #0078ff; text-decoration: underline;'>+54 351 7720552</a>.",
+            "Si estás interesado en contactar con Andrés, puedes hacerlo a través de su <a href='https://www.linkedin.com/in/andr%C3%A9s-amuch%C3%A1stegui-3b47ab21b/' target='_blank' style='color: #0078ff; text-decoration: underline;'>LinkedIn</a>, escribir al email <a href='mailto:amuchastegui1994@gmail.com' style='color: #0078ff; text-decoration: underline;'>amuchastegui1994@gmail.com</a> o por WhatsApp: <a href='https://wa.me/543517720552' target='_blank' style='color: #0078ff; text-decoration: underline;'>+54 351 7720552</a>.",
+            "La mejor manera de contactar a Andrés es por email a <a href='mailto:amuchastegui1994@gmail.com' style='color: #0078ff; text-decoration: underline;'>amuchastegui1994@gmail.com</a>, por WhatsApp al <a href='https://wa.me/543517720552' target='_blank' style='color: #0078ff; text-decoration: underline;'>+54 351 7720552</a> o a través de su perfil de <a href='https://www.linkedin.com/in/andr%C3%A9s-amuch%C3%A1stegui-3b47ab21b/' target='_blank' style='color: #0078ff; text-decoration: underline;'>LinkedIn</a>."
         ],
         en: [
-            "You can contact Andrés through LinkedIn: https://www.linkedin.com/in/andr%C3%A9s-amuch%C3%A1stegui-3b47ab21b/, by email at amuchastegui1994@gmail.com, or by WhatsApp at +543517720552.",
-            "If you're interested in contacting Andrés, you can do so through his LinkedIn: https://www.linkedin.com/in/andr%C3%A9s-amuch%C3%A1stegui-3b47ab21b/, email: amuchastegui1994@gmail.com or WhatsApp: +543517720552.",
-            "The best way to contact Andrés is by email at amuchastegui1994@gmail.com, by WhatsApp at +543517720552 or through his LinkedIn profile: https://www.linkedin.com/in/andr%C3%A9s-amuch%C3%A1stegui-3b47ab21b/."
+            "You can contact Andrés through his <a href='https://www.linkedin.com/in/andr%C3%A9s-amuch%C3%A1stegui-3b47ab21b/' target='_blank' style='color: #0078ff; text-decoration: underline;'>LinkedIn</a>, by email at <a href='mailto:amuchastegui1994@gmail.com' style='color: #0078ff; text-decoration: underline;'>amuchastegui1994@gmail.com</a>, or by WhatsApp at <a href='https://wa.me/543517720552' target='_blank' style='color: #0078ff; text-decoration: underline;'>+54 351 7720552</a>.",
+            "If you're interested in contacting Andrés, you can do so through his <a href='https://www.linkedin.com/in/andr%C3%A9s-amuch%C3%A1stegui-3b47ab21b/' target='_blank' style='color: #0078ff; text-decoration: underline;'>LinkedIn</a>, email: <a href='mailto:amuchastegui1994@gmail.com' style='color: #0078ff; text-decoration: underline;'>amuchastegui1994@gmail.com</a> or WhatsApp: <a href='https://wa.me/543517720552' target='_blank' style='color: #0078ff; text-decoration: underline;'>+54 351 7720552</a>.",
+            "The best way to contact Andrés is by email at <a href='mailto:amuchastegui1994@gmail.com' style='color: #0078ff; text-decoration: underline;'>amuchastegui1994@gmail.com</a>, by WhatsApp at <a href='https://wa.me/543517720552' target='_blank' style='color: #0078ff; text-decoration: underline;'>+54 351 7720552</a> or through his <a href='https://www.linkedin.com/in/andr%C3%A9s-amuch%C3%A1stegui-3b47ab21b/' target='_blank' style='color: #0078ff; text-decoration: underline;'>LinkedIn profile</a>."
         ]
     },
     // Información personal
@@ -177,27 +179,27 @@ const respuestas = {
     // Respuestas para contratación y reuniones
     contratacion: {
         es: [
-            "¡Genial! Si estás interesado en contratar a Andrés, puedes contactarlo directamente a través de su LinkedIn: https://www.linkedin.com/in/andr%C3%A9s-amuch%C3%A1stegui-3b47ab21b/, por email a amuchastegui1994@gmail.com o por WhatsApp al +543517720552. Estará encantado de discutir tu proyecto y cómo puede ayudarte.",
-            "Si quieres contratar a Andrés para un proyecto, puedes enviarle un mensaje por LinkedIn: https://www.linkedin.com/in/andr%C3%A9s-amuch%C3%A1stegui-3b47ab21b/, escribirle a su email amuchastegui1994@gmail.com o contactarlo por WhatsApp al +543517720552 para discutir los detalles.",
-            "Para contratar los servicios de Andrés, te recomiendo contactarlo directamente por WhatsApp al +543517720552, por email a amuchastegui1994@gmail.com o a través de su perfil de LinkedIn: https://www.linkedin.com/in/andr%C3%A9s-amuch%C3%A1stegui-3b47ab21b/. Él te responderá lo antes posible."
+            "¡Genial! Si estás interesado en contratar a Andrés, puedes contactarlo directamente a través de su <a href='https://www.linkedin.com/in/andr%C3%A9s-amuch%C3%A1stegui-3b47ab21b/' target='_blank' style='color: #0078ff; text-decoration: underline;'>LinkedIn</a>, por email a <a href='mailto:amuchastegui1994@gmail.com' style='color: #0078ff; text-decoration: underline;'>amuchastegui1994@gmail.com</a> o por WhatsApp al <a href='https://wa.me/543517720552' target='_blank' style='color: #0078ff; text-decoration: underline;'>+54 351 7720552</a>. Estará encantado de discutir tu proyecto.",
+            "Si quieres contratar a Andrés para un proyecto, envíale un mensaje por <a href='https://www.linkedin.com/in/andr%C3%A9s-amuch%C3%A1stegui-3b47ab21b/' target='_blank' style='color: #0078ff; text-decoration: underline;'>LinkedIn</a>, escríbele a <a href='mailto:amuchastegui1994@gmail.com' style='color: #0078ff; text-decoration: underline;'>amuchastegui1994@gmail.com</a> o contáctalo por WhatsApp al <a href='https://wa.me/543517720552' target='_blank' style='color: #0078ff; text-decoration: underline;'>+54 351 7720552</a>.",
+            "Para contratar sus servicios, te recomiendo contactarlo por WhatsApp al <a href='https://wa.me/543517720552' target='_blank' style='color: #0078ff; text-decoration: underline;'>+54 351 7720552</a>, por email a <a href='mailto:amuchastegui1994@gmail.com' style='color: #0078ff; text-decoration: underline;'>amuchastegui1994@gmail.com</a> o a través de <a href='https://www.linkedin.com/in/andr%C3%A9s-amuch%C3%A1stegui-3b47ab21b/' target='_blank' style='color: #0078ff; text-decoration: underline;'>LinkedIn</a>."
         ],
         en: [
-            "Great! If you're interested in hiring Andrés, you can contact him directly through his LinkedIn: https://www.linkedin.com/in/andr%C3%A9s-amuch%C3%A1stegui-3b47ab21b/, by email at amuchastegui1994@gmail.com or by WhatsApp at +543517720552. He'll be happy to discuss your project and how he can help you.",
-            "If you want to hire Andrés for a project, you can send him a message on LinkedIn: https://www.linkedin.com/in/andr%C3%A9s-amuch%C3%A1stegui-3b47ab21b/, write to his email amuchastegui1994@gmail.com or contact him on WhatsApp at +543517720552 to discuss the details.",
-            "To hire Andrés's services, I recommend contacting him directly via WhatsApp at +543517720552, by email at amuchastegui1994@gmail.com or through his LinkedIn profile: https://www.linkedin.com/in/andr%C3%A9s-amuch%C3%A1stegui-3b47ab21b/. He will respond as soon as possible."
+            "Great! If you're interested in hiring Andrés, you can contact him directly through his <a href='https://www.linkedin.com/in/andr%C3%A9s-amuch%C3%A1stegui-3b47ab21b/' target='_blank' style='color: #0078ff; text-decoration: underline;'>LinkedIn</a>, by email at <a href='mailto:amuchastegui1994@gmail.com' style='color: #0078ff; text-decoration: underline;'>amuchastegui1994@gmail.com</a> or by WhatsApp at <a href='https://wa.me/543517720552' target='_blank' style='color: #0078ff; text-decoration: underline;'>+54 351 7720552</a>.",
+            "If you want to hire Andrés for a project, you can send him a message on <a href='https://www.linkedin.com/in/andr%C3%A9s-amuch%C3%A1stegui-3b47ab21b/' target='_blank' style='color: #0078ff; text-decoration: underline;'>LinkedIn</a>, write to <a href='mailto:amuchastegui1994@gmail.com' style='color: #0078ff; text-decoration: underline;'>amuchastegui1994@gmail.com</a> or contact him on WhatsApp at <a href='https://wa.me/543517720552' target='_blank' style='color: #0078ff; text-decoration: underline;'>+54 351 7720552</a>.",
+            "To hire his services, I recommend contacting him via WhatsApp at <a href='https://wa.me/543517720552' target='_blank' style='color: #0078ff; text-decoration: underline;'>+54 351 7720552</a>, by email at <a href='mailto:amuchastegui1994@gmail.com' style='color: #0078ff; text-decoration: underline;'>amuchastegui1994@gmail.com</a> or through his <a href='https://www.linkedin.com/in/andr%C3%A9s-amuch%C3%A1stegui-3b47ab21b/' target='_blank' style='color: #0078ff; text-decoration: underline;'>LinkedIn profile</a>."
         ]
     },
     // Respuestas para reuniones
     reunion: {
         es: [
-            "Si deseas programar una reunión con Andrés, puedes contactarlo directamente por WhatsApp al +543517720552, por email a amuchastegui1994@gmail.com o a través de su perfil de LinkedIn: https://www.linkedin.com/in/andr%C3%A9s-amuch%C3%A1stegui-3b47ab21b/ para coordinar una fecha y hora conveniente.",
-            "Para agendar una reunión con Andrés, escríbele a su email amuchastegui1994@gmail.com, envíale un mensaje por WhatsApp al +543517720552 o contáctalo por LinkedIn: https://www.linkedin.com/in/andr%C3%A9s-amuch%C3%A1stegui-3b47ab21b/. Él estará encantado de coordinar un espacio en su agenda.",
-            "¿Quieres tener una reunión con Andrés? Puedes contactarlo por LinkedIn: https://www.linkedin.com/in/andr%C3%A9s-amuch%C3%A1stegui-3b47ab21b/, email: amuchastegui1994@gmail.com o WhatsApp: +543517720552 para acordar un horario que funcione para ambos."
+            "Si deseas programar una reunión con Andrés, puedes contactarlo por WhatsApp al <a href='https://wa.me/543517720552' target='_blank' style='color: #0078ff; text-decoration: underline;'>+54 351 7720552</a>, por email a <a href='mailto:amuchastegui1994@gmail.com' style='color: #0078ff; text-decoration: underline;'>amuchastegui1994@gmail.com</a> o a través de su <a href='https://www.linkedin.com/in/andr%C3%A9s-amuch%C3%A1stegui-3b47ab21b/' target='_blank' style='color: #0078ff; text-decoration: underline;'>LinkedIn</a>.",
+            "Para agendar una reunión, escríbele a su email <a href='mailto:amuchastegui1994@gmail.com' style='color: #0078ff; text-decoration: underline;'>amuchastegui1994@gmail.com</a>, envíale un WhatsApp al <a href='https://wa.me/543517720552' target='_blank' style='color: #0078ff; text-decoration: underline;'>+54 351 7720552</a> o contáctalo por <a href='https://www.linkedin.com/in/andr%C3%A9s-amuch%C3%A1stegui-3b47ab21b/' target='_blank' style='color: #0078ff; text-decoration: underline;'>LinkedIn</a>.",
+            "¿Quieres tener una reunión con Andrés? Puedes contactarlo por <a href='https://www.linkedin.com/in/andr%C3%A9s-amuch%C3%A1stegui-3b47ab21b/' target='_blank' style='color: #0078ff; text-decoration: underline;'>LinkedIn</a>, email: <a href='mailto:amuchastegui1994@gmail.com' style='color: #0078ff; text-decoration: underline;'>amuchastegui1994@gmail.com</a> o WhatsApp: <a href='https://wa.me/543517720552' target='_blank' style='color: #0078ff; text-decoration: underline;'>+54 351 7720552</a>."
         ],
         en: [
-            "If you'd like to schedule a meeting with Andrés, you can contact him directly via WhatsApp at +543517720552, by email at amuchastegui1994@gmail.com or through his LinkedIn profile: https://www.linkedin.com/in/andr%C3%A9s-amuch%C3%A1stegui-3b47ab21b/ to coordinate a convenient date and time.",
-            "To book a meeting with Andrés, write to his email amuchastegui1994@gmail.com, send him a message on WhatsApp at +543517720552 or contact him on LinkedIn: https://www.linkedin.com/in/andr%C3%A9s-amuch%C3%A1stegui-3b47ab21b/. He'll be happy to find a slot in his schedule.",
-            "Want to have a meeting with Andrés? You can contact him on LinkedIn: https://www.linkedin.com/in/andr%C3%A9s-amuch%C3%A1stegui-3b47ab21b/, email: amuchastegui1994@gmail.com or WhatsApp: +543517720552 to arrange a time that works for both of you."
+            "If you'd like to schedule a meeting with Andrés, you can contact him via WhatsApp at <a href='https://wa.me/543517720552' target='_blank' style='color: #0078ff; text-decoration: underline;'>+54 351 7720552</a>, by email at <a href='mailto:amuchastegui1994@gmail.com' style='color: #0078ff; text-decoration: underline;'>amuchastegui1994@gmail.com</a> or through his <a href='https://www.linkedin.com/in/andr%C3%A9s-amuch%C3%A1stegui-3b47ab21b/' target='_blank' style='color: #0078ff; text-decoration: underline;'>LinkedIn</a>.",
+            "To book a meeting, write to his email <a href='mailto:amuchastegui1994@gmail.com' style='color: #0078ff; text-decoration: underline;'>amuchastegui1994@gmail.com</a>, send him a WhatsApp at <a href='https://wa.me/543517720552' target='_blank' style='color: #0078ff; text-decoration: underline;'>+54 351 7720552</a> or contact him on <a href='https://www.linkedin.com/in/andr%C3%A9s-amuch%C3%A1stegui-3b47ab21b/' target='_blank' style='color: #0078ff; text-decoration: underline;'>LinkedIn</a>.",
+            "Want to have a meeting with Andrés? You can contact him on <a href='https://www.linkedin.com/in/andr%C3%A9s-amuch%C3%A1stegui-3b47ab21b/' target='_blank' style='color: #0078ff; text-decoration: underline;'>LinkedIn</a>, email: <a href='mailto:amuchastegui1994@gmail.com' style='color: #0078ff; text-decoration: underline;'>amuchastegui1994@gmail.com</a> or WhatsApp: <a href='https://wa.me/543517720552' target='_blank' style='color: #0078ff; text-decoration: underline;'>+54 351 7720552</a>."
         ]
     },
     // Respuesta por defecto
@@ -218,7 +220,8 @@ const respuestas = {
 async function initializeChat() {
     try {
         console.log('Iniciando la carga del CV y modelo de embeddings local...');
-        const loader = new PDFLoader("docs/tu_cv.pdf");
+        const cvPath = path.join(__dirname, 'docs', 'tu_cv.pdf');
+        const loader = new PDFLoader(cvPath);
         const docs = await loader.load();
 
         const splitter = new RecursiveCharacterTextSplitter({
@@ -307,23 +310,13 @@ function clasificarPregunta(pregunta) {
         return 'xcons';
     }
     
-    if (/\bimpulzoone\b/i.test(textoNormalizado)) {
-        return 'impulzoone';
-    }
-    
     if (/\bcondamind\b/i.test(textoNormalizado)) {
         return 'condamind';
     }
     
-    // Detectar si es una pregunta de seguimiento sobre empresas
-    if (/si.*(xcons|impulzoone|condamind)|yes.*(xcons|impulzoone|condamind)/i.test(textoNormalizado)) {
-        // Extraer el nombre de la empresa
-        let empresa = '';
-        if (/xcons/i.test(textoNormalizado)) empresa = 'xcons';
-        else if (/impulzoone/i.test(textoNormalizado)) empresa = 'impulzoone';
-        else if (/condamind/i.test(textoNormalizado)) empresa = 'condamind';
-        
-        return empresa;
+    // Respuestas afirmativas cortas para el seguimiento de la experiencia
+    if (/^(si|sí|s|yes|yep|claro|por supuesto|obvio|dale|me interesa|ok|okay)$/i.test(textoNormalizado.trim())) {
+        return 'seguimiento_empresas';
     }
     
     // Contratación y trabajo (con variantes)
@@ -337,7 +330,7 @@ function clasificarPregunta(pregunta) {
     }
     
     // Experiencia laboral (con variantes)
-    if (/experien|trabajo|laboral|empresa|compan|compañ|cargo|puesto|rol|empleo|profesi|carrera|trayectoria|work|job|career|donde trabaj|where.*work/i.test(textoNormalizado)) {
+    if (/experien|trabajo|laboral|empresa|compan|compañ|cargo|puesto|rol|empleo|profesi|carrera|trayectoria|work|job|career|donde trabaj|where.*work|upwork|andorra|freelance/i.test(textoNormalizado)) {
         return 'experiencia_general';
     }
     
@@ -352,7 +345,7 @@ function clasificarPregunta(pregunta) {
     }
     
     // Proyectos (con variantes)
-    if (/proyect|portfolio|trabaj|desarrollo|aplicacion|app|web|movil|mobile|software|sistem|project/i.test(textoNormalizado)) {
+    if (/proyect|portfolio|trabaj|desarrollo|aplicacion|app|web|movil|mobile|software|sistem|project|gus art|gustavo|fleiuss|chiringuito/i.test(textoNormalizado)) {
         return 'proyectos';
     }
     
@@ -374,31 +367,7 @@ function clasificarPregunta(pregunta) {
     return 'default';
 }
 
-// Función para convertir URLs en hipervínculos HTML
-function convertirEnlacesAHTML(texto) {
-  // Patrón para detectar URLs
-  const urlPattern = /(https?:\/\/[^\s]+)/g;
-  
-  // Reemplazar URLs con etiquetas <a>
-  return texto.replace(urlPattern, (url) => {
-    // Determinar el tipo de enlace para personalizar el texto
-    let linkText = url;
-    if (url.includes('linkedin')) {
-      linkText = 'LinkedIn';
-    } else if (url.includes('gmail')) {
-      linkText = 'Email';
-    } else if (url.includes('whatsapp')) {
-      linkText = 'WhatsApp';
-    }
-    
-    return `<a href="${url}" target="_blank" style="color: #0078ff; text-decoration: underline;">${linkText}</a>`;
-  });
-}
-
 async function getCVResponse(message) {
-    if (!vectorStore) {
-        return 'El chat se está inicializando, por favor espera un momento. / The chat is initializing, please wait a moment.';
-    }
     try {
         // Detectar el idioma de la pregunta
         const idioma = detectarIdioma(message);
@@ -409,8 +378,7 @@ async function getCVResponse(message) {
         // Obtener una respuesta predefinida basada en la categoría y el idioma
         const respuesta = getRandomResponse(categoria, idioma);
         
-        // Convertir enlaces en hipervínculos HTML
-        return convertirEnlacesAHTML(respuesta);
+        return respuesta;
     } catch (error) {
         console.error('Error al obtener respuesta del CV:', error);
         return 'Lo siento, ha ocurrido un error al procesar tu solicitud. / Sorry, an error occurred while processing your request.';
@@ -431,16 +399,16 @@ io.on('connection', (socket) => {
     });
 });
 
-// Servir frontend compilado de React
-const buildPath = path.join(__dirname, '..', 'build');
-app.use(express.static(buildPath));
-
-app.get('*', (req, res) => {
-    res.sendFile(path.join(buildPath, 'index.html'));
-});
-
 server.listen(PORT, async () => {
     console.log(`Server listening on ${PORT}`);
     await initializeChat();
 });
 
+// Servir frontend compilado de React solo en producción
+if (process.env.NODE_ENV === 'production') {
+    const buildPath = path.join(__dirname, '..', 'build');
+    app.use(express.static(buildPath));
+    app.get('*', (req, res) => {
+        res.sendFile(path.join(buildPath, 'index.html'));
+    });
+}

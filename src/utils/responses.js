@@ -85,15 +85,16 @@ export const respuestas = {
       "desarrollo", "desarollo", "portafolio", "portfolio", "proyectos hechos", "qué hizo", 
       "que hizo", "trabajos", "cosas hechas", "proyectos realizados", "realizó", "realizo", "hizo",
       "projects", "project", "worked on", "work", "developed", "portfolio", "portafolio", 
-      "what he did", "what did he do", "jobs", "things done", "completed projects", "done", "made"
+      "what he did", "what did he do", "jobs", "things done", "completed projects", "done", "made",
+      "gus art", "chiringuito", "fleiuss"
     ],
     response: `
 🚧 **Proyectos destacados**  
-1. **XCONS** – Apps web con React, Node.js, PHP y Magento 2.  
-2. **MY INDUSTRIAL HOME** – E-commerce con stack MERN, desplegado en Heroku.  
-3. **Freelance** – Sitios y sistemas a medida.  
-4. **Portfolio interactivo** – El sitio donde estás chateando ahora 😉  
-📌 ¿Querés más detalles sobre alguno?"
+1. **Gustavo Fleiuss Arte (Gus Art)** – Galería digital y e-commerce (WordPress, WooCommerce, Mercado Pago, PayPal).  
+2. **Chiringuito (Valencia)** – Sitio web bilingüe Mobile-First (React, Vite, Tailwind CSS).  
+3. **Condamind** – Solución conversacional con IA (trabajo colaborativo vía GitHub junto a Alexis, Mati y Porta).  
+4. **XCONS** – Apps web con React, Node.js, PHP y Magento 2.  
+📌 ¿Querés más detalles sobre alguno?
     `
   },
 
@@ -122,18 +123,16 @@ export const respuestas = {
       "historial", "currículo", "curriculo", "cv", "qué ha hecho", "que ha hecho", "dónde trabajó", 
       "donde trabajo", "empleo", "empleos", "jobs",
       "experience", "expirience", "worked", "work history", "professional", "career path", 
-      "background", "resume", "cv", "what he’s done", "where worked", "jobs", "employment"
+      "background", "resume", "cv", "what he’s done", "where worked", "jobs", "employment",
+      "upwork", "andorra", "freelance"
     ],
     response: `
 💼 **Experiencia Profesional**  
-1. **XCONS** (Nov 2022 - Actualidad):  
-   - Frontend con PHP, Magento 2, JS, HTML5, CSS3.  
-   - Buscador con Algolia y widgets reutilizables.  
-2. **CONDAMIND** (Jun 2023 - Ene 2024):  
-   - Interfaces responsivas con React y Material UI.  
-3. **MY INDUSTRIAL HOME** (Jul 2022):  
-   - E-commerce full stack con MERN.  
-🌟 Especializado en optimización y soluciones escalables."
+1. **Desarrollador Full-Stack** (Nov 2022 - Actualidad): Trabajo continuado en XCONS (React, Node.js, PHP, Magento 2).  
+2. **Freelancer en Upwork**: Perfil aprobado y activo gestionando proyectos a nivel internacional.  
+3. **Experiencia en Andorra**: Ejerciendo como desarrollador remoto y sumando experiencia en el sector hotelero.  
+4. **CONDAMIND** (Jun 2023 - Mar 2025): Proyecto colaborativo de IA junto a Alexis, Mati y Porta.  
+🌟 Especializado en optimización y soluciones escalables.
     `
   },
 
@@ -166,7 +165,7 @@ export const respuestas = {
     ],
     response: `
 📬 **Contacto**  
-- **Email**: amuchastegui1994@gmail.com  
+- **Email**: amuchastegui.dev@gmail.com  
 - **LinkedIn**: [Andrés Amuchástegui](https://www.linkedin.com/in/andrés-amuchástegui)  
 - **Portfolio**: Usa el formulario aquí mismo.  
 ✨ Disponibilidad inmediata."

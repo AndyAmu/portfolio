@@ -11,7 +11,7 @@ import io from 'socket.io-client';
 import LetterGlitch from './component/LetterGlitch';
 
 // URL del backend (en producción será la URL de Render.com)
-const ENDPOINT = process.env.REACT_APP_API_URL || '';
+const ENDPOINT = process.env.REACT_APP_API_URL || (window.location.hostname === 'localhost' ? 'http://localhost:4000' : '');
 
 function App() {
   console.log('App rendering'); // Debug log
@@ -22,7 +22,7 @@ function App() {
 
   useEffect(() => {
     // Inicializar conexión con Socket.io
-    const newSocket = io(ENDPOINT || window.location.origin, {
+    const newSocket = io(ENDPOINT || (window.location.hostname === 'localhost' ? 'http://localhost:4000' : window.location.origin), {
       withCredentials: true,
     });
     setSocket(newSocket);

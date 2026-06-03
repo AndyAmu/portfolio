@@ -48,7 +48,7 @@ const ChatGPT = () => {
 
   const initializeSocket = () => {
     try {
-      const ENDPOINT = process.env.REACT_APP_API_URL || window.location.origin;
+      const ENDPOINT = process.env.REACT_APP_API_URL || (window.location.hostname === 'localhost' ? 'http://localhost:4000' : window.location.origin);
       socketRef.current = io(ENDPOINT, {
         reconnection: true,
         reconnectionAttempts: 3,
