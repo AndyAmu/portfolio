@@ -41,7 +41,6 @@ const ChatGPT = () => {
   const [messages, setMessages] = useState([]);
   const [input, setInput] = useState('');
   const [isLoading, setIsLoading] = useState(false);
-  const [apiError, setApiError] = useState(false);
   const socketRef = useRef(null);
   const chatBoxRef = useRef(null);
   const textareaRef = useRef(null);
@@ -59,12 +58,10 @@ const ChatGPT = () => {
 
       socketRef.current.on('connect', () => {
         console.log('🟢 Conectado al servidor');
-        setApiError(false);
       });
 
       socketRef.current.on('connect_error', (error) => {
         console.error('🔴 Error de conexión:', error);
-        setApiError(true);
         
         setMessages(prev => [
           ...prev,
@@ -85,7 +82,6 @@ const ChatGPT = () => {
       });
     } catch (error) {
       console.error('⚠️ Error al inicializar socket:', error);
-      setApiError(true);
     }
   };
 
@@ -103,6 +99,7 @@ const ChatGPT = () => {
         socketRef.current.disconnect();
       }
     };
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   const processServerResponse = (response) => {
