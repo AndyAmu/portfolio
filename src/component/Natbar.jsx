@@ -15,7 +15,6 @@ import Paper from '@mui/material/Paper';
 import { useLanguage } from '../context/LanguageContext';
 
 function DrawerAppBar(props) {
-    const { window } = props;
     const [value, setValue] = React.useState(0);
     const { language, toggleLanguage, translations } = useLanguage();
 

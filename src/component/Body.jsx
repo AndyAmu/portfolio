@@ -6,13 +6,11 @@ import './styles/body.css'
 import './styles/dashboardUI.css'
 import ComputerIcon from '@mui/icons-material/Computer';
 import PhoneIphoneIcon from '@mui/icons-material/PhoneIphone';
-import EmailIcon from '@mui/icons-material/Email';
 import Card from '@mui/material/Card';
 import CardContent from '@mui/material/CardContent';
 import CardMedia from '@mui/material/CardMedia';
 import { CardActionArea } from '@mui/material';
 import ChatComponent from './chatGPT';
-import SmartToyIcon from '@mui/icons-material/SmartToy';
 import ContactEmail from './ContactEmail';
 import { useLanguage } from '../context/LanguageContext';
 import ScrollFloat from './ScrollFloat';
