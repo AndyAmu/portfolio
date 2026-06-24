@@ -1,0 +1,137 @@
+/* Dashboard UI - Unified Aesthetic System (ChatGPT/Gemini Style) */
+
+.dashboard-container {
+  display: flex;
+  align-items: center;
+  flex-direction: row;
+  gap: 2rem;
+  width: 100%;
+  max-width: 1300px;
+  margin: 0 auto;
+  padding: 2rem 1.5rem;
+}
+
+@media (max-width: 960px) {
+  .dashboard-container {
+    flex-direction: column;
+  }
+}
+
+/* Base Card Style */
+.dashboard-card {
+  background: #13151a;
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 20px;
+  overflow: hidden;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.4);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  display: flex;
+  flex-direction: column;
+}
+
+/* Chat Main Column */
+.dashboard-main-col {
+  flex: 1.2;
+  min-width: 0; /* Prevents flex flex-basis issues */
+  display: flex;
+  flex-direction: column;
+  height: 800px;
+}
+
+@media (max-width: 960px) {
+  .dashboard-main-col {
+    height: 600px;
+  }
+}
+
+/* Sidebar Widgets Column */
+.dashboard-side-col {
+  flex: 0.8;
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+}
+
+/* Contact Widget specific override */
+.contact-widget {
+  padding: 2rem;
+  height: 30rem;
+}
+
+.contact-widget form {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+  height: 100%;
+}
+
+.contact-widget h2 {
+  color: #fff;
+  font-family: 'Bree Serif', serif;
+  margin-top: 0;
+  margin-bottom: 1.5rem;
+  font-size: 1.8rem;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.contact-input {
+  background: #1a1c23;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 12px;
+  padding: 1rem 1.2rem;
+  color: #e0e0e0;
+  font-family: inherit;
+  font-size: 1rem;
+  transition: all 0.3s ease;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+.contact-input:focus {
+  outline: none;
+  border-color: rgba(255, 255, 255, 0.3);
+  background: #20222a;
+}
+
+.contact-textarea {
+  min-height: 120px;
+  resize: vertical;
+}
+
+.contact-submit {
+  background: #fff;
+  color: #13151a;
+  border: none;
+  border-radius: 20px;
+  padding: 1rem;
+  font-weight: 600;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  margin-top: auto;
+}
+
+.contact-submit:hover {
+  background: #e0e0e0;
+  transform: translateY(-2px);
+}
+
+.contact-submit:active {
+  transform: translateY(0);
+}
+
+/* Calendar Widget */
+.calendar-widget {
+  height: 450px;
+}
+
+.calendar-widget iframe {
+  width: 100%;
+  height: 100%;
+  border: none;
+  background: white; /* Needs to be white because Google Calendar injects its own light theme */
+}
