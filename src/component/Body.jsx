@@ -1,11 +1,12 @@
-﻿import React from "react"
+import React from "react"
 import { Box, Typography } from "@mui/material"
 import Avatar from '@mui/material/Avatar';
 import '../index.css'
 import './styles/body.css'
-import Technologies from './Technologies'
+import './styles/dashboardUI.css'
 import ComputerIcon from '@mui/icons-material/Computer';
 import PhoneIphoneIcon from '@mui/icons-material/PhoneIphone';
+import EmailIcon from '@mui/icons-material/Email';
 import Card from '@mui/material/Card';
 import CardContent from '@mui/material/CardContent';
 import CardMedia from '@mui/material/CardMedia';
@@ -15,7 +16,9 @@ import SmartToyIcon from '@mui/icons-material/SmartToy';
 import ContactEmail from './ContactEmail';
 import { useLanguage } from '../context/LanguageContext';
 import ScrollFloat from './ScrollFloat';
-
+import GoogleCalendar from './GoogleCalendar';
+import profileImg from './image/patagonia-and.webp';
+import recommendationsGif from './image/Recommendations.gif';
 
 const Body = () => {
     const { translations, language } = useLanguage();
@@ -95,7 +98,7 @@ const Body = () => {
                     <Avatar
                         className="avatar"
                         alt="Andres Amuchastegui"
-
+                        src={profileImg}
                     />
                     <Typography sx={{
                         textAlign: 'center',
@@ -106,66 +109,34 @@ const Body = () => {
                     </Typography>
                 </Box>
             </Box>
-            <Box id="chat" className="body">
-                <Typography sx={{ 
-                    fontFamily: 'Bree Serif', 
-                    paddingTop: '5rem', 
-                    paddingBottom: '2rem', 
-                    display: 'flex', 
-                    justifyContent: 'center', 
-                    alignItems: 'center',
-                    gap: '1rem',
-                    zIndex: 10, 
-                    fontSize: 50, 
-                    color: 'white',
-                    width: '100%',
-                    textAlign: 'center'
-                }}>
-                    <Box sx={{
-                        display: 'flex',
-                        justifyContent: 'center',
-                        alignItems: 'center',
-                        gap: '1rem',
-                        flexWrap: 'wrap'
-                    }}>
-                        <SmartToyIcon sx={{ fontSize: '3rem' }} />
-                        <span>{translations.virtualAssistant}</span>
-                    </Box>
-                </Typography>
-                
-                <Typography sx={{
-                    fontFamily: 'Bree Serif',
-                    color: 'white',
-                    textAlign: 'center',
-                    maxWidth: '800px',
-                    margin: '0 auto 2rem auto',
-                    fontSize: '1.2rem',
-                    opacity: 0.9
-                }}>
-                    {translations.chatIntro}
-                </Typography>
+            {/* Sección de Interacción (Chat, Calendario y Contacto en Dashboard Unificado) */}
+            <Box className="body3" sx={{ py: 6 }}>
+                <div className="dashboard-container">
+                    {/* Columna Izquierda: Chat */}
+                    <div className="dashboard-main-col">
+                        <ChatComponent />
+                    </div>
 
-                <Box sx={{
-                    maxWidth: '1200px',
-                    margin: '0 auto',
-                    padding: '0 1rem 6rem 1rem',
-                }}>
-                    <ChatComponent />
-                </Box>
+                    {/* Columna Derecha: Calendario y Contacto */}
+                    <div className="dashboard-side-col">
+                        <GoogleCalendar />
+                        <ContactEmail />
+                    </div>
+                </div>
             </Box>
 
-            <Technologies />
-
+            {/* Recomendaciones (Último componente antes del Footer) */}
             <Box sx={{ display: 'flex', justifyContent: 'center', alignItems: 'center', flexDirection: 'column' }} className="body4">
                 <Typography className="andresamutitle3" sx={{marginTop: 5, fontFamily: 'Bree Serif', paddingBottom: '2rem', display: 'flex', justifyContent: 'center', zIndex: 10, fontSize: 50, color: 'white' }}>
                     {translations.recommendations}
                 </Typography>
                 <a style={{ textDecoration: 'none' }} href="https://www.linkedin.com/in/andr%C3%A9s-amuch%C3%A1stegui-3b47ab21b/details/recommendations/?detailScreenTabIndex=0">
-                    <Card sx={{backgroundColor: 'black', color: 'white', marginBottom: '2rem' }}>
+                    <Card sx={{backgroundColor: 'black', color: 'white', marginBottom: '4rem' }}>
                         <CardActionArea>
                             <CardMedia
                                 className="card-recommendations"
                                 component="img"
+                                image={recommendationsGif}
                                 sx={{
                                     height: { xs: 200, sm: 400, md: 500 },
                                     width: { xs: '100%', sm: 400, md: 800 },
@@ -181,31 +152,11 @@ const Body = () => {
                         </CardActionArea>
                     </Card>
                 </a>
-
             </Box>
-
-            <section id="contact">
-                <Box className="body" >
-                    <Typography sx={{ 
-                        fontFamily: 'Bree Serif', 
-                        paddingTop: '5rem', 
-                        paddingBottom: '2rem', 
-                        display: 'flex', 
-                        justifyContent: 'center', 
-                        alignItems: 'center',
-                        gap: '1rem',
-                        zIndex: 10, 
-                        fontSize: 50, 
-                        color: 'white' 
-                    }}>
-                        {translations.contact}
-                    </Typography>
-                    <ContactEmail />
-                </Box>
-            </section>
 
         </>
     )
 }
 
 export default Body
+
