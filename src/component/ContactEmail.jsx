@@ -1,20 +1,9 @@
 import React, { useState } from 'react';
-import { 
-  Box, 
-  Paper, 
-  TextField, 
-  Button, 
-  Typography, 
-  Snackbar, 
-  Alert,
-  Grid,
-  Container,
-  CircularProgress
-} from '@mui/material';
+import { Snackbar, Alert } from '@mui/material';
 import EmailIcon from '@mui/icons-material/Email';
 import SendIcon from '@mui/icons-material/Send';
 import emailjs from '@emailjs/browser';
-import './styles/ContactEmail.css';
+import './styles/dashboardUI.css';
 import { useLanguage } from '../context/LanguageContext';
 
 const ContactEmail = () => {
@@ -52,10 +41,10 @@ const ContactEmail = () => {
 
         try {
             await emailjs.send(
-                'service_ys7v1lm', // Reemplazar con tu Service ID
-                'template_zgnl9of', // Reemplazar con tu Template ID
+                'service_ys7v1lm', // Service ID
+                'template_zgnl9of', // Template ID
                 templateParams,
-                'X02cCjRkoFrHj0ekE' // Reemplazar con tu Public Key
+                'X02cCjRkoFrHj0ekE' // Public Key
             );
 
             setSnackbar({
@@ -81,117 +70,58 @@ const ContactEmail = () => {
     };
 
     return (
-        <Container maxWidth="md" className="contact-outer-container">
-            <Paper elevation={6} className="contact-paper">
-                <Box className="contact-header">
-                    <Typography variant="h5" className="contact-title">
-                        <EmailIcon className="contact-icon" />
-                        {translations.contactAndres}
-                    </Typography>
-                    <Typography variant="body1" className="contact-subtitle">
-                        {translations.contactSubtitle}
-                    </Typography>
-                </Box>
-
-                <Box
-                    component="form"
-                    onSubmit={handleSubmit}
-                    className="contact-form"
-                    noValidate
+        <div className="dashboard-card contact-widget">
+            <h2>
+                <EmailIcon style={{ fontSize: '2rem' }} />
+                {translations.contactAndres}
+            </h2>
+            
+            <form onSubmit={handleSubmit}>
+                <input
+                    type="text"
+                    name="name"
+                    placeholder={translations.name}
+                    value={formData.name}
+                    onChange={handleChange}
+                    required
+                    className="contact-input"
+                    maxLength={50}
+                    autoComplete="name"
+                />
+                
+                <input
+                    type="email"
+                    name="email"
+                    placeholder={translations.email}
+                    value={formData.email}
+                    onChange={handleChange}
+                    required
+                    className="contact-input"
+                    maxLength={100}
+                    autoComplete="email"
+                />
+                
+                <textarea
+                    name="message"
+                    placeholder={translations.message}
+                    value={formData.message}
+                    onChange={handleChange}
+                    required
+                    className="contact-input contact-textarea"
+                    maxLength={500}
+                    rows={4}
+                />
+                
+                <button
+                    type="submit"
+                    disabled={loading}
+                    className="contact-submit"
+                    style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', gap: '0.5rem' }}
                 >
-                    <Grid container spacing={3}>
-                        <Grid item xs={12} sm={6}>
-                            <TextField
-                                name="name"
-                                label={translations.name}
-                                value={formData.name}
-                                onChange={handleChange}
-                                required
-                                fullWidth
-                                variant="outlined"
-                                className="contact-field"
-                                InputProps={{
-                                    className: "contact-input-field",
-                                    classes: {
-                                        input: "contact-input-field"
-                                    }
-                                }}
-                                InputLabelProps={{
-                                    className: "contact-input-label",
-                                    shrink: true
-                                }}
-                                size="medium"
-                                inputProps={{ 
-                                    maxLength: 50,
-                                    autoComplete: "name" 
-                                }}
-                                autoComplete="name"
-                            />
-                        </Grid>
-                        <Grid item xs={12} sm={6}>
-                            <TextField
-                                name="email"
-                                label={translations.email}
-                                type="email"
-                                value={formData.email}
-                                onChange={handleChange}
-                                required
-                                fullWidth
-                                variant="outlined"
-                                className="contact-field"
-                                InputProps={{
-                                    className: "contact-input-field",
-                                    classes: {
-                                        input: "contact-input-field"
-                                    }
-                                }}
-                                InputLabelProps={{
-                                    className: "contact-input-label",
-                                    shrink: true
-                                }}
-                                size="medium"
-                                inputProps={{ 
-                                    maxLength: 100,
-                                    autoComplete: "email" 
-                                }}
-                                autoComplete="email"
-                            />
-                        </Grid>
-                        <Grid item xs={12}>
-                            <TextField
-                                name="message"
-                                label={translations.message}
-                                value={formData.message}
-                                onChange={handleChange}
-                                required
-                                fullWidth
-                                multiline
-                                rows={4}
-                                variant="outlined"
-                                className="contact-field"
-                                InputProps={{
-                                    className: "contact-input-field",
-                                }}
-                                InputLabelProps={{
-                                    className: "contact-input-label",
-                                }}
-                                inputProps={{ maxLength: 500 }}
-                            />
-                        </Grid>
-                        <Grid item xs={12} className="button-container">
-                            <Button
-                                type="submit"
-                                variant="contained"
-                                disabled={loading}
-                                className="contact-button"
-                                endIcon={loading ? <CircularProgress size={20} color="inherit" /> : <SendIcon />}
-                            >
-                                {loading ? translations.sending : translations.sendMessage}
-                            </Button>
-                        </Grid>
-                    </Grid>
-                </Box>
-            </Paper>
+                    {loading ? translations.sending : translations.sendMessage}
+                    {!loading && <SendIcon fontSize="small" />}
+                </button>
+            </form>
 
             <Snackbar
                 open={snackbar.open}
@@ -208,7 +138,7 @@ const ContactEmail = () => {
                     {snackbar.message}
                 </Alert>
             </Snackbar>
-        </Container>
+        </div>
     );
 };
 
