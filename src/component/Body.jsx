@@ -22,7 +22,7 @@ const Body = () => {
     
     // URLs de los CVs segun el idioma
     const cvUrls = {
-        en: "https://drive.google.com/file/d/1BEMQj9VB7l3yvk5Jam9aAfZmnHxgIF96/view?usp=sharing",
+        en: "https://drive.google.com/file/d/1iOtW9YSycHHFacSMtjLtw51ABcntr7aa/view?usp=drive_link",
         es: "https://drive.google.com/file/d/14-FGhRxK-rmz4bc6xiTsU7cX3yq5EbZf/view?usp=sharing"
     };
 
