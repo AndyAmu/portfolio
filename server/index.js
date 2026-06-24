@@ -4,7 +4,8 @@ import { Server } from 'socket.io';
 import cors from 'cors';
 import path from 'path';
 import { fileURLToPath } from 'url';
-import 'dotenv/config';
+import dotenv from 'dotenv';
+import axios from 'axios';
 import { HuggingFaceTransformersEmbeddings } from "@langchain/community/embeddings/hf_transformers";
 import { FaissStore } from '@langchain/community/vectorstores/faiss';
 import { PDFLoader } from "@langchain/community/document_loaders/fs/pdf";
@@ -12,6 +13,7 @@ import { RecursiveCharacterTextSplitter } from 'langchain/text_splitter';
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
+dotenv.config({ path: path.join(__dirname, '../.env') });
 const app = express();
 const allowedOrigins = [
     "https://andresamuchastegui.com",
@@ -22,17 +24,36 @@ const allowedOrigins = [
     process.env.CORS_ORIGIN
 ].filter(Boolean);
 
+const isOriginAllowed = (origin) => {
+    if (!origin) return true;
+    if (allowedOrigins.includes(origin)) return true;
+    if (/^https?:\/\/localhost(:\d+)?$/.test(origin)) return true;
+    return false;
+};
+
 const PORT = process.env.PORT || 4000;
 
 app.use(cors({
-    origin: allowedOrigins.length ? allowedOrigins : "*",
+    origin: (origin, callback) => {
+        if (isOriginAllowed(origin)) {
+            callback(null, true);
+        } else {
+            callback(new Error('Not allowed by CORS'));
+        }
+    },
     credentials: true
 }));
 
 const server = http.createServer(app);
 const io = new Server(server, {
     cors: {
-        origin: allowedOrigins.length ? allowedOrigins : "*",
+        origin: (origin, callback) => {
+            if (isOriginAllowed(origin)) {
+                callback(null, true);
+            } else {
+                callback(new Error('Not allowed by CORS'));
+            }
+        },
         methods: ["GET", "POST"],
         credentials: true
     }
@@ -127,12 +148,12 @@ const respuestas = {
     // Habilidades técnicas
     habilidades: {
         es: [
-            "Entre las habilidades técnicas de Andrés destacan: JavaScript, TypeScript, React, Node.js, Express, HTML5, CSS3, SASS, MongoDB, PostgreSQL, Git, y metodologías ágiles.",
+            "Entre las habilidades técnicas de Andrés destacan: JavaScript, PHP, TypeScript, React, Node.js, Express, HTML5, CSS3, SASS, MongoDB, PostgreSQL, Git, y metodologías ágiles.",
             "Andrés tiene habilidades tanto en frontend como backend, lo que le permite desarrollar aplicaciones web completas. Domina React para interfaces de usuario, Node.js para servidores, y bases de datos SQL y NoSQL.",
             "Las competencias técnicas de Andrés incluyen desarrollo web responsive, implementación de APIs RESTful, integración de servicios de terceros, y optimización de rendimiento web."
         ],
         en: [
-            "Andrés's technical skills include: JavaScript, TypeScript, React, Node.js, Express, HTML5, CSS3, SASS, MongoDB, PostgreSQL, Git, and agile methodologies.",
+            "Andrés's technical skills include: JavaScript, TypeScript, PHP, React, Node.js, Express, HTML5, CSS3, SASS, MongoDB, PostgreSQL, Git, and agile methodologies.",
             "Andrés has skills in both frontend and backend, allowing him to develop complete web applications. He masters React for user interfaces, Node.js for servers, and SQL and NoSQL databases.",
             "Andrés's technical competencies include responsive web development, RESTful API implementation, third-party service integration, and web performance optimization."
         ]
@@ -385,13 +406,126 @@ async function getCVResponse(message) {
     }
 }
 
+async function getGeminiResponse(userMessage, history, forceGemini = false) {
+    const apiKey = process.env.GEMINI_API_KEY;
+    if (!apiKey) {
+        console.warn('⚠️ GEMINI_API_KEY no configurada. Usando fallback local de respuestas predefinidas.');
+        const localReply = await getCVResponse(userMessage);
+        return { content: localReply, source: 'local' };
+    }
+
+    try {
+        const cvTexto = cvData.texto || '';
+        
+        const systemPrompt = `Eres el asistente virtual bilingüe de Andrés Amuchástegui.
+Tu objetivo es responder de manera profesional, clara y amigable a las preguntas de los reclutadores o usuarios interesados en el perfil de Andrés.
+Usa la siguiente información de su Currículum Vite (CV) para responder. Sé preciso y NO inventes hechos que no estén en el CV.
+
+INFORMACIÓN DEL CV DE ANDRÉS:
+${cvTexto}
+
+Pautas para responder:
+1. Responde en el mismo idioma en el que te escribe el usuario (Español o Inglés).
+2. Si la información solicitada no está en el CV, di amablemente que no dispones de esa información, pero ofrece guiar al usuario a las formas de contacto de Andrés (email: amuchastegui1994@gmail.com, WhatsApp: +54 351 7720552, LinkedIn: https://www.linkedin.com/in/andrés-amuchástegui-3b47ab21b/).
+3. Mantén tus respuestas conversacionales pero profesionales, y formatea con HTML sencillo (por ejemplo, usa <br> para saltos de línea, <b> para resaltar texto o enlaces <a> con target="_blank" si es necesario) para que el chat lo renderice bien. No uses markdown de negritas como **texto** sino etiquetas <b>texto</b> ya que el frontend renderiza HTML crudo.`;
+
+        // Añadir el nuevo mensaje del usuario al historial
+        history.push({
+            role: 'user',
+            parts: [{ text: userMessage }]
+        });
+
+        // Limitar historial a las últimas 10 entradas (5 turnos de diálogo completo)
+        if (history.length > 10) {
+            history.splice(0, history.length - 10);
+        }
+
+        // Llamar a la API de Gemini usando la URL REST
+        const response = await axios.post(
+            `https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash:generateContent?key=${apiKey}`,
+            {
+                contents: history,
+                systemInstruction: {
+                    parts: [{ text: systemPrompt }]
+                },
+                generationConfig: {
+                    temperature: 0.7,
+                    maxOutputTokens: 800
+                }
+            },
+            {
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                timeout: 3500
+            }
+        );
+
+        if (response.data && response.data.candidates && response.data.candidates[0].content.parts[0].text) {
+            const botReply = response.data.candidates[0].content.parts[0].text;
+            
+            // Añadir respuesta de la IA al historial
+            history.push({
+                role: 'model',
+                parts: [{ text: botReply }]
+            });
+            
+            return { content: botReply, source: 'gemini' };
+        } else {
+            throw new Error('Formato de respuesta de Gemini no válido');
+        }
+
+    } catch (error) {
+        console.error('🔴 Error al llamar a la API de Gemini:', error.message);
+        
+        // Limpiar el último mensaje del usuario del historial para no corromper la alternancia de roles
+        if (history.length > 0 && history[history.length - 1].role === 'user') {
+            history.pop();
+        }
+        
+        if (forceGemini) {
+            const isRateLimit = error.response && error.response.status === 429;
+            const errMsg = isRateLimit ? 
+                "⚠️ La Inteligencia Artificial de Google está saturada en este momento (Límite de cuota alcanzado). Por favor, intenta de nuevo en unos minutos o desactiva la opción 'Forzar IA'." :
+                "⚠️ Ocurrió un error temporal al conectar con la Inteligencia Artificial. Por favor, intenta más tarde o desactiva 'Forzar IA' para obtener respuestas locales.";
+            return { content: errMsg, source: 'gemini' };
+        }
+        
+        const localReply = await getCVResponse(userMessage);
+        return { content: localReply, source: 'local' };
+    }
+}
+
 io.on('connection', (socket) => {
     console.log(`⚡: ${socket.id} user just connected!`);
+    socket.history = []; // Inicializar historial del chat para este socket
 
     socket.on('chat message', async (msg) => {
         console.log('message: ' + JSON.stringify(msg));
-        const response = await getCVResponse(msg.content);
-        socket.emit('chat message', { content: response, type: 'bot' });
+        
+        const content = msg.content;
+        const forceGemini = msg.forceGemini;
+        const wordCount = content.trim().split(/\s+/).length;
+        const categoria = clasificarPregunta(content);
+        
+        // 🧠 Enrutamiento Inteligente (Smart Routing)
+        // Si el usuario fuerza Gemini, nos saltamos la comprobación local
+        if (forceGemini) {
+            console.log(`🧠 Enrutamiento Inteligente: El usuario forzó el uso de IA (Gemini).`);
+            const result = await getGeminiResponse(content, socket.history, true);
+            socket.emit('chat message', { content: result.content, type: 'bot', source: result.source });
+        } 
+        // Si la pregunta es corta (<= 8 palabras) y coincide con un intent local predefinido,
+        // respondemos inmediatamente usando el JSON local sin llamar a Gemini.
+        else if (wordCount <= 8 && categoria !== 'default') {
+            console.log(`🧠 Enrutamiento Inteligente: Pregunta simple detectada (Categoría: ${categoria}). Usando JSON local.`);
+            const localReply = await getCVResponse(content);
+            socket.emit('chat message', { content: localReply, type: 'bot', source: 'local' });
+        } else {
+            console.log(`🧠 Enrutamiento Inteligente: Pregunta compleja detectada. Derivando a Gemini API...`);
+            const result = await getGeminiResponse(content, socket.history, false);
+            socket.emit('chat message', { content: result.content, type: 'bot', source: result.source });
+        }
     });
 
     socket.on('disconnect', () => {

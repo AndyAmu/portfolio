@@ -125,7 +125,6 @@ body::-webkit-scrollbar-thumb {
 
 .body3 {
   min-height: 50vh;
-  background: linear-gradient(-45deg, #4c4f50, #000000, #4e4d4d, #212529);
   background-size: 400% 400%;
   animation: gradient 15s ease infinite;
 }

@@ -1,6 +1,7 @@
 import React, { useState, useEffect, useRef } from 'react';
 import './styles/modernChat.css'; // Importamos el nuevo estilo
 import io from 'socket.io-client';
+import { useLanguage } from '../context/LanguageContext';
 
 // Iconos para el chat
 const SendIcon = () => (
@@ -41,9 +42,12 @@ const ChatGPT = () => {
   const [messages, setMessages] = useState([]);
   const [input, setInput] = useState('');
   const [isLoading, setIsLoading] = useState(false);
+  const [activeSource, setActiveSource] = useState('local');
+  const [forceGemini, setForceGemini] = useState(false);
   const socketRef = useRef(null);
   const chatBoxRef = useRef(null);
   const textareaRef = useRef(null);
+  const { language, translations } = useLanguage();
 
   const initializeSocket = () => {
     try {
@@ -62,12 +66,15 @@ const ChatGPT = () => {
 
       socketRef.current.on('connect_error', (error) => {
         console.error('🔴 Error de conexión:', error);
+        setActiveSource('local');
         
         setMessages(prev => [
           ...prev,
           {
             role: 'bot',
-            content: '⚠️ Hay problemas de conexión con el servidor. Por favor, intenta de nuevo más tarde.',
+            content: language === 'en' 
+              ? '⚠️ Connection problems with the server. Please try again later.'
+              : '⚠️ Hay problemas de conexión con el servidor. Por favor, intenta de nuevo más tarde.',
             timestamp: new Date().toISOString()
           }
         ]);
@@ -77,7 +84,6 @@ const ChatGPT = () => {
       socketRef.current.on('chat message', (response) => {
         console.log('📩 Respuesta recibida:', response);
         setIsLoading(false);
-        
         processServerResponse(response);
       });
     } catch (error) {
@@ -88,7 +94,9 @@ const ChatGPT = () => {
   useEffect(() => {
     setMessages([{
       role: 'bot',
-      content: '👋 Hola, soy el asistente virtual de Andrés. Pregúntame lo que necesites saber sobre su perfil profesional.',
+      content: language === 'en'
+        ? '👋 Hello! I\'m Andrés\'s virtual assistant. Ask me anything about his software engineering experience, projects, or background.'
+        : '👋 Hola, soy el asistente virtual de Andrés. Pregúntame lo que necesites saber sobre su perfil profesional, experiencia o proyectos.',
       timestamp: new Date().toISOString()
     }]);
     
@@ -100,17 +108,20 @@ const ChatGPT = () => {
       }
     };
   // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, []);
+  }, [language]);
 
   const processServerResponse = (response) => {
     if (response && typeof response === 'object' && response.content) {
+      const source = response.source || 'local';
+      setActiveSource(source);
+
       if (response.content.includes('Error:')) {
         console.log('🔴 Error detectado en respuesta:', response.content);
-        
         setMessages(prev => [...prev, {
           role: 'bot',
           content: response.content,
-          timestamp: new Date().toISOString()
+          timestamp: new Date().toISOString(),
+          source: source
         }]);
         return;
       }
@@ -118,7 +129,8 @@ const ChatGPT = () => {
       setMessages(prev => [...prev, {
         role: 'bot',
         content: response.content,
-        timestamp: new Date().toISOString()
+        timestamp: new Date().toISOString(),
+        source: source
       }]);
       return;
     }
@@ -133,34 +145,29 @@ const ChatGPT = () => {
       botResponse = 'Sin respuesta del servidor';
     }
     
+    setActiveSource('local');
     setMessages(prev => [...prev, {
       role: 'bot',
       content: botResponse,
-      timestamp: new Date().toISOString()
+      timestamp: new Date().toISOString(),
+      source: 'local'
     }]);
   };
 
-  // Función para hacer scroll hacia abajo
   const scrollToBottom = () => {
     if (chatBoxRef.current) {
-      // Usar setTimeout para asegurar que el DOM se ha actualizado
       setTimeout(() => {
         chatBoxRef.current.scrollTop = chatBoxRef.current.scrollHeight;
       }, 100);
     }
   };
 
-  // Hacer scroll cuando se añadan nuevos mensajes
   useEffect(() => {
     scrollToBottom();
   }, [messages, isLoading]);
 
-  // Función auxiliar para forzar scroll después de la renderización
   useEffect(() => {
-    // Scroll inicial
     scrollToBottom();
-    
-    // Configurar MutationObserver para detectar cambios en el contenido del chat
     if (chatBoxRef.current) {
       const observer = new MutationObserver(scrollToBottom);
       observer.observe(chatBoxRef.current, { 
@@ -168,12 +175,10 @@ const ChatGPT = () => {
         subtree: true,
         characterData: true 
       });
-      
       return () => observer.disconnect();
     }
   }, []);
 
-  // Auto-resize textarea
   useEffect(() => {
     if (textareaRef.current) {
       textareaRef.current.style.height = 'auto';
@@ -181,7 +186,6 @@ const ChatGPT = () => {
     }
   }, [input]);
 
-  // Función para manejar el envío de mensajes
   const handleSendMessage = () => {
     if (!input.trim()) return;
     
@@ -193,8 +197,6 @@ const ChatGPT = () => {
     setMessages(prev => [...prev, userMessage]);
     setInput('');
     setIsLoading(true);
-    
-    // Forzar scroll después de enviar un mensaje
     scrollToBottom();
     
     console.log('📤 Enviando mensaje al servidor');
@@ -204,7 +206,9 @@ const ChatGPT = () => {
       setTimeout(() => {
         setMessages(prev => [...prev, {
           role: 'bot',
-          content: '⚠️ No hay conexión con el servidor. Por favor, intenta de nuevo más tarde.',
+          content: language === 'en'
+            ? '⚠️ Connection failure with the server. Please try again.'
+            : '⚠️ No hay conexión con el servidor. Por favor, intenta de nuevo más tarde.',
           timestamp: new Date().toISOString()
         }]);
         setIsLoading(false);
@@ -214,10 +218,10 @@ const ChatGPT = () => {
     }
     
     socketRef.current.emit('chat message', {
-      content: input
+      content: input,
+      forceGemini: forceGemini
     });
     
-    // Volver a enfocar el textarea después de enviar el mensaje
     setTimeout(() => {
       if (textareaRef.current) {
         textareaRef.current.focus();
@@ -225,19 +229,50 @@ const ChatGPT = () => {
     }, 0);
   };
 
+  const handleSuggestionClick = (suggestionText) => {
+    const userMessage = { 
+      role: 'user', 
+      content: suggestionText,
+      timestamp: new Date().toISOString()
+    };
+    setMessages(prev => [...prev, userMessage]);
+    setIsLoading(true);
+    scrollToBottom();
+    
+    if (!socketRef.current || !socketRef.current.connected) {
+      setTimeout(() => {
+        setMessages(prev => [...prev, {
+          role: 'bot',
+          content: language === 'en'
+            ? '⚠️ Connection failure with the server. Please try again.'
+            : '⚠️ No hay conexión con el servidor. Por favor, intenta de nuevo más tarde.',
+          timestamp: new Date().toISOString()
+        }]);
+        setIsLoading(false);
+        scrollToBottom();
+      }, 500);
+      return;
+    }
+    
+    socketRef.current.emit('chat message', {
+      content: suggestionText,
+      forceGemini: forceGemini
+    });
+  };
+
   const handleKeyPress = (e) => {
     if (e.key === 'Enter' && !e.shiftKey) {
       e.preventDefault();
       handleSendMessage();
-      
-      // No es necesario añadir el focus aquí ya que handleSendMessage ya lo hace
     }
   };
 
   const handleClearChat = () => {
     setMessages([{
       role: 'bot',
-      content: '👋 Hola, soy el asistente virtual de Andrés. Pregúntame lo que necesites saber sobre su perfil profesional.',
+      content: language === 'en'
+        ? '👋 Hello! I\'m Andrés\'s virtual assistant. Ask me anything about his software engineering experience, projects, or background.'
+        : '👋 Hola, soy el asistente virtual de Andrés. Pregúntame lo que necesites saber sobre su perfil profesional, experiencia o proyectos.',
       timestamp: new Date().toISOString()
     }]);
   };
@@ -245,14 +280,31 @@ const ChatGPT = () => {
   return (
     <div className="modern-chat-container">
       <div className="modern-chat-header">
-        <div className="modern-chat-header-left">
-          <h2 className="modern-chat-title">Asistente Virtual</h2>
+        <div className="modern-chat-header-left" style={{ display: 'flex', alignItems: 'center', gap: '12px', flexWrap: 'wrap' }}>
+          <h2 className="modern-chat-title">{translations.virtualAssistant}</h2>
+          
+          <div className="chat-toggle-container" style={{ display: 'flex', alignItems: 'center', gap: '8px', marginLeft: '10px' }}>
+            <span style={{ fontSize: '0.8rem', color: forceGemini ? '#00e5ff' : '#a0a0a0', transition: 'color 0.3s' }}>
+              {language === 'en' ? 'Force AI' : 'Forzar IA'}
+            </span>
+            <label className="theme-switch">
+              <input type="checkbox" checked={forceGemini} onChange={(e) => setForceGemini(e.target.checked)} />
+              <span className="slider round"></span>
+            </label>
+          </div>
+
+          <div className={`ai-status-badge ${activeSource}`}>
+            <span className="status-dot"></span>
+            <span className="status-text">
+              {activeSource === 'gemini' ? 'Gemini AI' : (language === 'en' ? 'Local' : 'Local')}
+            </span>
+          </div>
         </div>
         <div className="modern-chat-actions">
           <button 
             className="modern-chat-button" 
             onClick={handleClearChat}
-            title="Limpiar chat"
+            title={language === 'en' ? 'Clear chat' : 'Limpiar chat'}
           >
             <TrashIcon />
           </button>
@@ -275,6 +327,54 @@ const ChatGPT = () => {
           </div>
         ))}
         
+        {messages.length <= 1 && (
+          <div className="modern-chat-suggestions">
+            <div 
+              className="modern-chat-suggestion-card" 
+              onClick={() => handleSuggestionClick(language === 'en' ? 'Tell me about Andrés\'s work experience.' : 'Cuéntame sobre la experiencia laboral de Andrés.')}
+            >
+              <div className="suggestion-icon">💼</div>
+              <div className="suggestion-info">
+                <span className="suggestion-title">{language === 'en' ? 'Work Experience' : 'Experiencia Laboral'}</span>
+                <span className="suggestion-desc">{language === 'en' ? 'Details about past jobs & roles' : 'Detalles de roles y empresas'}</span>
+              </div>
+            </div>
+            <div 
+              className="modern-chat-suggestion-card" 
+              onClick={() => handleSuggestionClick(language === 'en' ? 'What are Andrés\'s technical skills?' : '¿Cuáles son las habilidades técnicas de Andrés?')}
+            >
+              <div className="suggestion-icon">🛠️</div>
+              <div className="suggestion-info">
+                <span className="suggestion-title">{language === 'en' ? 'Technical Skills' : 'Habilidades Técnicas'}</span>
+                <span className="suggestion-desc">{language === 'en' ? 'Languages, tools & databases' : 'Tecnologías y herramientas'}</span>
+              </div>
+            </div>
+            <div 
+              className="modern-chat-suggestion-card" 
+              onClick={() => handleSuggestionClick(language === 'en' ? 'Tell me about the projects Andrés has developed.' : 'Háblame de los proyectos que ha desarrollado Andrés.')}
+            >
+              <div className="suggestion-icon">🚀</div>
+              <div className="suggestion-info">
+                <span className="suggestion-title">{language === 'en' ? 'Featured Projects' : 'Proyectos Destacados'}</span>
+                <span className="suggestion-desc">{language === 'en' ? 'E-commerce, websites & apps' : 'Sitios web y aplicaciones'}</span>
+              </div>
+            </div>
+            <div 
+              className="modern-chat-suggestion-card" 
+              onClick={() => {
+                const el = document.getElementById('schedule');
+                if (el) el.scrollIntoView({ behavior: 'smooth' });
+              }}
+            >
+              <div className="suggestion-icon">📅</div>
+              <div className="suggestion-info">
+                <span className="suggestion-title">{language === 'en' ? 'Schedule a Call' : 'Agendar una Cita'}</span>
+                <span className="suggestion-desc">{language === 'en' ? 'Book a meeting on my calendar' : 'Elige un horario en el calendario'}</span>
+              </div>
+            </div>
+          </div>
+        )}
+        
         {isLoading && (
           <div className="modern-chat-message bot">
             <div className="modern-chat-avatar">
@@ -296,7 +396,7 @@ const ChatGPT = () => {
           value={input}
           onChange={(e) => setInput(e.target.value)}
           onKeyPress={handleKeyPress}
-          placeholder="Escribe tu mensaje aquí..."
+          placeholder={language === 'en' ? 'Type a message here...' : 'Escribe tu mensaje aquí...'}
           disabled={isLoading}
           rows="1"
         ></textarea>
@@ -304,7 +404,7 @@ const ChatGPT = () => {
           className="modern-chat-send-button"
           onClick={handleSendMessage}
           disabled={isLoading || !input.trim()}
-          title="Enviar mensaje"
+          title={language === 'en' ? 'Send message' : 'Enviar mensaje'}
         >
           <SendIcon />
         </button>
