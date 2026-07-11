@@ -457,7 +457,7 @@ Pautas para responder:
                 headers: {
                     'Content-Type': 'application/json'
                 },
-                timeout: 3500
+                timeout: 30000
             }
         );
 
