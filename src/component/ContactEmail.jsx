@@ -1,15 +1,14 @@
 import React, { useState } from 'react';
 import { Snackbar, Alert } from '@mui/material';
-import EmailIcon from '@mui/icons-material/Email';
-import SendIcon from '@mui/icons-material/Send';
 import emailjs from '@emailjs/browser';
-import './styles/dashboardUI.css';
+import './styles/ContactCards.css';
 import { useLanguage } from '../context/LanguageContext';
 
 const ContactEmail = () => {
-    const { translations } = useLanguage();
+    const { translations, language } = useLanguage();
     const [formData, setFormData] = useState({
         name: '',
+        subject: '',
         email: '',
         message: ''
     });
@@ -34,6 +33,7 @@ const ContactEmail = () => {
         const templateParams = {
             from_name: formData.name,
             from_email: formData.email,
+            subject: formData.subject,
             message: formData.message,
             to_name: 'Andrés Amuchástegui',
             reply_to: formData.email
@@ -55,6 +55,7 @@ const ContactEmail = () => {
 
             setFormData({
                 name: '',
+                subject: '',
                 email: '',
                 message: ''
             });
@@ -70,57 +71,74 @@ const ContactEmail = () => {
     };
 
     return (
-        <div className="dashboard-card contact-widget">
-            <h2>
-                <EmailIcon style={{ fontSize: '2rem' }} />
-                {translations.contactAndres}
-            </h2>
+        <div className="dashboard-card contact-card-main" id="contact">
+            <h2 className="contact-title">CONTACT</h2>
+            <p className="contact-subtitle">
+                {language === 'en' 
+                  ? 'Want to work together? Have a project in mind? Feel free to contact me at amuchastegui.dev@gmail.com or using the form!'
+                  : '¿Quieres trabajar juntos? ¿Tienes un proyecto en mente? ¡No dudes en contactarme a amuchastegui.dev@gmail.com o usando el formulario!'}
+            </p>
             
-            <form onSubmit={handleSubmit}>
-                <input
-                    type="text"
-                    name="name"
-                    placeholder={translations.name}
-                    value={formData.name}
-                    onChange={handleChange}
-                    required
-                    className="contact-input"
-                    maxLength={50}
-                    autoComplete="name"
-                />
+            <div className="contact-divider"></div>
+
+            <form onSubmit={handleSubmit} className="contact-form">
+                <div className="form-group">
+                    <label>{language === 'en' ? 'Name' : 'Nombre'}</label>
+                    <input
+                        type="text"
+                        name="name"
+                        placeholder={language === 'en' ? 'Your name' : 'Tu nombre'}
+                        value={formData.name}
+                        onChange={handleChange}
+                        required
+                        maxLength={50}
+                    />
+                </div>
                 
-                <input
-                    type="email"
-                    name="email"
-                    placeholder={translations.email}
-                    value={formData.email}
-                    onChange={handleChange}
-                    required
-                    className="contact-input"
-                    maxLength={100}
-                    autoComplete="email"
-                />
+                <div className="form-group">
+                    <label>{language === 'en' ? 'Subject' : 'Asunto'}</label>
+                    <input
+                        type="text"
+                        name="subject"
+                        placeholder={language === 'en' ? 'Subject' : 'Asunto'}
+                        value={formData.subject}
+                        onChange={handleChange}
+                        required
+                        maxLength={100}
+                    />
+                </div>
+
+                <div className="form-group">
+                    <label>Email</label>
+                    <input
+                        type="email"
+                        name="email"
+                        placeholder="example@example.com"
+                        value={formData.email}
+                        onChange={handleChange}
+                        required
+                        maxLength={100}
+                    />
+                </div>
                 
-                <textarea
-                    name="message"
-                    placeholder={translations.message}
-                    value={formData.message}
-                    onChange={handleChange}
-                    required
-                    className="contact-input contact-textarea"
-                    maxLength={500}
-                    rows={4}
-                />
+                <div className="form-group">
+                    <label>{language === 'en' ? 'Message' : 'Mensaje'}</label>
+                    <textarea
+                        name="message"
+                        placeholder={language === 'en' ? 'Write a message...' : 'Escribe un mensaje...'}
+                        value={formData.message}
+                        onChange={handleChange}
+                        required
+                        maxLength={500}
+                        rows={4}
+                    />
+                </div>
                 
-                <button
-                    type="submit"
-                    disabled={loading}
-                    className="contact-submit"
-                    style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', gap: '0.5rem' }}
-                >
-                    {loading ? translations.sending : translations.sendMessage}
-                    {!loading && <SendIcon fontSize="small" />}
-                </button>
+                <div className="form-submit-container">
+                    <button type="submit" disabled={loading} className="contact-submit-btn">
+                        {loading ? (language === 'en' ? 'Sending...' : 'Enviando...') : (language === 'en' ? 'Send Message' : 'Enviar Mensaje')}
+                    </button>
+                </div>
             </form>
 
             <Snackbar
@@ -142,4 +160,4 @@ const ContactEmail = () => {
     );
 };
 
-export default ContactEmail; 
+export default ContactEmail;

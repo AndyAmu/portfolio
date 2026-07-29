@@ -1,81 +1,73 @@
 import './App.css';
-import ResponsiveAppBar from './component/Natbar';
-import ScrollToTop from 'react-scroll-to-top';
-import FileUploadIcon from '@mui/icons-material/FileUpload';
-import Footer from './component/Footer';
-import { Routes, Route } from 'react-router-dom';
-import PageHome from './component/pageHome';
+import { useState } from 'react';
 import { LanguageProvider } from './context/LanguageContext';
-import { useEffect, useState } from 'react';
-import io from 'socket.io-client';
+import Sidebar from './component/Sidebar';
+import ChatGPTOverlay from './component/chatGPT';
+import Body from './component/Body';
+import ContactEmail from './component/ContactEmail';
+import GoogleCalendar from './component/GoogleCalendar';
 import LetterGlitch from './component/LetterGlitch';
+import { useLanguage } from './context/LanguageContext';
 
-// URL del backend (en producción será la URL de Render.com)
-const ENDPOINT = process.env.REACT_APP_API_URL || (window.location.hostname === 'localhost' ? 'http://localhost:4000' : '');
+function AppContent() {
+  const [isDarkMode, setIsDarkMode] = useState(true);
+  const { language } = useLanguage();
 
-function App() {
-  console.log('App rendering'); // Debug log
+  const toggleTheme = () => {
+    setIsDarkMode(!isDarkMode);
+  };
 
-  const [socket, setSocket] = useState(null);
-  const [messages, setMessages] = useState([]);
-  const [chatType, setChatType] = useState('local'); // Tipo de chat por defecto
-
-  useEffect(() => {
-    // Inicializar conexión con Socket.io
-    const newSocket = io(ENDPOINT || (window.location.hostname === 'localhost' ? 'http://localhost:4000' : window.location.origin), {
-      withCredentials: true,
-    });
-    setSocket(newSocket);
-
-    // Escuchar eventos del servidor
-    newSocket.on('chat message', (message) => {
-      setMessages((prev) => [...prev, message]);
-    });
-
-    newSocket.on('chat cleared', () => {
-      setMessages([]);
-    });
-
-    // Limpiar la conexión al desmontar el componente
-    return () => newSocket.close();
-  }, []);
+  const scrollToContact = () => {
+    document.getElementById('contact')?.scrollIntoView({ behavior: 'smooth' });
+  };
 
   return (
-    <LanguageProvider>
-      <LetterGlitch
-        glitchSpeed={50}
-        centerVignette={false}
-        outerVignette={false}
-        smooth={true}
-      />
-      <ResponsiveAppBar />
-      <Routes>
-        <Route
-          path="/"
-          element={
-            <PageHome
-              socket={socket}
-              messages={messages}
-              setMessages={setMessages}
-              chatType={chatType}
-              setChatType={setChatType}
-            />
-          }
+    <>
+      {isDarkMode && (
+        <LetterGlitch
+          glitchSpeed={50}
+          centerVignette={false}
+          outerVignette={false}
+          smooth={true}
         />
-      </Routes>
-      <Footer />
-      <ScrollToTop
-        style={{ 
-          backgroundColor: 'white', 
-          opacity: '50%', 
-          width: '30px', 
-          height: '30px',
-          bottom: '70px' // Aumentado de 40px a 70px para que no quede debajo del menú
-        }}
-        smooth
-        viewBox="0 0 24 24"
-        component={<FileUploadIcon />}
-      />
+      )}
+      <div className={`app-container ${isDarkMode ? 'dark' : 'light'}`}>
+        <Sidebar 
+          isDarkMode={isDarkMode} 
+          toggleTheme={toggleTheme} 
+        />
+
+        <div className="top-right-actions">
+          <button className="start-project-btn" onClick={scrollToContact}>
+            {language === 'en' ? 'Start project' : 'Iniciar proyecto'}
+          </button>
+        </div>
+        
+        <div className="main-content-area">
+          
+          <Body />
+          
+          <div className="bottom-widgets-grid">
+            <GoogleCalendar />
+            <ContactEmail />
+          </div>
+          
+          {/* We add some extra space at the bottom to ensure nothing is hidden behind the chat input */}
+          <div style={{ height: '50px' }}></div>
+        </div>
+
+        <ChatGPTOverlay 
+          isDarkMode={isDarkMode}
+        />
+      </div>
+    </>
+  );
+}
+
+function App() {
+  return (
+    <LanguageProvider>
+      <AppContent />
     </LanguageProvider>
   );
 }

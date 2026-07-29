@@ -1,5 +1,5 @@
 import React from 'react';
-import './styles/dashboardUI.css';
+import './styles/ContactCards.css';
 
 function GoogleCalendar() {
   const calendarUrl = "https://calendar.google.com/calendar/appointments/schedules/AcZssZ1o9KZsCpSAi6OIPxAkrwexUX-U7V4OPsLOsefMZ4WR9xsxcA3CmtpJQj5so-2TjQIt6rmDBiLd?gv=true";

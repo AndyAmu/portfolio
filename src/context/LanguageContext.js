@@ -10,7 +10,7 @@ export const translations = {
     cv: "Cv",
     portfolio: "Portfolio Andrés Amuchástegui",
     greeting: "Hi, I'm Andrés",
-    introduction: "I am a person with good predisposition, creative and passionate. Here you can see my full CV.",
+    introduction: "I am a developer passionate about creating technological solutions that make a difference. I am motivated by helping people and businesses bring their projects to life, automate their processes, and solve complex problems through clean and efficient code. I enjoy transforming ideas into digital tools that provide real value.",
     downloadEnglishCV: "Download CV",
     downloadSpanishCV: "Download Spanish CV",
     virtualAssistant: "VIRTUAL ASSISTANT",
@@ -38,7 +38,7 @@ export const translations = {
     cv: "Cv",
     portfolio: "Portafolio Andrés Amuchástegui",
     greeting: "Hola, soy Andrés",
-    introduction: "Soy una persona con buena predisposición, creativa y apasionada. Aquí puedes ver mi CV completo.",
+    introduction: "Soy un desarrollador apasionado por crear soluciones tecnológicas que marquen la diferencia. Me motiva ayudar a las personas y empresas a dar vida a sus proyectos, automatizar sus procesos y resolver problemas complejos mediante código limpio y eficiente. Disfruto transformar ideas en herramientas digitales que aporten valor real.",
     downloadEnglishCV: "Descargar CV",
     downloadSpanishCV: "Descargar CV",
     virtualAssistant: "ASISTENTE VIRTUAL",
@@ -62,7 +62,7 @@ export const translations = {
 };
 
 export const LanguageProvider = ({ children }) => {
-  const [language, setLanguage] = useState('en');
+  const [language, setLanguage] = useState('es');
 
   const toggleLanguage = () => {
     setLanguage(prev => prev === 'en' ? 'es' : 'en');

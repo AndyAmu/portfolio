@@ -1,0 +1,106 @@
+.app-container {
+  display: flex;
+  width: 100vw;
+  height: 100vh;
+  overflow: hidden;
+  position: relative;
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+.app-container.dark {
+  background-color: transparent;
+  color: #ffffff;
+}
+
+.app-container.light {
+  background-color: #f0f0f0;
+  background-image: radial-gradient(rgba(0, 0, 0, 0.1) 1px, transparent 1px);
+  background-size: 20px 20px;
+  color: #000000;
+}
+
+.main-content-area {
+  flex: 1;
+  overflow-y: auto;
+  position: relative;
+  padding: 40px 60px;
+  padding-bottom: 150px; /* Space for the floating chat input */
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 40px;
+  scroll-behavior: smooth;
+}
+
+.main-content-area > * {
+  width: 100%;
+  max-width: 1000px; /* Makes cards look nice and centered instead of stretched */
+}
+
+.bottom-widgets-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 40px;
+  width: 100%;
+  max-width: 1000px;
+}
+
+/* Custom Scrollbar for Main Area */
+.main-content-area::-webkit-scrollbar {
+  width: 8px;
+}
+.main-content-area::-webkit-scrollbar-track {
+  background: transparent;
+}
+.main-content-area::-webkit-scrollbar-thumb {
+  background: rgba(128, 128, 128, 0.3);
+  border-radius: 10px;
+}
+.main-content-area::-webkit-scrollbar-thumb:hover {
+  background: rgba(128, 128, 128, 0.5);
+}
+
+.top-right-actions {
+  position: fixed;
+  top: 30px;
+  right: 40px;
+  z-index: 1000;
+}
+
+.start-project-btn {
+  background: #ffffff;
+  color: #000000;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 20px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: transform 0.2s;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+}
+
+.app-container.light .start-project-btn {
+  background: #000000;
+  color: #ffffff;
+}
+
+.start-project-btn:hover {
+  transform: scale(1.05);
+}
+
+@media (max-width: 768px) {
+  .app-container {
+    flex-direction: column-reverse;
+  }
+  .main-content-area {
+    padding: 20px;
+    padding-bottom: 100px;
+  }
+  .top-right-actions {
+    top: 20px;
+    right: 20px;
+  }
+  .bottom-widgets-grid {
+    grid-template-columns: 1fr;
+  }
+}
