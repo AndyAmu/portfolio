@@ -7,15 +7,12 @@ import Body from './component/Body';
 import ContactEmail from './component/ContactEmail';
 import GoogleCalendar from './component/GoogleCalendar';
 import LetterGlitch from './component/LetterGlitch';
+import IntroSplash from './component/IntroSplash';
 import { useLanguage } from './context/LanguageContext';
 
 function AppContent() {
-  const [isDarkMode, setIsDarkMode] = useState(true);
   const { language } = useLanguage();
-
-  const toggleTheme = () => {
-    setIsDarkMode(!isDarkMode);
-  };
+  const [introDone, setIntroDone] = useState(false);
 
   const scrollToContact = () => {
     document.getElementById('contact')?.scrollIntoView({ behavior: 'smooth' });
@@ -23,19 +20,24 @@ function AppContent() {
 
   return (
     <>
-      {isDarkMode && (
-        <LetterGlitch
-          glitchSpeed={50}
-          centerVignette={false}
-          outerVignette={false}
-          smooth={true}
-        />
-      )}
-      <div className={`app-container ${isDarkMode ? 'dark' : 'light'}`}>
-        <Sidebar 
-          isDarkMode={isDarkMode} 
-          toggleTheme={toggleTheme} 
-        />
+      <LetterGlitch
+        glitchSpeed={50}
+        centerVignette={false}
+        outerVignette={false}
+        smooth={true}
+      />
+
+      {!introDone && <IntroSplash onComplete={() => setIntroDone(true)} />}
+
+      <div 
+        className="app-container dark"
+        style={{ 
+          opacity: introDone ? 1 : 0, 
+          transition: 'opacity 1.5s ease-in-out',
+          pointerEvents: introDone ? 'auto' : 'none'
+        }}
+      >
+        <Sidebar />
 
         <div className="top-right-actions">
           <button className="start-project-btn" onClick={scrollToContact}>
@@ -57,7 +59,7 @@ function AppContent() {
         </div>
 
         <ChatGPTOverlay 
-          isDarkMode={isDarkMode}
+          isDarkMode={true}
         />
       </div>
     </>

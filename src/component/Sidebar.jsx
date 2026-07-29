@@ -10,16 +10,14 @@ import GitHubIcon from '@mui/icons-material/GitHub';
 import LinkedInIcon from '@mui/icons-material/LinkedIn';
 import InstagramIcon from '@mui/icons-material/Instagram';
 import YouTubeIcon from '@mui/icons-material/YouTube';
-import LightModeOutlinedIcon from '@mui/icons-material/LightModeOutlined';
-import DarkModeOutlinedIcon from '@mui/icons-material/DarkModeOutlined';
+
 import ChevronRightIcon from '@mui/icons-material/ChevronRight';
 import ChevronLeftIcon from '@mui/icons-material/ChevronLeft';
 import MenuIcon from '@mui/icons-material/Menu';
 import CloseIcon from '@mui/icons-material/Close';
 import logoWhite from './image/white.png';
-import logoBlack from './image/black.png';
 
-const Sidebar = ({ isDarkMode, toggleTheme }) => {
+const Sidebar = () => {
   const { language, toggleLanguage } = useLanguage();
 
   const [isExpanded, setIsExpanded] = useState(false);
@@ -38,7 +36,7 @@ const Sidebar = ({ isDarkMode, toggleTheme }) => {
   };
 
   return (
-    <div className={`slim-sidebar ${isDarkMode ? 'dark' : 'light'} ${isExpanded ? 'expanded' : ''}`}>
+    <div className={`slim-sidebar dark ${isExpanded ? 'expanded' : ''}`}>
       
       <button 
         className="sidebar-toggle-btn desktop-toggle" 
@@ -59,7 +57,7 @@ const Sidebar = ({ isDarkMode, toggleTheme }) => {
       <div className="sidebar-top">
         <div className="sidebar-logo">
           <img 
-            src={isDarkMode ? logoWhite : logoBlack} 
+            src={logoWhite} 
             alt="Logo" 
             className="icon" 
             style={{ width: '24px', height: '24px', objectFit: 'contain' }} 
@@ -107,10 +105,7 @@ const Sidebar = ({ isDarkMode, toggleTheme }) => {
           <YouTubeIcon fontSize="small" className="icon" />
           <span className="nav-text">YouTube</span>
         </a>
-        <button className="nav-item" onClick={toggleTheme}>
-          {isDarkMode ? <LightModeOutlinedIcon fontSize="small" className="icon" /> : <DarkModeOutlinedIcon fontSize="small" className="icon" />}
-          <span className="nav-text">{language === 'en' ? 'Theme' : 'Tema'}</span>
-        </button>
+
         <button className="nav-item lang-toggle" onClick={toggleLanguage}>
           <span className="icon">{language === 'en' ? 'ES' : 'EN'}</span>
           <span className="nav-text">{language === 'en' ? 'Spanish' : 'English'}</span>
