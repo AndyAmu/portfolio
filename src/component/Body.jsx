@@ -1,4 +1,4 @@
-﻿import React from "react"
+import React from "react"
 import './styles/BodyCards.css'
 import profileImg from './image/patagonia-and.webp'
 import { useLanguage } from '../context/LanguageContext'
@@ -50,7 +50,7 @@ const Body = () => {
         <div className="info-card-container">
           <div className="info-grid">
             <div className="sub-card full-width">
-              <h3>{language === 'en' ? 'About Me' : 'Sobre Mí'}</h3>
+              <h3>{language === 'en' ? 'Professional Summary' : 'Resumen Profesional'}</h3>
               <p>{translations.introduction}</p>
             </div>
           </div>
