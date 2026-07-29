@@ -231,9 +231,14 @@
 @media (max-width: 900px) {
   .hero-card {
     flex-direction: column;
+    height: auto;
   }
   .hero-image-container {
     height: 300px;
+    width: 100%;
+  }
+  .hero-text {
+    padding: 30px;
   }
   .info-grid {
     grid-template-columns: 1fr;
