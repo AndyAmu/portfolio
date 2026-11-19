@@ -1,0 +1,43 @@
+# Render Blueprint: Decoupled Architecture (Zero Cold Starts on Frontend)
+# 1) Static Site serves the React build via Render Global CDN (instant load).
+# 2) Node Web Service runs only the lightweight AI Chat API (/api/health + /api/chat + Socket.IO).
+
+services:
+  - type: web
+    name: andres-portfolio-frontend
+    runtime: static
+    buildCommand: npm install && npm run build:static
+    staticPublishPath: ./build
+    pullRequestPreviewsEnabled: false
+    headers:
+      - path: /static/*
+        name: Cache-Control
+        value: public, max-age=31536000, immutable
+      - path: /index.html
+        name: Cache-Control
+        value: no-cache
+    routes:
+      - type: rewrite
+        source: /*
+        destination: /index.html
+    envVars:
+      - key: REACT_APP_API_URL
+        sync: false # Set to your Render backend URL, e.g. https://andres-portfolio-chat-api.onrender.com
+
+  - type: web
+    name: andres-portfolio-chat-api
+    runtime: node
+    plan: free
+    rootDir: server
+    buildCommand: npm install
+    startCommand: npm start
+    healthCheckPath: /api/health
+    envVars:
+      - key: NODE_ENV
+        value: production
+      - key: DISABLE_STATIC
+        value: "true"
+      - key: GEMINI_API_KEY
+        sync: false
+      - key: CORS_ORIGIN
+        value: https://andresamuchastegui.com,https://www.andresamuchastegui.com

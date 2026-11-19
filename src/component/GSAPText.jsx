@@ -1,42 +1,53 @@
 import React, { useEffect, useRef } from 'react';
 import { gsap } from 'gsap';
+import { safeSetHTML } from '../utils/sanitizeHtml';
+
+const HTML_TAG_REGEX = /<[a-z][\s\S]*>/i;
 
 const GSAPText = ({ text }) => {
   const containerRef = useRef(null);
+  const hasHtml = HTML_TAG_REGEX.test(text || '');
 
   useEffect(() => {
-    if (!containerRef.current) return;
-    
-    if (/<[a-z][\s\S]*>/i.test(text)) {
-      gsap.fromTo(
-        containerRef.current,
-        { opacity: 0, y: 15 },
-        { opacity: 1, y: 0, duration: 0.6, ease: 'power3.out' }
-      );
-    } else {
-      gsap.to(containerRef.current.querySelectorAll('.gsap-word'), {
-        opacity: 1,
-        y: 0,
-        duration: 0.4,
-        stagger: 0.03,
-        ease: 'power2.out',
-        startAt: { opacity: 0, y: 10 }
-      });
-    }
-  }, [text]);
+    const node = containerRef.current;
+    if (!node) return;
 
-  if (/<[a-z][\s\S]*>/i.test(text)) {
-    return (
-      <div 
-        ref={containerRef} 
-        style={{ opacity: 0 }} 
-        dangerouslySetInnerHTML={{ __html: text }} 
-      />
-    );
+    const prefersReducedMotion =
+      typeof window !== 'undefined' &&
+      window.matchMedia &&
+      window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+    if (hasHtml) {
+      safeSetHTML(node, text);
+      if (prefersReducedMotion) {
+        gsap.set(node, { opacity: 1, y: 0 });
+      } else {
+        gsap.fromTo(
+          node,
+          { opacity: 0, y: 10 },
+          { opacity: 1, y: 0, duration: 0.45, ease: 'power3.out' }
+        );
+      }
+      return;
+    }
+
+    const words = node.querySelectorAll('.gsap-word');
+    if (prefersReducedMotion) {
+      gsap.set(words, { opacity: 1, y: 0 });
+    } else {
+      gsap.fromTo(
+        words,
+        { opacity: 0, y: 8 },
+        { opacity: 1, y: 0, duration: 0.35, stagger: 0.02, ease: 'power2.out' }
+      );
+    }
+  }, [text, hasHtml]);
+
+  if (hasHtml) {
+    return <div ref={containerRef} className="bot-rich-text" />;
   }
 
-  // Animación palabra por palabra si es texto plano
-  const words = text.split(' ');
+  const words = String(text || '').split(' ');
 
   return (
     <div ref={containerRef} style={{ display: 'inline-block' }}>

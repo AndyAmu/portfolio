@@ -4,7 +4,8 @@
   height: 100vh;
   overflow: hidden;
   position: relative;
-  transition: background-color 0.3s ease, color 0.3s ease;
+  z-index: 1;
+  transition: opacity 0.45s ease-out;
 }
 
 .app-container.dark {
@@ -12,19 +13,12 @@
   color: #ffffff;
 }
 
-.app-container.light {
-  background-color: #f0f0f0;
-  background-image: radial-gradient(rgba(0, 0, 0, 0.1) 1px, transparent 1px);
-  background-size: 20px 20px;
-  color: #000000;
-}
-
 .main-content-area {
   flex: 1;
   overflow-y: auto;
   position: relative;
   padding: 40px 60px;
-  padding-bottom: 150px; /* Space for the floating chat input */
+  padding-bottom: 150px; /* Space for floating chat input */
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -32,9 +26,15 @@
   scroll-behavior: smooth;
 }
 
+@media (prefers-reduced-motion: reduce) {
+  .main-content-area {
+    scroll-behavior: auto;
+  }
+}
+
 .main-content-area > * {
   width: 100%;
-  max-width: 1000px; /* Makes cards look nice and centered instead of stretched */
+  max-width: 1000px;
 }
 
 .bottom-widgets-grid {
@@ -75,17 +75,50 @@
   border-radius: 20px;
   font-weight: 600;
   cursor: pointer;
-  transition: transform 0.2s;
-  box-shadow: 0 4px 12px rgba(0,0,0,0.1);
-}
-
-.app-container.light .start-project-btn {
-  background: #000000;
-  color: #ffffff;
+  transition: transform 0.2s ease, background-color 0.2s ease;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.25);
+  min-height: 40px;
 }
 
 .start-project-btn:hover {
-  transform: scale(1.05);
+  transform: scale(1.04);
+}
+
+/* Skeleton Loader for Lazy Sections & Calendar */
+.skeleton-card {
+  background-color: #1a1a1c;
+  border-radius: 20px;
+  border: 1px solid rgba(255, 255, 255, 0.05);
+  padding: 32px;
+  min-height: 360px;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.skeleton-line {
+  height: 18px;
+  border-radius: 10px;
+  background: linear-gradient(
+    90deg,
+    rgba(255, 255, 255, 0.04) 25%,
+    rgba(255, 255, 255, 0.1) 50%,
+    rgba(255, 255, 255, 0.04) 75%
+  );
+  background-size: 200% 100%;
+  animation: skeletonShimmer 1.6s infinite linear;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .skeleton-line {
+    animation: none;
+    background: rgba(255, 255, 255, 0.06);
+  }
+}
+
+@keyframes skeletonShimmer {
+  0% { background-position: 200% 0; }
+  100% { background-position: -200% 0; }
 }
 
 @media (max-width: 768px) {
@@ -94,7 +127,7 @@
   }
   .main-content-area {
     padding: 20px;
-    padding-bottom: 100px;
+    padding-bottom: 110px;
   }
   .top-right-actions {
     top: 20px;

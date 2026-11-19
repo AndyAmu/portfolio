@@ -18,100 +18,176 @@ import CloseIcon from '@mui/icons-material/Close';
 import logoWhite from './image/white.png';
 
 const Sidebar = () => {
-  const { language, toggleLanguage } = useLanguage();
-
+  const { language, toggleLanguage, translations } = useLanguage();
   const [isExpanded, setIsExpanded] = useState(false);
+  const [activeId, setActiveId] = useState('home');
 
   const handleScroll = (id) => {
+    setActiveId(id);
     const element = document.getElementById(id);
     const container = document.querySelector('.main-content-area');
+
     if (element && container) {
       container.scrollTo({
-        top: element.offsetTop - 40,
-        behavior: 'smooth'
+        top: Math.max(0, element.offsetTop - 32),
+        behavior: 'smooth',
       });
     } else if (element) {
       element.scrollIntoView({ behavior: 'smooth' });
     }
+
+    if (window.innerWidth <= 768) {
+      setIsExpanded(false);
+    }
   };
 
   return (
-    <div className={`slim-sidebar dark ${isExpanded ? 'expanded' : ''}`}>
-      
-      <button 
-        className="sidebar-toggle-btn desktop-toggle" 
+    <aside
+      className={`slim-sidebar dark ${isExpanded ? 'expanded' : ''}`}
+      aria-label={language === 'en' ? 'Sidebar navigation' : 'Barra de navegación lateral'}
+    >
+      <button
+        type="button"
+        className="sidebar-toggle-btn desktop-toggle"
         onClick={() => setIsExpanded(!isExpanded)}
-        title={isExpanded ? "Collapse Sidebar" : "Expand Sidebar"}
+        aria-expanded={isExpanded}
+        aria-label={isExpanded ? 'Collapse sidebar' : 'Expand sidebar'}
       >
         {isExpanded ? <ChevronLeftIcon fontSize="small" /> : <ChevronRightIcon fontSize="small" />}
       </button>
 
-      <button 
-        className="sidebar-toggle-btn mobile-toggle" 
+      <button
+        type="button"
+        className="sidebar-toggle-btn mobile-toggle"
         onClick={() => setIsExpanded(!isExpanded)}
-        title={isExpanded ? "Close Menu" : "Open Menu"}
+        aria-expanded={isExpanded}
+        aria-label={isExpanded ? 'Close navigation menu' : 'Open navigation menu'}
       >
         {isExpanded ? <CloseIcon /> : <MenuIcon />}
       </button>
 
       <div className="sidebar-top">
         <div className="sidebar-logo">
-          <img 
-            src={logoWhite} 
-            alt="Logo" 
-            className="icon" 
-            style={{ width: '24px', height: '24px', objectFit: 'contain' }} 
+          <img
+            src={logoWhite}
+            alt="Andrés Amuchástegui Logo"
+            className="icon"
+            width={24}
+            height={24}
+            style={{ width: '24px', height: '24px', objectFit: 'contain' }}
           />
           <span className="nav-text">Andrés Amuchástegui</span>
         </div>
-        <div className="sidebar-nav">
-          <button className="nav-item active" onClick={() => handleScroll('home')}>
-            <HomeOutlinedIcon fontSize="small" className="icon" />
-            <span className="nav-text">{language === 'en' ? 'Home' : 'Inicio'}</span>
+
+        <nav
+          className="sidebar-nav"
+          aria-label={language === 'en' ? 'Primary sections' : 'Secciones principales'}
+        >
+          <button
+            type="button"
+            className={`nav-item ${activeId === 'home' ? 'active' : ''}`}
+            onClick={() => handleScroll('home')}
+            aria-label={translations.home}
+          >
+            <HomeOutlinedIcon fontSize="small" className="icon" aria-hidden="true" />
+            <span className="nav-text">{translations.home}</span>
           </button>
-          <button className="nav-item" onClick={() => handleScroll('about')}>
-            <PersonOutlineOutlinedIcon fontSize="small" className="icon" />
-            <span className="nav-text">{language === 'en' ? 'About Me' : 'Sobre Mí'}</span>
+
+          <button
+            type="button"
+            className={`nav-item ${activeId === 'about' ? 'active' : ''}`}
+            onClick={() => handleScroll('about')}
+            aria-label={translations.about}
+          >
+            <PersonOutlineOutlinedIcon fontSize="small" className="icon" aria-hidden="true" />
+            <span className="nav-text">{translations.about}</span>
           </button>
-          <button className="nav-item" onClick={() => handleScroll('services')}>
-            <SettingsOutlinedIcon fontSize="small" className="icon" />
-            <span className="nav-text">{language === 'en' ? 'Services' : 'Servicios'}</span>
+
+          <button
+            type="button"
+            className={`nav-item ${activeId === 'services' ? 'active' : ''}`}
+            onClick={() => handleScroll('services')}
+            aria-label={translations.services}
+          >
+            <SettingsOutlinedIcon fontSize="small" className="icon" aria-hidden="true" />
+            <span className="nav-text">{translations.services}</span>
           </button>
-          <button className="nav-item" onClick={() => handleScroll('projects')}>
-            <WorkOutlineOutlinedIcon fontSize="small" className="icon" />
-            <span className="nav-text">{language === 'en' ? 'Projects' : 'Proyectos'}</span>
+
+          <button
+            type="button"
+            className={`nav-item ${activeId === 'projects' ? 'active' : ''}`}
+            onClick={() => handleScroll('projects')}
+            aria-label={translations.projects}
+          >
+            <WorkOutlineOutlinedIcon fontSize="small" className="icon" aria-hidden="true" />
+            <span className="nav-text">{translations.projects}</span>
           </button>
-          <button className="nav-item" onClick={() => handleScroll('contact')}>
-            <MailOutlineOutlinedIcon fontSize="small" className="icon" />
-            <span className="nav-text">{language === 'en' ? 'Contact' : 'Contacto'}</span>
+
+          <button
+            type="button"
+            className={`nav-item ${activeId === 'contact' ? 'active' : ''}`}
+            onClick={() => handleScroll('contact')}
+            aria-label={translations.contact}
+          >
+            <MailOutlineOutlinedIcon fontSize="small" className="icon" aria-hidden="true" />
+            <span className="nav-text">{translations.contact}</span>
           </button>
-        </div>
+        </nav>
       </div>
-      
+
       <div className="sidebar-bottom">
-        <a href="https://github.com/AndyAmu" target="_blank" rel="noreferrer" className="nav-item">
-          <GitHubIcon fontSize="small" className="icon" />
+        <a
+          href="https://github.com/AndyAmu"
+          target="_blank"
+          rel="noopener noreferrer"
+          className="nav-item"
+          aria-label="GitHub"
+        >
+          <GitHubIcon fontSize="small" className="icon" aria-hidden="true" />
           <span className="nav-text">GitHub</span>
         </a>
-        <a href="https://www.linkedin.com/in/andr%C3%A9s-amuch%C3%A1stegui-3b47ab21b/" target="_blank" rel="noreferrer" className="nav-item">
-          <LinkedInIcon fontSize="small" className="icon" />
+        <a
+          href="https://www.linkedin.com/in/andr%C3%A9s-amuch%C3%A1stegui-3b47ab21b/"
+          target="_blank"
+          rel="noopener noreferrer"
+          className="nav-item"
+          aria-label="LinkedIn"
+        >
+          <LinkedInIcon fontSize="small" className="icon" aria-hidden="true" />
           <span className="nav-text">LinkedIn</span>
         </a>
-        <a href="https://www.instagram.com/andres_amuchastegui/" target="_blank" rel="noreferrer" className="nav-item">
-          <InstagramIcon fontSize="small" className="icon" />
+        <a
+          href="https://www.instagram.com/andres_amuchastegui/"
+          target="_blank"
+          rel="noopener noreferrer"
+          className="nav-item"
+          aria-label="Instagram"
+        >
+          <InstagramIcon fontSize="small" className="icon" aria-hidden="true" />
           <span className="nav-text">Instagram</span>
         </a>
-        <a href="https://www.youtube.com/@andresamuchastegui" target="_blank" rel="noreferrer" className="nav-item">
-          <YouTubeIcon fontSize="small" className="icon" />
+        <a
+          href="https://www.youtube.com/@andresamuchastegui"
+          target="_blank"
+          rel="noopener noreferrer"
+          className="nav-item"
+          aria-label="YouTube"
+        >
+          <YouTubeIcon fontSize="small" className="icon" aria-hidden="true" />
           <span className="nav-text">YouTube</span>
         </a>
 
-        <button className="nav-item lang-toggle" onClick={toggleLanguage}>
+        <button
+          type="button"
+          className="nav-item lang-toggle"
+          onClick={toggleLanguage}
+          aria-label={language === 'en' ? 'Switch language to Spanish' : 'Cambiar idioma a Inglés'}
+        >
           <span className="icon">{language === 'en' ? 'ES' : 'EN'}</span>
           <span className="nav-text">{language === 'en' ? 'Spanish' : 'English'}</span>
         </button>
       </div>
-    </div>
+    </aside>
   );
 };
 
